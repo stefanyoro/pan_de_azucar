@@ -47,6 +47,9 @@ Route::get('/', function () {
 	Route::get('consultaCarrera/{id}', 'CarreraController@consultaCarrera')->name('consultaCarrera');
 	Route::get('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
 
+// Incripción de Corredores
+	
+
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');

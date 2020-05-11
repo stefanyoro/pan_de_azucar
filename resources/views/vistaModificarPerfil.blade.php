@@ -4,9 +4,10 @@
 
     <!-- END slider -->
    
-    <section class="section" align="center">
-    	<div class="container"style=" position: relative; text-align: right;">
-	    	<div class="col-md-8">
+    <section class="section" align="center" style="background-color: #CAC7C7;">
+    	<div class="container" align="center" style="text-align: center;">
+    		<div class="col-md-2"></div>
+	    	<div class="col-md-10">
 		    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 		    		<div class="card-header" style="background-color: #B03A2E;">
 				    	<a style="color: white;">Modificar perfil</a>
@@ -14,20 +15,22 @@
 			  		<div class="card-body">
 			    		<div class="">
 					    	<form action="actualizarPerfil" method="post">@csrf
-	  								<div class="row">
-					                    <div class="col-md-6">
-					                    	<p style="text-align: left;">Nombre:</p>
-					                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->nombre}}">
-					                    </div> 
-					                    <div class="col-md-6">
-					                    	<p style="text-align: left;">Apellido:</p>
-					                        <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El apellido sólo puede tener caracteres alfabéticos." minlength="5" maxlength="30" required="required" placeholder="Apellido" data-pattern-error="El apellido sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->apellido}}"> 
-					                    </div>
-					                    <div class="col-md-4"></div>
-					                </div><br>
-
-					                <div class="row">
-					                    <div class="col-md-6">
+					    		
+					    		<div class="row">
+									<div class="col-md-4"></div>
+										<div class="col-md-6">
+											<div class="form-group">
+												<p for="exampleFormControlFile1" style="text-align: left;">
+													<svg class="bi bi-image-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+ 														<path fill-rule="evenodd" d="M.002 3a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-12a2 2 0 01-2-2V3zm1 9l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71a.5.5 0 01.577-.094L15.002 9.5V13a1 1 0 01-1 1h-12a1 1 0 01-1-1v-1zm5-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
+													</svg>
+													Foto de perfil:</p>
+													<input type="file" class="form-control-file" id="exampleFormControlFile1">
+											</div>
+										</div>
+									</div><br>
+					    		<div class="row">
+					                   	<div class="col-md-4">
 					                    	<p style="text-align: left;">Nacionalidad:</p>
 					                    	<div class="form-group">
 					    						<select class="form-control" id="nacionalidad" name="nacionalidad">
@@ -42,7 +45,7 @@
 												</select>
 				  							</div>
 					                    </div>  
-					                    <div class="col-md-6">
+					                    <div class="col-md-4">
 					                    	<p style="text-align: left;">Documento:</p>
 					                       <div class="form-group">
 					    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción.">
@@ -57,10 +60,22 @@
 												</select>
 				  							</div>
 					                    </div>
+
+					                    <div class="col-md-4">
+					                    	<p style="text-align: left;">Número de documento:</p>
+					                    	<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{Auth::user()->persona->numero_doc}}">
+					                    </div>
 					                </div>
-					               
-					                <div class="row">
-					                    <div class="col-md-6"> 
+	  								<div class="row">
+					                    <div class="col-md-4">
+					                    	<p style="text-align: left;">Nombre:</p>
+					                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->nombre}}">
+					                    </div> 
+					                    <div class="col-md-4">
+					                    	<p style="text-align: left;">Apellido:</p>
+					                        <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El apellido sólo puede tener caracteres alfabéticos." minlength="5" maxlength="30" required="required" placeholder="Apellido" data-pattern-error="El apellido sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->apellido}}"> 
+					                    </div>
+					                   <div class="col-md-4"> 
 					                    	<p style="text-align: left;">Sexo:</p>
 					                      	<div class="form-group">
 					    						<select class="form-control" id="sexo" name="sexo" required="required">
@@ -74,20 +89,27 @@
 												</select>
 				  							</div>
 					                    </div> 
-					                    <div class="col-md-6">
-					                    	<p style="text-align: left;">Número de documento:</p>
-					                    	<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{Auth::user()->persona->numero_doc}}">
-					                    </div>
 					                </div>
-					               
-					               
+
 					                <div class="row" style="margin-top: 15px;">
-					                    <div class="col-md-6"> 
-					                      <div class="form-group">
-					                      	<p style="text-align: left;">Fecha de nacimiento:</p>
-					    					<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{Auth::user()->persona->fecha_nac}}">								
+					                    <div class="col-md-4"> 
+					                    	<div class="form-group">
+					                      		<p style="text-align: left;">Fecha de nacimiento:</p>
+					    							<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{Auth::user()->persona->fecha_nac}}">								
 				  							</div>
+				  						</div>
+
+				  						<div class="col-md-4"> 
+					                    	<p style="text-align: left;">Correo:</p>
+					                    	<input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
+					                    </div>
+
+					                    <div class="col-md-4">
+					                    	<p style="text-align: left;">Dirección:</p>
+					                      	<input type="text" class="form-control" id="direccion" name="direccion" required="required" placeholder="Dirección" value="{{Auth::user()->persona->direccion}}">
 					                    </div> 
+
+					                </div> 
 
 					                     @if(Auth::user()->rol == '3')
 					                  <div class="col-md-6">
@@ -131,32 +153,18 @@
 					                </div>
 
 					                @endif
-					                </div>
-					                <div class="row" style="margin-top: 15px;">
-					                    <div class="col-md-12"> 
-					                    <p style="text-align: left;">Correo:</p>
-					                    <input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
-					                    </div>  
-					                </div><br>
-
-					                <div class="row">
-					                    <div class="col-md-12">
-					                    	<p style="text-align: left;">Dirección:</p>
-					                      	<input type="text" class="form-control" id="direccion" name="direccion" required="required" placeholder="Dirección" value="{{Auth::user()->persona->direccion}}">
-					                    </div>  
-					                </div><br>
 
 					                @if(Auth::user()->rol == '1')
 					               
 					                <div class="row">
-					                  <div class="col-md-6">
-					                  	<p style="text-align: left;">Especialidad:</p>
-					                    <input type="text" class="form-control" id="especialidad" name="especialidad" required="required" placeholder="Especialidad" value="{{Auth::user()->persona->administrador->especialidad}}">
-					                  </div>
-					                  <div class="col-md-6">
-					                  	<p style="text-align: left;">Grado de Instrucción:</p>
-					                  	<div class="form-group">
-				    						<select class="form-control" id="grado_Instrucc" name="grado_Instrucc">
+					                	<div class="col-md-6">
+					                  		<p style="text-align: left;">Especialidad:</p>
+					                    		<input type="text" class="form-control" id="especialidad" name="especialidad" required="required" placeholder="Especialidad" value="{{Auth::user()->persona->administrador->especialidad}}">
+					                  	</div>
+					                  	<div class="col-md-6">
+					                  		<p style="text-align: left;">Grado de Instrucción:</p>
+					                  			<div class="form-group">
+				    								<select class="form-control" id="grado_Instrucc" name="grado_Instrucc">
 											    <option selected>{{Auth::user()->persona->administrador->grado_Instrucc}}</option>
 											    @if(Auth::user()->persona->administrador->grado_Instrucc == 'Tecnico Superior')
 												    <option value="Primaria">Primaria</option>
@@ -188,9 +196,8 @@
 												    <option value="Tecnico Superior">Tecnico Superior</option>
 												    <option value="Ingeniero">Ingeniero</option>
 											    @endif
-											</select>
-			  							</div>
-					                  </div>
+												</select>
+			  							</div> 
 					                </div><br>
 					                @endif
 
@@ -241,20 +248,6 @@
 										    	<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 										      		<div class="card-body" style="position: center;">
 										      			<p style="text-align: left;"><b>Datos adicionales del usuario</b></p>
-												      	<div class="row">
-												      		<div class="col-md-6"></div>
-												      		<div class="col-md-6">
-												      			<div class="form-group">
-																	<p for="exampleFormControlFile1" style="text-align: left;">
-																	<svg class="bi bi-image-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
- 																	<path fill-rule="evenodd" d="M.002 3a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-12a2 2 0 01-2-2V3zm1 9l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71a.5.5 0 01.577-.094L15.002 9.5V13a1 1 0 01-1 1h-12a1 1 0 01-1-1v-1zm5-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
-																	</svg>
-																	Foto de perfil:</p>
-																	
-																	<input type="file" class="form-control-file" id="exampleFormControlFile1">
-																</div>
-												      		</div>
-												      	</div><br>
 
 												      	<div class="row">
 												      		<div class="col-md-6">
@@ -301,7 +294,7 @@
 								                    			Tipo de Sangre:</p>
 								                      			<div class="form-group">
 										    						<select class="form-control" id="tipo_sangre" name="tipo_sangre">
-																	    <option selected></option>
+																	    <option selected>Seleccione..</option>
 																	    <option value="A+">A+</option>
 																	    <option value="A-">A-</option>
 																	    <option value="B+">B+</option>

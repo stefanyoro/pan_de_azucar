@@ -31,10 +31,11 @@
           <a class="navbar-brand" href="/">
             <img src="{{ asset('img/logotipo1.png')}}" style=" bottom:12px; display: inline-block; vertical-align: middle; width: 80px;">
           </a>
+
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
+          
           <div class="collapse navbar-collapse" id="navbarsExample05">
             <ul class="navbar-nav mr-auto pl-lg-5 pl-0">
            @guest
@@ -63,14 +64,18 @@
  Consulta de la carrera</a>
                   <a class="dropdown-item" href="listarCarrera"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
                   <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
+                  <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
                   <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
                 </div>
               </li>
               @endif
               @if(Auth::user()->rol == '4')
-
-               <li class="nav-item">
-                <a class="nav-link" href="">Carreras</a>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="services.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Carreras disponibles</a>
+                  <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list" aria-hidden="true"></i> Mis inscripciones</a>
+                </div>
               </li>
               @endif
               @if(Auth::user()->rol == '4')

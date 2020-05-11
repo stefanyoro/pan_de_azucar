@@ -15,8 +15,8 @@
 		  		<div class="card-body">
 		    		<div class="">
 				    	<form action="RegistrarCorredor" method="post">@csrf
-				            	<div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  										<p style="position:center; text-align: center;">Datos personales:</p>
+				            	<div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  										<p style="position:center; text-align: center; color: white;">Datos personales:</p>
   									</div>
   									<br>
 				                <div class="row">
@@ -92,8 +92,8 @@
 				                    </div>  
 				                </div><br>
 				               
-				               	<div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  									<p style="position:center; text-align: center;">Composición Corporal:</p>
+				               	<div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  									<p style="position:center; text-align: center; color: white;">Composición Corporal:</p>
   								</div>
   								<br>
 				               
@@ -109,8 +109,8 @@
 				                  </div>
 				                </div><br>
 				               
-				                <div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  										<p style="position:center; text-align: center;">Establecer contraseña</p>
+				                <div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  										<p style="position:center; text-align: center; color: white;">Establecer contraseña</p>
   								</div>
   									<br>
 				                <div class="row">
