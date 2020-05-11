@@ -67,11 +67,36 @@
               </li>
               @endif
               @if(Auth::user()->rol == '4')
+
+               <li class="nav-item">
+                <a class="nav-link" href="">Carreras</a>
+              </li>
+              @endif
+              @if(Auth::user()->rol == '4')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html">Plan de Alimentación</a>
-                  <a class="dropdown-item" href="planEntrenamiento">Plan de Entrenamiento</a>
+                  <a class="dropdown-item" href="services.html">Mis planes alimenticios</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Mis planes de entrenamiento</a>
+                </div>
+              </li>
+              @endif
+
+              @if(Auth::user()->rol == '2')
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de entrenamiento</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="services.html">Creación de plan</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
+                </div>
+              </li>
+              @endif
+              @if(Auth::user()->rol == '3')
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de alimentación</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="services.html">Creación de plan</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
                 </div>
               </li>
               @endif
@@ -81,7 +106,6 @@
               </li>
               @endif
             </ul>
-        
            @endguest
             
             <ul class="navbar-nav ml-auto">
