@@ -14,7 +14,7 @@
 			  	</div>
 		  		<div class="card-body">
 		    		<div class="">
-				    	<form action="" method="post">@csrf
+				    	<form action="RegistrarUsuario" method="post">@csrf
 				                <div class="row">
 				                    <div class="col-md-4">
 				                    	<p style="text-align: left;">Nacionalidad:</p> 

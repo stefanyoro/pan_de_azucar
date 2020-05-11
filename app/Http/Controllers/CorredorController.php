@@ -30,6 +30,7 @@ class CorredorController extends Controller
              $user->name= $request->nombre;
              $user->email= $request->correo;
              $user->password = $request->password;
+             $user->rol = $request->rol;
          $user->save();
         
          $persona = new Persona;
@@ -49,7 +50,6 @@ class CorredorController extends Controller
          //dd($request);
          $corredor = new Corredor;
             $corredor->user_id = $user->id;
-            $corredor->tipo = $request->tipo_corredor;
             $corredor->edad = $request->edad;
             $corredor->peso = $request->peso;
             $corredor->estatura = $request->estatura;
