@@ -50,22 +50,22 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="registroUsuario"><i class="fa fa-user-plus" aria-hidden="true"></i> Registrar usuario</a>
-                  <a class="dropdown-item" href="listadoUsuarios"><i class="fa fa-list" aria-hidden="true"></i> Listado de usuarios</a>
+                  <a class="dropdown-item" href="{{ route('registroUsuario') }}">Registrar usuario</a>
+                  <a class="dropdown-item" href="{{ route('listadoUsuarios') }}">Listado de usuarios</a>
                 </div>
               </li>
               @endif
               @if(Auth::user()->rol == '1')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="aperturaCarreras"><i class="fa fa-file-text-o" aria-hidden="true"></i>  Apertura de carrera</a>
-                  <a class="dropdown-item" href="consultaCarrera"><i class="fa fa-eye" aria-hidden="true"></i>
- Consulta de la carrera</a>
-                  <a class="dropdown-item" href="listarCarrera"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04"> 
+                  
+                  <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
+                  <a class="dropdown-item" href="{{ route('aperturaCarreras') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Apertura de carrera</a>
+                  <a class="dropdown-item" href="{{ route('listarCarrera') }}"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
                   <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
                   <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
-                  <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
+                  <a class="dropdown-item" href="{{ route('resultadosCarreras') }}">Registrar resultados</a>
                 </div>
               </li>
               @endif
@@ -82,8 +82,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Mis planes alimenticios</a>
-                  <a class="dropdown-item" href="planEntrenamiento"> <i class="fa fa-bicycle" aria-hidden="true"></i> Mis planes de entrenamiento</a>
+                  <a class="dropdown-item" href="services.html">Mis planes alimenticios</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Mis planes de entrenamiento</a>
                 </div>
               </li>
               @endif
@@ -92,8 +92,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de entrenamiento</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-bicycle" aria-hidden="true"></i> Creación de plan</a>
-                  <a class="dropdown-item" href="planEntrenamiento"> <i class="fa fa-list" aria-hidden="true"></i> Listado de planes creados</a>
+                  <a class="dropdown-item" href="services.html">Creación de plan</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
                 </div>
               </li>
               @endif
@@ -101,8 +101,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de alimentación</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Creación de plan</a>
-                  <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list" aria-hidden="true"></i> Listado de planes creados</a>
+                  <a class="dropdown-item" href="services.html">Creación de plan</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
                 </div>
               </li>
               @endif
@@ -126,18 +126,19 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="verPerfil"> 
-                                    <i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <svg class="bi bi-person-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
+                                      <path fill-rule="evenodd" d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                                    </svg>
                                      Ver perfil
                                   </a>
                                   <a class="dropdown-item" href="vistaModificarPerfil"> 
-                                    <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                      <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
-                                      <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
-                                  </svg>
+                                    <svg class="bi bi-gear-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill-rule="evenodd" d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 01-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 01.872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 012.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 012.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 01.872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 01-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 01-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 100-5.86 2.929 2.929 0 000 5.858z" clip-rule="evenodd"/>
+                                    </svg>
                                      Modificar perfil
                                   </a>
-                                  <a class="dropdown-item" href="{{ route('logout') }}">
-                                  <i class="fa fa-sign-out" aria-hidden="true"></i> Salir</a>
+                                  <a class="dropdown-item" href="{{ route('logout') }}">Salir</a>
                                         @csrf
                                     </form>
                                 </div>

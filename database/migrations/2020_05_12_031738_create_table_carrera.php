@@ -15,7 +15,7 @@ class CreateTableCarrera extends Migration
     {
         Schema::create('carrera', function (Blueprint $table) {
             $table->bigIncrements('id');
-
+          /*$table->bigIncrements('Estado')*/
             $table->string('nom_carrera');
             $table->string('lugar_salida');
             $table->string('lugar_llegada');
@@ -27,7 +27,7 @@ class CreateTableCarrera extends Migration
             $table->string('monto');
             $table->string('kit_carrera')->nullable();
             $table->string('cupos');
-            $table->string('foto')->nullable();  
+            $table->string('foto')->nullable(); 
             $table->timestamps();
         });
     }

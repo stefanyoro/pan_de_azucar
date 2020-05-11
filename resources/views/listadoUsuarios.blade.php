@@ -31,10 +31,10 @@
 		                          </tr>
 		                        </thead>
 		                            <tbody>
-		                            	@foreach ($usuarios as $usuario)
-		                            	
-			                            <tr>
-			                                <td>{{ $usuario->id}}</td>
+		                            	@foreach ($usuarios as $clave => $usuario)
+                              <tr>
+                                      <td>{{ $clave + 1}}</td>
+			                                <!-- <td>{{ $usuario->id}}</td>-->
 			                                <td>{{ $usuario->name}}</td>
 			                                <td>{{ $usuario->email}}</td>
 			                                <td>{{ $usuario->rol}}</td>
@@ -95,5 +95,4 @@
           });
         });
     </script>
-    
 @endsection
