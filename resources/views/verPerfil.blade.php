@@ -23,8 +23,13 @@
 					  	<table class="table table-borderless">
 							<thead>
 							   <tr style="background-color:#B03A2E;">
-								   <th scope="col">	<h5 class="card-title" align="center" style="color: white;">Datos personales</h5></th>
-								   <th scope="col">	<h5 class="card-title" align="center" style="color: white;">Composición corporal</h5></th>
+								   <th scope="col">	<h5 class="card-title" align="left" style="color: white;">Datos personales</h5></th>
+								   @if(Auth::user()->rol == '4')
+								  	 <th scope="col">	<h5 class="card-title" align="left" style="color: white;">Composición corporal</h5></th>
+								   @endif
+								   @if(((Auth::user()->rol == '1') or (Auth::user()->rol == '2')) or (Auth::user()->rol == '3'))
+								   	<th scope="col">	<h5 class="card-title" align="left" style="color: white;">Datos laborales</h5></th> 
+								   @endif
 								</tr>
 							</thead>
 
@@ -55,15 +60,51 @@
 								    	
 								    	<b>Edad</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$corredor->edad}}</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->corredor->edad}}</p>
 
 								    	<b>Peso</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$corredor->peso}} kg</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->corredor->peso}} kg</p>
 
 								    	<b>Estatura</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$corredor->estatura}} cm</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->corredor->estatura}} cm</p>
+								    </p>
+							      </td>
+							    </tr>
+							    @endif
+							    @if(Auth::user()->rol == '1')
+							      <td>
+							      	<p class="card-text">
+								    	
+								    	<b>Especialidad</b>
+								    	<br>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->administrador->especialidad}}</p>
+
+								    	<b>Grado de Instrucción</b>
+								    	<br>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->administrador->grado_Instrucc}}</p>
+								    </p>
+							      </td>
+							    </tr>
+							    @endif
+							    @if(Auth::user()->rol == '2')
+							      <td>
+							      	<p class="card-text">
+								    	
+								    	<b>Especialidad</b>
+								    	<br>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->entrenador->especialidad}}</p>
+							      </td>
+							    </tr>
+							    @endif
+							     @if(Auth::user()->rol == '3')
+							      <td>
+							      	<p class="card-text">
+								    	
+								    	<b>Grado de Instrucción</b>
+								    	<br>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->nutricionista->grado_Instrucc}}</p>
 								    </p>
 							      </td>
 							    </tr>
@@ -96,8 +137,10 @@
 						    	<b>Cédula:</b> {{Auth::user()->persona->numero_doc}}<br>
 						    	<b>Sexo:</b> {{Auth::user()->persona->sexo}}<br>
 						    	<b>Fecha de nacimiento:</b> {{Auth::user()->persona->fecha_nac}}<br>
-						    	<b>Corredor:</b><br>
-						    	<b>Categoría:</b><br>
+						    	<b>Tipo de Sangre:</b><br>
+						    	@if(Auth::user()->rol == '4')
+						    		<b>Grupo de ciclismo:</b><br>
+						    	@endif
 						    </p>
 					  	</div><br>
 					  	<div class="row">
