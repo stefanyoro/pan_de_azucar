@@ -31,6 +31,7 @@ class CorredorController extends Controller
              $user->email= $request->correo;
              $user->password = bcrypt($request->password);
              $user->rol = $request->rol;
+             $user->img = $request->img;
          $user->save();
         
          $persona = new Persona;
@@ -42,9 +43,9 @@ class CorredorController extends Controller
             $persona->nombre = $request->nombre;
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
-
-            $persona->direccion = $request->direccion;
-           
+            $persona->telf_local = $request->telf_local;
+            $persona->telf_celular = $request->telf_celular;
+            $persona->tipo_sangre = $request->tipo_sangre;           
          $persona->save();
 
          //dd($request);
@@ -53,6 +54,7 @@ class CorredorController extends Controller
             $corredor->edad = $request->edad;
             $corredor->peso = $request->peso;
             $corredor->estatura = $request->estatura;
+            $corredor->grupo_ciclismo = $request->grupo_ciclismo;
            
          $corredor->save();
 

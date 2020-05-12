@@ -22,6 +22,7 @@ class UserController extends Controller
          	 $user->name= $request->nombre;
          	 $user->email= $request->correo;
          	 $user->password = $request->password;
+             $user->img = $request->img;
          $user->save();
 
          return view('registroExitoso');

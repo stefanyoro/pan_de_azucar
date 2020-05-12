@@ -279,6 +279,7 @@
 												      	</div><br>
 
 												      	<div class="row">
+												      		@if(Auth::user()->rol == '4')
 												      		<div class="col-md-8">
 												      			<p style="text-align: left;">
 												      				<svg class="bi bi-people-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -289,6 +290,7 @@
 												      			Grupo de ciclismo:</p>
 								                      			<input type="text" class="form-control" id="grupo_ciclismo" name="grupo_ciclismo" placeholder="Grupo al que pertenece">
 								                    		</div>
+								                    		@endif
 
 								                    		<div class="col-md-4">
 								                    			<p style="text-align: left;">
