@@ -21,10 +21,12 @@ class CreateTableCarrera extends Migration
             $table->string('lugar_llegada');
             $table->string('fecha_carr');
             $table->string('hora');
+            $table->string('meridiano');
             $table->string('modalidad');
             $table->string('categoria');
             $table->string('monto');
             $table->string('kit_carrera')->nullable();
+            $table->string('cupos');
             $table->string('foto')->nullable();  
             $table->timestamps();
         });
