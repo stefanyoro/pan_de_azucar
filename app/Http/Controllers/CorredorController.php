@@ -67,11 +67,7 @@ class CorredorController extends Controller
 
     public function vistaModificarPerfil()
     {   
-        $id = Auth::user()->id;
-        $personas =\DB::select('select * from persona where user_id = ? ',[$id]);
-        $corredores =\DB::select('select * from corredor where user_id = ?',[$id]); 
-        
-        return view('vistaModificarPerfil')->with('personas',$personas)->with('corredores',$corredores); 
+        return view('vistaModificarPerfil'); 
     }
 
     public function actualizarPerfil(){
