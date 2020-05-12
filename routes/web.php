@@ -37,9 +37,12 @@ Route::get('verPerfil', 'CorredorController@verPerfil')->name('verPerfil');
 Route::get('vistaModificarPerfil', 'CorredorController@vistaModificarPerfil')->name('vistaModificarPerfil');
 Route::post('actualizarPerfil', 'CorredorController@actualizarPerfil')->name('actualizarPerfil');
 
-// Registro de carrera
-Route::get('aperturaCarreras', 'CarreraController@registroCarrera')->name('aperturaCarreras');
-Route::get('consultaCarrera', 'CarreraController@consultaCarrera')->name('consultaCarrera');
+//Registro de carrera
+Route::get('aperturaCarreras', 'CarreraController@registroCarrera')->name('aperturaCarreras'); 
+//Route::get('consultaCarrera', 'CarreraController@consultaCarrera')->name('consultaCarrera');
+ Route::post('RegistrarCarrera', 'CarreraController@RegistrarCarrera')->name('RegistrarCarrera');
+ Route::get('consultaCarrera/{id}', 'CarreraController@consultaCarrera')->name('consultaCarrera');
+ Route::get('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
 
 
 // Plan de entrenamiento

@@ -19,6 +19,7 @@
 
     <!-- Theme Style -->
     <link rel="stylesheet" href="css/style.css">
+    @yield('css')
   </head>
   <body>
   
@@ -56,6 +57,7 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="aperturaCarreras">Apertura de carrera</a>
                   <a class="dropdown-item" href="consultaCarrera">Consulta de la carrera</a>
+                  <a class="dropdown-item" href="listarCarrera">Listado de Carreras</a>
                   <a class="dropdown-item" href="">Inscripción de la carrera</a>
                   <a class="dropdown-item" href="resultadosCarreras">Registrar resultados</a>
                 </div>
@@ -170,5 +172,7 @@
     
 
     <script src="js/main.js"></script>
+
+    @yield('scriptJS')
   </body>
 </html>

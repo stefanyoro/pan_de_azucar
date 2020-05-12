@@ -1,5 +1,10 @@
-@extends('layouts.blanco')
+@extends('layouts.app')
+
  
+@section('css')
+
+@endsection
+
 @section('content')
 
     <!-- END slider -->
@@ -107,4 +112,8 @@
 			@endforeach
 		</div>
 	</section>
+@endsection
+
+@section('css')
+
 @endsection
