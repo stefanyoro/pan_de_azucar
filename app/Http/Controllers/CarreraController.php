@@ -21,7 +21,6 @@ class CarreraController extends Controller
     {
          //s dd($request);
         $foto = $request->file("foto");
-        dd($foto);
         $extension = $foto->getClientOriginalExtension();
         Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
 
