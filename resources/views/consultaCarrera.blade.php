@@ -14,7 +14,7 @@
 				<div class="card" style="width: 60em;">
 				  	<div class="card-body" style="border-radius: 30px;">
 						@foreach ($carreras as $carrera)
-					  	<img src="{{ env('APP_URL').'/pan de azucar/storage/app/uploads/'.$carrera->foto }}" class="card-img-top" alt="" width="150" height="450">
+					  	<img src="{{'/storage/app/'.$carrera->foto}}" class="card-img-top" alt="" width="150" height="450">
 					  	<table class="table table-borderless">
 							<thead>
 							   <tr style="background-color:#B03A2E;">
