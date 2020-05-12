@@ -28,6 +28,7 @@ Route::get('/', function () {
 // Funciones del Administrador:
 	Route::get('registroUsuario', 'AdministradorController@vistaRegistroUsuario')->name('registroUsuario');
 	Route::post('RegistrarUsuario', 'AdministradorController@RegistrarUsuario')->name('RegistrarUsuario');
+	Route::get('listadoUsuarios', 'AdministradorController@listadoUsuarios')->name('listadoUsuarios');
 
 
 

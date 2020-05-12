@@ -49,7 +49,7 @@
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="registroUsuario">Registrar usuario</a>
-                  <a class="dropdown-item" href="consultaCarrera">Listado de usuarios</a>
+                  <a class="dropdown-item" href="listadoUsuarios">Listado de usuarios</a>
                 </div>
               </li>
 

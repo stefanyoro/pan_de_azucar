@@ -67,7 +67,15 @@ class AdministradorController extends Controller
             $nutricionista->save();
         }
 
-        return view('listadoUsuarios');
+        return view('registroUsuario');
+    }
+
+     public function listadoUsuarios()
+    {
+        
+        $usuarios =\DB::select('select * from users'); 
+
+        return view('listadoUsuarios')->with('usuarios',$usuarios); 
     }
 
 }
