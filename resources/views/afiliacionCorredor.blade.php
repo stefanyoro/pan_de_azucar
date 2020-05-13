@@ -72,7 +72,7 @@
 				                    </div> 
 				                    <div class="col-md-6">
 				        				<div class="form-group">
-				    						<select class="form-control" id="tipo_corredor" name="tipo_corredor">
+				    						<select class="form-control" id="rol" name="rol">
 											    <option selected>Tipo</option>
 											    <option value="4">Corredor</option>
 											</select>

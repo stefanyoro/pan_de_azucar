@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Role;
 use App\User;
 use App\Persona;
-use App\Corredor;
+use App\Administrador;
+use App\Entrenador;
+use App\Nutricionista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
@@ -19,40 +21,61 @@ class AdministradorController extends Controller
     }
 
 
-    public function RegistrarCorredor(Request $request)
+    public function RegistrarUsuario(Request $request)
     {
          //dd($request);
          $user = new User;
              $user->name= $request->nombre;
              $user->email= $request->correo;
-             $user->password = $request->password;
+             $user->password = bcrypt($request->password);
+             $user->rol = $request->rol;
          $user->save();
         
          $persona = new Persona;
             $persona->user_id = $user->id;
             $persona->nacionalidad = $request->nacionalidad;
             $persona->tipo_doc = $request->tipo_doc;
-            $persona->sexo = $request->sexo;
             $persona->numero_doc = $request->numero_doc;
+            $persona->sexo = $request->sexo;
             $persona->nombre = $request->nombre;
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
-
             $persona->direccion = $request->direccion;
            
          $persona->save();
+        
+        if($request->rol == '1'){
+            $administrador = new Administrador;
+                $administrador->persona_id = $persona->id;
+                $administrador->especialidad = $request->especialidad;
+                $administrador->grado_Instrucc = $request->grado_Instrucc;
 
-         //dd($request);
-         $corredor = new Corredor;
-            $corredor->user_id = $user->id;
-            $corredor->tipo = $request->tipo_corredor;
-            $corredor->edad = $request->edad;
-            $corredor->peso = $request->peso;
-            $corredor->estatura = $request->estatura;
-           
-         $corredor->save();
+            $administrador->save();
+        }
+        if($request->rol == '2'){
+            $entrenador = new Entrenador;
+                $entrenador->persona_id = $persona->id;
+                $entrenador->especialidad = $request->especialidad;
 
-         return view('registroExitoso');
+            $entrenador->save();
+        }
+       if($request->rol == '3'){
+             $nutricionista = new Nutricionista;
+                $nutricionista->persona_id = $persona->id;
+                $nutricionista->grado_Instrucc = $request->grado_Instrucc;
+
+            $nutricionista->save();
+        }
+
+        return view('registroUsuario');
+    }
+
+     public function listadoUsuarios()
+    {
+        
+        $usuarios =\DB::select('select * from users'); 
+
+        return view('listadoUsuarios')->with('usuarios',$usuarios); 
     }
 
 }

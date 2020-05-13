@@ -37,4 +37,13 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'rol_id');
     }
 
+    public function persona()
+    {
+     return $this->hasOne(Persona::class, 'user_id');
+    }
+
+    public function corredor()
+    {
+     return $this->hasOne(Corredor::class, 'user_id');
+    }
 }

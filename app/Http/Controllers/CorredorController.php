@@ -9,7 +9,7 @@ use App\Corredor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class CorredorController extends Controller
 {
@@ -29,7 +29,8 @@ class CorredorController extends Controller
          $user = new User;
              $user->name= $request->nombre;
              $user->email= $request->correo;
-             $user->password = $request->password;
+             $user->password = bcrypt($request->password);
+             $user->rol = $request->rol;
          $user->save();
         
          $persona = new Persona;
@@ -49,7 +50,6 @@ class CorredorController extends Controller
          //dd($request);
          $corredor = new Corredor;
             $corredor->user_id = $user->id;
-            $corredor->tipo = $request->tipo_corredor;
             $corredor->edad = $request->edad;
             $corredor->peso = $request->peso;
             $corredor->estatura = $request->estatura;
@@ -61,11 +61,7 @@ class CorredorController extends Controller
 
    public function verPerfil()
     {
-        $id = Auth::user()->id;
-        $personas =\DB::select('select * from persona where user_id = ? ',[$id]);
-        $corredores =\DB::select('select * from corredor where user_id = ?',[$id]); 
-
-        return view('verPerfil')->with('personas',$personas)->with('corredores',$corredores); 
+        return view('verPerfil'); 
     }
 
 

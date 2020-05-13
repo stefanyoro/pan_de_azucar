@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //$this->call(UsersTableSeeder::class);
-        $this->call(RoleTableSeeder::class);
+        //$this->call(RoleTableSeeder::class);
+
+        $path = 'public/datosBD.sql';
+        DB::unprepared(file_get_contents($path));
     }
 }
