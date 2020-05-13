@@ -31,10 +31,12 @@ class CarreraController extends Controller
         $carrera->lugar_llegada= $request->lugar_llegada;
         $carrera->fecha_carr = $request->fecha_carr;
         $carrera->hora = $request->hora;
+        $carrera->meridiano= $request->meridiano;
         $carrera->modalidad= $request->modalidad;
         $carrera->categoria= $request->categoria;
         $carrera->monto= $request->monto;
         $carrera->kit_carrera= $request->kit_carrera;
+        $carrera->cupos= $request->cupos;
         $carrera->foto= $foto->getFilename().".".$extension;  
          $carrera->save();
 

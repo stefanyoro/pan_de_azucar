@@ -33,7 +33,8 @@
                             <th >Hora</th>
                             <th >Modalidad</th>
                             <th >Categoria</th>
-                            <th >Monto</th>
+                            <th >  Monto   </th>
+                            <th >Cupos</th>
                             <th >Kit Carrera</th>
                             <th >holaaa</th>
                           </tr>
@@ -46,10 +47,11 @@
                                 <td>{{ $carrera->lugar_salida}}</td>
                                 <td>{{ $carrera->lugar_llegada}}</td>
                                 <td>{{ $carrera->fecha_carr}}</td>
-                                <td>{{ $carrera->hora}}</td>
+                                <td>{{ $carrera->hora}}{{ $carrera->meridiano}}</td>
                                 <td>{{ $carrera->modalidad}}</td>
                                 <td>{{ $carrera->categoria}}</td>
                                 <td>{{ $carrera->monto}}</td>
+                                <td>{{ $carrera->cupos}}</td>
                                 <td>Hidratación</td>
                                 <td ><!--
                                   <div class="btn-group" role="group" aria-label="Basic example">-->
@@ -65,13 +67,14 @@
                                             <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
                                         </svg>
                                     </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm">
+                                    
+                                      <button type="button" class="btn btn-outline-danger btn-sm">
                                         <svg class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                           <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
                                           <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
                                         </svg>
-                                    </button>
-                                  <!--</div>-->
+                                      </button>
+                                    <!--</div>-->
                                   </td>
                                 </tr>
                                 @endforeach
