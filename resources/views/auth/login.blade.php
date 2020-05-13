@@ -6,7 +6,7 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="img/logo7.jpg" class="d-block w-100" alt="..." height="700">
+              <img src="img/Logo7.jpg" class="d-block w-100" alt="..." height="700">
             </div>
           </div>
         </div>

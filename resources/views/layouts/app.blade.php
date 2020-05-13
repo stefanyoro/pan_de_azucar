@@ -45,6 +45,7 @@
               <li class="nav-item">
                 
               </li>
+              @if(Auth::user()->rol == '1')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -52,7 +53,8 @@
                   <a class="dropdown-item" href="listadoUsuarios">Listado de usuarios</a>
                 </div>
               </li>
-
+              @endif
+              @if(Auth::user()->rol == '1')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -63,7 +65,8 @@
                   <a class="dropdown-item" href="resultadosCarreras">Registrar resultados</a>
                 </div>
               </li>
-
+              @endif
+              @if(Auth::user()->rol == '4')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -71,10 +74,12 @@
                   <a class="dropdown-item" href="planEntrenamiento">Plan de Entrenamiento</a>
                 </div>
               </li>
-              
+              @endif
+              @if((Auth::user()->rol == '4') or (Auth::user()->rol == '1'))
               <li class="nav-item">
                 <a class="nav-link" href="verResultados">Resultados</a>
               </li>
+              @endif
             </ul>
         
            @endguest

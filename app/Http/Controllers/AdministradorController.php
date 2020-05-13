@@ -11,7 +11,7 @@ use App\Nutricionista;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Hash;
 
 class AdministradorController extends Controller
 {
@@ -27,7 +27,7 @@ class AdministradorController extends Controller
          $user = new User;
              $user->name= $request->nombre;
              $user->email= $request->correo;
-             $user->password = $request->password;
+             $user->password = bcrypt($request->password);
              $user->rol = $request->rol;
          $user->save();
         

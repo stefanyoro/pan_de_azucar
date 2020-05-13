@@ -18,8 +18,8 @@
     			<div class="col-md-7">
     				<div class="card" style="width: 45rem;">
 					  <div class="card-body" style="border-radius: 20px;">
-					  	 @foreach($personas as $persona)
-							@foreach($corredores as $corredor)
+					  
+							
 					  	<table class="table table-borderless">
 							<thead>
 							   <tr style="background-color:#B03A2E;">
@@ -34,7 +34,7 @@
 							      	<p class="card-text">
 								    	<b>Nacionalidad</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$persona->nacionalidad}}</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->nacionalidad}}</p>
 
 								    	<b>Correo electrónico</b>
 								    	<br>
@@ -42,13 +42,14 @@
 
 								    	<b>Dirección</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$persona->direccion}}</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->direccion}}</p>
 								    
 								    	<b>Fecha de registro</b>
 								    	<br>
-								    		<p style="text-indent: 10%;">{{$persona->created_at}}</p>
+								    		<p style="text-indent: 10%;">{{Auth::user()->persona->created_at}}</p>
 								    </p>
 							      </td>
+								  @if(Auth::user()->rol == '4')
 							      <td>
 							      	<p class="card-text">
 								    	
@@ -66,7 +67,7 @@
 								    </p>
 							      </td>
 							    </tr>
-							    
+							    @endif
 							    <tr>
 							      	<td></td>
 							      	<td style="text-align: right; color: grey;">
@@ -92,9 +93,9 @@
 					  	<div class="card-body">
 						    <p class="card-text">
 						    	<b>Nombre:</b> {{ Auth::user()->name }}<br>
-						    	<b>Cédula:</b> {{$persona->numero_doc}}<br>
-						    	<b>Sexo:</b> {{$persona->sexo}}<br>
-						    	<b>Fecha de nacimiento:</b> {{$persona->fecha_nac}}<br>
+						    	<b>Cédula:</b> {{Auth::user()->persona->numero_doc}}<br>
+						    	<b>Sexo:</b> {{Auth::user()->persona->sexo}}<br>
+						    	<b>Fecha de nacimiento:</b> {{Auth::user()->persona->fecha_nac}}<br>
 						    	<b>Corredor:</b><br>
 						    	<b>Categoría:</b><br>
 						    </p>
@@ -108,8 +109,7 @@
 					</div>
 				</div>
 			</div>
-			@endforeach
-			@endforeach
+
 		</div>
 	</section>
 @endsection
