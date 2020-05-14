@@ -4,35 +4,26 @@
 
     <!-- END slider -->
    
-    <section class="section" style="background: grey;">
+    <section class="section" align="center">
     	<div class="container"style=" position: relative; text-align: right;">
 	    	<div class="col-md-8">
 		    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 		    		<div class="card-header" style="background-color: #B03A2E;">
 				    	<a style="color: white;">Modificar perfil</a>
-				  	</div>
+				  	</div> 
 			  		<div class="card-body">
 			    		<div class="">
 					    	<form action="actualizarPerfil" method="post">@csrf
-	  						@foreach($personas as $persona)
-							@foreach($corredores as $corredor)
 	  								<div class="row">
-	  									<div class="col-md-4"></div>
-					                    <div class="col-md-4">
+					                    <div class="col-md-6">
 					                    	<p style="text-align: left;">Nombre:</p>
-					                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{$persona->nombre}}">
+					                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->nombre}}">
 					                    </div> 
-					                    <div class="col-md-4">
+					                    <div class="col-md-6">
 					                    	<p style="text-align: left;">Apellido:</p>
-					                        <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El apellido sólo puede tener caracteres alfabéticos." minlength="5" maxlength="30" required="required" placeholder="Apellido" data-pattern-error="El apellido sólo puede tener caracteres alfabéticos." value="{{$persona->apellido}}"> 
+					                        <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El apellido sólo puede tener caracteres alfabéticos." minlength="5" maxlength="30" required="required" placeholder="Apellido" data-pattern-error="El apellido sólo puede tener caracteres alfabéticos." value="{{Auth::user()->persona->apellido}}"> 
 					                    </div>
-					                </div>
-
-					                <div class="row" style="margin-top: 15px;">
-					                    <div class="col-md-12"> 
-					                    <p style="text-align: left;">Correo:</p>
-					                    <input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
-					                    </div>  
+					                    <div class="col-md-4"></div>
 					                </div><br>
 
 					                <div class="row">
@@ -40,11 +31,13 @@
 					                    	<p style="text-align: left;">Nacionalidad:</p>
 					                    	<div class="form-group">
 					    						<select class="form-control" id="nacionalidad" name="nacionalidad">
-												    <option selected>{{$persona->nacionalidad}}</option>
-												    <?php if($persona->nacionalidad =='Venezolano'){?>
-												    <option value="Extranjero"><?php echo("Extranjero"); }?></option>
-												    <?php if($persona->nacionalidad =='Extranjero'){?>
-												    <option value="Venezolano"><?php echo("Venezolano"); }?></option>
+												    <option selected>{{Auth::user()->persona->nacionalidad}}</option>
+												    @if(Auth::user()->persona->nacionalidad=='Venezolano')
+												    	<option value="Extranjero">Extranjero</option>
+												    @endif
+												    @if(Auth::user()->persona->nacionalidad =='Extranjero')
+												    	<option value="Venezolano"></option>
+												    @endif
 												    
 												</select>
 				  							</div>
@@ -53,11 +46,13 @@
 					                    	<p style="text-align: left;">Documento:</p>
 					                       <div class="form-group">
 					    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción.">
-												    <option selected>{{$persona->tipo_doc}}</option>
-												    <?php if($persona->tipo_doc =='Cedula'){?>
-												    <option value="Pasaporte"><?php echo("Pasaporte"); }?></option>
-												    <?php if($persona->tipo_doc =='Pasaporte'){?>
-												    <option value="Cedula"><?php echo("Cedula"); }?></option>
+												    <option selected>{{Auth::user()->persona->tipo_doc}}</option>
+												   @if(Auth::user()->persona->tipo_doc=='Cedula')
+												    	<option value="Pasaporte">Pasaporte</option>
+												    @endif
+												   @if(Auth::user()->persona->tipo_doc=='Pasaporte')
+												    	<option value="Cedula">Cedula</option>
+												    @endif
 												 
 												</select>
 				  							</div>
@@ -69,38 +64,148 @@
 					                    	<p style="text-align: left;">Sexo:</p>
 					                      	<div class="form-group">
 					    						<select class="form-control" id="sexo" name="sexo" required="required">
-												    <option selected>{{$persona->sexo}}</option>
-												    <?php if($persona->sexo =='M'){?>
-												    <option value="F"><?php echo("F"); }?></option>
-												    <?php if($persona->sexo =='F'){?>
-												    <option value="M"><?php echo("M"); }?></option>
+												    <option selected>{{Auth::user()->persona->sexo}}</option>
+												   	@if(Auth::user()->persona->sexo=='M')
+												    	<option value="F">F</option>
+												    @endif
+												    @if(Auth::user()->persona->sexo=='F')
+												   		<option value="M">M</option>
+												   	@endif
 												</select>
 				  							</div>
 					                    </div> 
 					                    <div class="col-md-6">
 					                    	<p style="text-align: left;">Número de documento:</p>
-					                    	<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$persona->numero_doc}}">
+					                    	<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{Auth::user()->persona->numero_doc}}">
 					                    </div>
 					                </div>
 					               
-
 					               
 					                <div class="row" style="margin-top: 15px;">
-					                    <div class="col-md-4"> 
+					                    <div class="col-md-6"> 
 					                      <div class="form-group">
 					                      	<p style="text-align: left;">Fecha de nacimiento:</p>
-					    					<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{$persona->fecha_nac}}">								
+					    					<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{Auth::user()->persona->fecha_nac}}">								
 				  							</div>
 					                    </div> 
 
-					                    <div class="col-md-8">
-					                    	<p style="text-align: left;">Dirección:</p>
-					                      	<input type="text" class="form-control" id="direccion" name="direccion" required="required" placeholder="Dirección" value="{{$persona->direccion}}">
-					                    </div>  
+					                     @if(Auth::user()->rol == '3')
+					                  <div class="col-md-6">
+					                  	<p style="text-align: left;">Grado de Instrucción:</p>
+					                  	<div class="form-group">
+				    						<select class="form-control" id="grado_Instrucc" name="grado_Instrucc">
+											    <option selected>{{Auth::user()->persona->nutricionista->grado_Instrucc}}</option>
+											    @if(Auth::user()->persona->nutricionista->grado_Instrucc == 'Tecnico Superior')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->nutricionista->grado_Instrucc == 'Primaria')
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->nutricionista->grado_Instrucc == 'Bachiller')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->nutricionista->grado_Instrucc == 'Ingeniero')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											     @if(Auth::user()->persona->nutricionista->grado_Instrucc == 'Licenciado')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+											    @endif
+											</select>
+			  							</div>
+					                  </div>
+					                </div>
 
+					                @endif
+					                </div>
+					                <div class="row" style="margin-top: 15px;">
+					                    <div class="col-md-12"> 
+					                    <p style="text-align: left;">Correo:</p>
+					                    <input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
+					                    </div>  
 					                </div><br>
 
+					                <div class="row">
+					                    <div class="col-md-12">
+					                    	<p style="text-align: left;">Dirección:</p>
+					                      	<input type="text" class="form-control" id="direccion" name="direccion" required="required" placeholder="Dirección" value="{{Auth::user()->persona->direccion}}">
+					                    </div>  
+					                </div><br>
+
+					                @if(Auth::user()->rol == '1')
 					               
+					                <div class="row">
+					                  <div class="col-md-6">
+					                  	<p style="text-align: left;">Especialidad:</p>
+					                    <input type="text" class="form-control" id="especialidad" name="especialidad" required="required" placeholder="Especialidad" value="{{Auth::user()->persona->administrador->especialidad}}">
+					                  </div>
+					                  <div class="col-md-6">
+					                  	<p style="text-align: left;">Grado de Instrucción:</p>
+					                  	<div class="form-group">
+				    						<select class="form-control" id="grado_Instrucc" name="grado_Instrucc">
+											    <option selected>{{Auth::user()->persona->administrador->grado_Instrucc}}</option>
+											    @if(Auth::user()->persona->administrador->grado_Instrucc == 'Tecnico Superior')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->administrador->grado_Instrucc == 'Primaria')
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->administrador->grado_Instrucc == 'Bachiller')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											    @if(Auth::user()->persona->administrador->grado_Instrucc == 'Ingeniero')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Licenciado">Licenciado</option>
+											    @endif
+											     @if(Auth::user()->persona->administrador->grado_Instrucc == 'Licenciado')
+												    <option value="Primaria">Primaria</option>
+												    <option value="Bachiller">Bachiller</option>
+												    <option value="Tecnico Superior">Tecnico Superior</option>
+												    <option value="Ingeniero">Ingeniero</option>
+											    @endif
+											</select>
+			  							</div>
+					                  </div>
+					                </div><br>
+					                @endif
+
+
+					                @if(Auth::user()->rol == '2')
+					               
+					                <div class="row">
+					                  <div class="col-md-12">
+					                  	<p style="text-align: left;">Especialidad:</p>
+					                    <input type="text" class="form-control" id="especialidad" name="especialidad" required="required" placeholder="Especialidad" value="{{Auth::user()->persona->entrenador->especialidad}}">
+					                  </div>
+					                </div><br>
+					                @endif
+
+					                @if(Auth::user()->rol == '4')
 					               	<div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
 	  									<p style="position:center; text-align: center;">Composición Corporal:</p>
 	  								</div>
@@ -109,19 +214,19 @@
 					                <div class="row">
 					                  <div class="col-md-4">
 					                  	<p style="text-align: left;">Edad:</p>
-					                    <input type="text" class="form-control" id="edad" name="edad" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="" placeholder="Edad" value="{{$corredor->edad}}">
+					                    <input type="text" class="form-control" id="edad" name="edad" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="" placeholder="Edad" value="{{Auth::user()->corredor->edad}}">
 					                  </div>
 					                  <div class="col-md-4">
 					                  	<p style="text-align: left;">Peso:</p>
-					                    <input type="text" class="form-control" id="peso" name="peso" minlength="2" maxlength="3" pattern="[0-9]{2,3}" required="required" data-pattern-error="Debe expresarse en kg." title="El peso debe estar expresado en kg." placeholder="Peso" value="{{$corredor->peso}}">
+					                    <input type="text" class="form-control" id="peso" name="peso" minlength="2" maxlength="3" pattern="[0-9]{2,3}" required="required" data-pattern-error="Debe expresarse en kg." title="El peso debe estar expresado en kg." placeholder="Peso" value="{{Auth::user()->corredor->peso}}">
 					                  </div>
 					                  <div class="col-md-4">
 					                  	<p style="text-align: left;">Estatura:</p>
-					                   <input type="text" class="form-control" id="estatura" name="estatura" minlength="2" maxlength="4" pattern="[0-9]{2,4}" data-pattern-error="Debe expresarse en kg." required="required" title="" placeholder="Estatura" value="{{$corredor->estatura}}">
+					                   <input type="text" class="form-control" id="estatura" name="estatura" minlength="2" maxlength="4" pattern="[0-9]{2,4}" data-pattern-error="Debe expresarse en kg." required="required" title="" placeholder="Estatura" value="{{Auth::user()->corredor->estatura}}">
 					                  </div>
 					                </div><br>
-
-					               <!-- <div class="accordion" id="accordionExample">
+					                @endif
+					               	<div class="accordion" id="accordionExample">
 	 
 										<div class="card">
 									   		<div class="card-header" id="headingTwo" style="background-color:#DBDBDB; position: right;">
@@ -174,6 +279,7 @@
 												      	</div><br>
 
 												      	<div class="row">
+												      		@if(Auth::user()->rol == '4')
 												      		<div class="col-md-8">
 												      			<p style="text-align: left;">
 												      				<svg class="bi bi-people-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -182,8 +288,9 @@
 																	  	<path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
 																	</svg>
 												      			Grupo de ciclismo:</p>
-								                      			<input type="text" class="form-control" id="numero_doc" name="numero_doc" placeholder="Grupo al que pertenece">
+								                      			<input type="text" class="form-control" id="grupo_ciclismo" name="grupo_ciclismo" placeholder="Grupo al que pertenece">
 								                    		</div>
+								                    		@endif
 
 								                    		<div class="col-md-4">
 								                    			<p style="text-align: left;">
@@ -212,19 +319,18 @@
 										    	</div>
 									  		</div>
 										</div>
-									</div><br><br>
-									-->
+									</div><br>
+
 					                <div class="row">
 				                    	<div class="col-md-8"></div>
 				                      		<div class="col-md-4" align="center">
 				                          		<input type="submit" class="btn btn-primary btn-block py-3" value="Guardar" style=" border:none; outline: none; border-radius: 20px; height: 46px; width: 200px;">
-				                      		</div>
-				                      		
+				                      		</div><br>	
 				                    	</div>
+				                    <br>
 				                    </div>
-				            @endforeach
-				            @endforeach
 					       	</form>
+					    </div>
 			       	</div>
 				</div>
 			</div>

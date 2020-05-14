@@ -27,6 +27,9 @@ class CreatePersonaTable extends Migration
             $table->string('apellido')->nullable();
             $table->date('fecha_nac')->nullable();
             $table->string('direccion')->nullable();
+            $table->string('telf_local')->nullable();
+            $table->string('telf_celular')->nullable();
+            $table->string('tipo_sangre')->nullable();
             $table->timestamps();
         });
     }
