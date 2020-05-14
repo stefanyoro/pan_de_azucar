@@ -52,7 +52,7 @@ class CarreraController extends Controller
             //if (isset($id) && !empty($id)) {
             //} else {
             //}
-            $carreras =\DB::select('select * from carrera where id = ' . $id);
+            $carreras =DB::select('select * from carrera where id = ' . $id);
             //$carreras =\DB::select('select * from carrera1');
             return view('consultaCarrera')->with('carreras',$carreras); 
 
@@ -62,7 +62,7 @@ class CarreraController extends Controller
     	//return view('listarCarrera');  
     	$carreras =\DB::select('select * from carrera');
         return view('listarCarrera')->with('carreras',$carreras); 
-
+    
     }
 }
 

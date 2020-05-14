@@ -66,7 +66,7 @@
 							      	<td>
 								      	<p class="card-text">
 									    	<br><br><br>
-									    	<b>Modalidad</b>
+									    	<b><i class="fa fa-bicycle" aria-hidden="true"></i> Modalidad</b>
 									    	<p style="text-indent: 10%;">{{ $carrera->modalidad}}</p>
 									    	<b>
 									    		<svg class="bi bi-alarm" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

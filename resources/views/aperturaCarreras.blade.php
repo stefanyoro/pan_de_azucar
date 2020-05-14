@@ -19,7 +19,7 @@
                           <div class="form-group">
                             <div class="form-group md-12">
                               <div class="custom-file">
-                                 <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png" placeholder="Imagen de la publicidad" required="required">
+                                 <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" required="required">
                                   <label class="custom-file-label" for="customFileLang"></label>  
                               </div>    
                             </div>
@@ -29,7 +29,7 @@
                         <div class="col-md-12">    
                           <div class="form-group">
                               <label>
-                                <span class="red">*</span>Nombre de la carrera: 
+                                <span class="red">*</span><i class="fa fa-flag-checkered" aria-hidden="true"></i> Nombre de la carrera: 
                               </label>
                               <input type="text" class="form-control" id="nom_carrera" name="nom_carrera" placeholder="Bici Rock Carrizal" required="required">
                            </div>  
@@ -87,7 +87,7 @@
                                 </div> 
                               </div>
                               <div class="col-md-3">
-                                <label><span class="red">*</span> $$ Costo:</label>
+                                <label><span class="red">*</span><i class="fa fa-usd" aria-hidden="true"></i> Costo:</label>
                                 <input type="text" class="form-control" id="monto" name="monto" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="000.00" required>
                               </div>
                           </div>
@@ -126,7 +126,7 @@
                                 </div>
                               </div> 
                               <div class="col-md-4">
-                                <label><span class="red">*</span><ion-icon name="bicycle-outline"></ion-icon>Modalidad:</label>
+                                <label><span class="red">*</span><i class="fa fa-bicycle" aria-hidden="true"></i> Modalidad:</label>
                                 <select class="form-control form-control-lg" id="modalidad" name="modalidad" required="required" >
                                   <option value="Ruta">Ruta</option>
                                   <option value="MTB">MTB</option>  
@@ -141,7 +141,7 @@
                                   </svg>
                                   Cupo:
                                 </label>
-                                <input type="text" class="form-control" id="cupos" name="cupos" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="0" required>
+                                <input type="text" class="form-control" id="cupos" name="cupos" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="0" required>
                               </div>
                             </div>
                           </div> 

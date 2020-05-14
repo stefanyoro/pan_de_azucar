@@ -49,8 +49,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Usuarios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="registroUsuario">Registrar usuario</a>
-                  <a class="dropdown-item" href="listadoUsuarios">Listado de usuarios</a>
+                  <a class="dropdown-item" href="{{ route('registroUsuario') }}">Registrar usuario</a>
+                  <a class="dropdown-item" href="{{ route('listadoUsuarios') }}">Listado de usuarios</a>
                 </div>
               </li>
               @endif
@@ -58,11 +58,10 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="aperturaCarreras">Apertura de carrera</a>
-                  <a class="dropdown-item" href="consultaCarrera">Consulta de la carrera</a>
-                  <a class="dropdown-item" href="listarCarrera">Listado de Carreras</a>
+                  <a class="dropdown-item" href="{{ route('aperturaCarreras') }}">Apertura de carrera</a>
+                  <a class="dropdown-item" href="{{ route('listarCarrera') }}">Listado de Carreras</a>
                   <a class="dropdown-item" href="">Inscripción de la carrera</a>
-                  <a class="dropdown-item" href="resultadosCarreras">Registrar resultados</a>
+                  <a class="dropdown-item" href="{{ route('resultadosCarreras') }}">Registrar resultados</a>
                 </div>
               </li>
               @endif
