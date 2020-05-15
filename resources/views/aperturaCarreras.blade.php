@@ -56,7 +56,7 @@
                                   </svg>
                                   Fecha de la carrera:
                                 </label>
-                                <input type="date" class="form-control" name="fecha_carr" placeholder="" title="El formato debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." required="required">
+                                <input type="date" class="form-control disablecopypaste" name="fecha_carr" placeholder="fecha_carr" min="2020-01-01" title="El formato debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." required="required">
                               </div>
                             </div>   
                             <div class="col-md-2">
