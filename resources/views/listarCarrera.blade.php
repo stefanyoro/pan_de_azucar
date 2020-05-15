@@ -233,21 +233,22 @@
                                         </svg>
                                       </button>
                                       <!-- Modal -->
-                                      <div class="modal fade" id="eliminar_{{$carrera->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"><div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                     <!-- Modal -->
+                                      <div class="modal fade" id="eliminar_{{$carrera->id}}" tabindex="-1" role="dialog" aria-labelledby="eliminarModal_{{$carrera->id}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
-                                              <h5 class="modal-title" id="exampleModalLabel">Elimiar</h5>
+                                              <h5 class="modal-title" id="eliminarModal_{{$carrera->id}}">Modal title</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
                                             <div class="modal-body">
-                                              ¿Usted está seguro que desea eliminar la carrera "aqui va el nombre"?
+                                              ¿Usted está seguro que desea eliminar la carrera "{{$carrera->nom_carrera}}"?
                                             </div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-primary">Si</button>
-                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                              <button type="button" class="btn btn-primary">Save changes</button>
                                             </div>
                                           </div>
                                         </div>
@@ -271,6 +272,7 @@
       <!-- Button trigger modal -->
 
 <!-- Modal -->
+<!-- Button trigger modal -->
 
 </section>
 <script src="{{asset('js/datatables.min.js')}}"></script>
@@ -316,17 +318,7 @@
           });
         });
     </script>
-    <!--Modal Modificar-->
-    <script type="text/javascript" > 
-      $('#myModal').on('shown.bs.modal', function () {
-       $('#myInput').trigger('focus')
-      })
-    </script>
-    <!--Modal eliminar-->
-    <script type="text/javascript" > 
-      $('#eliminar_1').on('shown.bs.modal', function () {
-      })
-    </script>
+
 @endsection
 
 
