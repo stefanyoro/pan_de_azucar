@@ -23,7 +23,7 @@
 						<b>Fecha de nacimiento:</b> {{Auth::user()->persona->fecha_nac}}<br>
 						<b>Tipo de Sangre:</b> {{Auth::user()->persona->tipo_sangre}}<br> <br>
 						
-						<button type="button" class="btn btn-success">Carnet</button>
+						<button type="button" class="btn btn-success" onclick="location.href ='{{ route('CarnetPDF') }}'">Carnet</button>
 				</div>
     			
     			<div class="col-md-6">

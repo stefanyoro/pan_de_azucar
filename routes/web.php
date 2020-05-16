@@ -59,6 +59,9 @@ Route::get('/', function () {
 	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
 	Route::get('/home', 'HomeController@index')->name('home');
 
+//PDF'S
+	Route::get('CarnetPDF', 'PdfController@carnet')->name('CarnetPDF');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
