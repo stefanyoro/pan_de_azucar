@@ -206,6 +206,8 @@
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="services.html"><i class="fa fa-check-square" aria-hidden="true"></i> Carreras disponibles</a>
                   <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list-ol" aria-hidden="true"></i> Mis inscripciones</a>
+                  <a class="dropdown-item" href="{{ route('InscripcionCorredores') }}"><i class="fa fa-cutlery" aria-hidden="true"></i> Carreras disponibles</a>
+                  <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list" aria-hidden="true"></i> Mis inscripciones</a>
                 </div>
               </li>
               @endif
