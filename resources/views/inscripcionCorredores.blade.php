@@ -54,7 +54,7 @@
 
 <div class="container" align="center">
     	<div class="col-md-9">
-	    	<div class="card" style="border-color:#B03A2E; background: transparent;">
+	    	<div class="card" style="border-color:#B03A2E; background: transparent;">	
 	    		<div class="card-header" style="background-color: #B03A2E;">
 			    	<a style="color: white;">Informaciòn de Carrera
 			    	</a>
@@ -93,10 +93,15 @@
 									<div class="col-md-4">
 				                    	<p style="text-align: left;">Banco emisor:</p>  
 				                    
-    								<select class="form-control" id="banco" name="banco"><option value="" selected disabled>Seleccione </option><option value="0156">100% BANCO, BANCO UNIVERSAL C.A.</option><option value="0172">BANCAMIGA, BANCO MICROFINANCIERO C.A.</option><option value="0114">BANCARIBE C.A. BANCO UNIVERSAL</option><option value="0171">BANCO ACTIVO</option><option value="0007">BANCO BICENTENARIO</option><option value="0128">BANCO CARONI C.A. BANCO UNIVERSAL</option><option value="0177">BANCO DE LA FANB</option><option value="0102">BANCO DE VENEZUELA</option><option value="0163">BANCO DEL TESORO</option><option value="0115">BANCO EXTERIOR C.A. BANCO UNIVERSAL</option><option value="0105">BANCO MERCANTIL</option><option value="0191">BANCO NACIONAL DE CREDITO</option><option value="0116">BANCO OCCIDENTAL DE DESCUENTO</option><option value="0138">BANCO PLAZA, BANCO UNIVERSAL</option><option value="0108">BANCO PROVINCIAL</option><option value="0137">BANCO SOFITASA</option><option value="0168">BANCRECER, S.A. BANCO MICROFINANCIERO</option><option value="0134">BANESCO BANCO UNIVERSAL S.A.C.A.</option><option value="0174">BANPLUS BANCO UNIVERSAL, C.A.</option><option value="0151">BFC BANCO FONDO COMUN</option><option value="0157">DELSUR BANCO UNIVERSAL C.A.</option><option value="0169">MI BANCO, BANCO MICROFINANCIERO C.A.</option><option value="0104">VENEZOLANO DE CREDITO</option>
+    								<select class="form-control" id="banco" name="banco"><option value="" selected disabled>Seleccione </option>
+    								 @foreach($bancos as $banco)
+                      					<option  value="{{$banco->codigo}}">
+                       					 {{$banco->nombre}}
+                      					</option>
+                    					@endforeach
+    								</option>
     								</select>
-
-</div>
+								</div>
 
 									<div class="col-md-4">
 				                    	<p style="text-align: left;">Monto:</p>  

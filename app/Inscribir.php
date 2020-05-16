@@ -18,4 +18,6 @@ class Inscribir extends Model
      return $this->belongsTo(Carrera::class, 'carrera_id');
     }
 
+    
+
 }

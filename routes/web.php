@@ -53,6 +53,12 @@ Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscr
 
 Route::get('listadoCorredores', 'InscripcionCorredorescontroller@listadoCorredores')->name('listadoCorredores');
 
+Route::post('supenderCorredor', 'InscripcionCorredoresController@supenderCorredor');
+
+Route::post('modificarPago', 'InscripcionCorredoresController@modificarPago');
+
+Route::get('recibo', 'InscripcionCorredorescontroller@recibo')->name('recibo');
+
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 

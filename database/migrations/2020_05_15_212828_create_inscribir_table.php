@@ -29,12 +29,13 @@ class CreateInscribirTable extends Migration
             $table->string('descripcion');
             $table->string('monto');
             $table->string('referencia');
-
+            $table->boolean('estatus')->default(1);
 
             $table->timestamps();
 
         });
     }
+
 
     /**
      * Reverse the migrations.

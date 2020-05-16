@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 //clase MODELO
-
+use App\User;
 use App\Carrera;
+use App\Banco;
 use App\Corredor;
 use App\Inscribir;
 use Auth;
@@ -19,8 +20,9 @@ class InscripcionCorredorescontroller extends Controller
     {
      //consulta carrera
         $carreras = Carrera::all();
+        $bancos = Banco::all();
         
-         return view('inscripcionCorredores')->with('carreras', $carreras); 
+         return view('inscripcionCorredores')->with(['carreras'=> $carreras,'bancos'=> $bancos]); 
     }
     
     public function guardarInscripcionCorredores(Request $request)
@@ -42,10 +44,42 @@ class InscripcionCorredorescontroller extends Controller
     public function listadocorredores()
     {
           $carreras = Carrera::all();
+          $bancos = Banco::all();
 
-         return view('listadoCorredores')->with('carreras', $carreras); 
+         return view('listadoCorredores')->with(['carreras'=> $carreras,'bancos'=> $bancos]);
 
     }
+    public function supenderCorredor(Request $request)
+    {
+        $inscribir = Inscribir::find($request->id);
+        $inscribir->estatus =0;
+        $inscribir->save();
+        return redirect()->back();
+    }
 
+    public function modificarPago(Request $request)
+    {
 
+     $inscribir = Inscribir::find($request->id);
+
+        $inscribir->metodoPago = $request->metodoPago;
+       $inscribir->banco = $request->banco;
+        $inscribir->fecha = $request->fecha;
+        $inscribir->descripcion = $request->descripcion;
+        $inscribir->monto = $request->monto;
+        $inscribir->referencia = $request->referencia;
+        $inscribir->save();        
+        return redirect()->back();   
+    }
+
+   
+    public function recibo()
+    {
+        //$persona = Auth::User()->persona;
+        $persona  = 'siii';
+        $pdf = \PDF::loadView('reciboPDF',['persona' => $persona]);
+
+        return $pdf->setPaper('a6')->stream('reciboPDF');
+    }
+    
 }
