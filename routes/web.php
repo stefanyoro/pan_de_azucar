@@ -24,13 +24,12 @@ Route::get('/', function () {
 //Recuperación de Contraseñas
 	Route::get('password/reset', 'Auth\ResetPasswordController@showResetForm')->name('password/reset');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset');
+	Route::get('password/confirm', 'Auth\ResetPasswordController@confirm')->name('password/confirm');
 
 // Funciones del Administrador:
 	Route::get('registroUsuario', 'AdministradorController@vistaRegistroUsuario')->name('registroUsuario');
 	Route::post('RegistrarUsuario', 'AdministradorController@RegistrarUsuario')->name('RegistrarUsuario');
 	Route::get('listadoUsuarios', 'AdministradorController@listadoUsuarios')->name('listadoUsuarios');
-
-
 
 // Módulo de Corredores:
 	Route::get('afiliacionCorredor', 'CorredorController@vistaRegistroCorredor')->name('afiliacionCorredor');

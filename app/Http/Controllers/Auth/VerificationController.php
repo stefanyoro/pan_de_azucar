@@ -11,10 +11,10 @@ class VerificationController extends Controller
     |--------------------------------------------------------------------------
     | Email Verification Controller
     |--------------------------------------------------------------------------
+    |Este controlador es responsable de manejar la verificación por correo electrónico de cualquier
+    |usuario que se registró recientemente con la aplicación. Los correos electrónicos también pueden
+    |reenviarse si el usuario no recibió el mensaje de correo electrónico original.
     |
-    | This controller is responsible for handling email verification for any
-    | user that recently registered with the application. Emails may also
-    | be re-sent if the user didn't receive the original email message.
     |
     */
 

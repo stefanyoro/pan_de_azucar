@@ -8,6 +8,11 @@
     	
     <div class="container" align="center">
     	<div class="col-md-9">
+    			@if(session()->has('data'))
+    				<div class="alert alert-success" role="alert">
+    					{{session('data')['mensaje']}}	
+    				</div>
+    			@endif
 	    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 	    		<div class="card-header" style="background-color: #B03A2E;">
 			    	<a style="color: white;">Registrar nuevo usuario</a>
