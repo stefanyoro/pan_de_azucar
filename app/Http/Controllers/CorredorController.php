@@ -135,7 +135,7 @@ class CorredorController extends Controller
         }
         
 
-        return view('verPerfil');
+        return redirect()->back()->with('data',['mensaje'=> '¡Su perfil fue modificado con éxito!']);
     }
 
 }
