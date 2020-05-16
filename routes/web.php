@@ -48,9 +48,9 @@ Route::get('/', function () {
 	Route::get('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
 
 // Incripción de Corredores
-Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('inscripcionCorredores');
+Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
 
-Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscripcionCorredores')->name('inscripcionCorredores');
+Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscripcionCorredores');
 
 
 // Plan de entrenamiento

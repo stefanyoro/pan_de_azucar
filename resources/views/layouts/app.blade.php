@@ -73,7 +73,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-cutlery" aria-hidden="true"></i> Carreras disponibles</a>
+                  <a class="dropdown-item" href="{{ route('InscripcionCorredores') }}"><i class="fa fa-cutlery" aria-hidden="true"></i> Carreras disponibles</a>
                   <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list" aria-hidden="true"></i> Mis inscripciones</a>
                 </div>
               </li>
