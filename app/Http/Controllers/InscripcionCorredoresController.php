@@ -9,7 +9,7 @@ use App\Carrera;
 use App\Corredor;
 use App\Inscribir;
 use Auth;
-class InscripcionCorredoresController extends Controller
+class InscripcionCorredorescontroller extends Controller
 {
 
 
@@ -19,7 +19,7 @@ class InscripcionCorredoresController extends Controller
     {
      //consulta carrera
         $carreras = Carrera::all();
-
+        
          return view('inscripcionCorredores')->with('carreras', $carreras); 
     }
     
@@ -36,7 +36,16 @@ class InscripcionCorredoresController extends Controller
         $inscribir->monto = $request->monto;
         $inscribir->referencia = $request->referencia;
         $inscribir->save();
-        dd("sii ");
+        return redirect()->back()->with('data',['mensaje'=>'Esperando Confirmaciòn de pago']);
     }
-   
+    
+    public function listadocorredores()
+    {
+          $carreras = Carrera::all();
+
+         return view('listadoCorredores')->with('carreras', $carreras); 
+
+    }
+
+
 }
