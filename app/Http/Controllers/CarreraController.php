@@ -99,10 +99,11 @@ class CarreraController extends Controller
 
         public function listadoPDF(){
 
-        $carrera = 'Listado de carrera';
-        $pdf = \PDF::loadView('listadoPDF',['carrera' => $carrera]);
-   
-     return $pdf->setPaper('a4')->stream('listadoPDF.pdf');
+        $carreras = Carrera::all();
+        $pdf = \PDF::loadView('listadoPDF',['carreras' => $carreras]);
+
+     return $pdf->setPaper('a4','landscape')->stream('listadoPDF.pdf');
+
     }
 }
 

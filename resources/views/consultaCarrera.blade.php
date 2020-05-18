@@ -4,7 +4,7 @@
 
 <!-- END slider -->
    
-<section class="section" style="background-color: #CAC7C7;">
+<section class="section" >
 
 
 

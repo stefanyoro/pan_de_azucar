@@ -9,7 +9,7 @@
 @section('content')
 
     <!-- END slider -->
-<section class="section body" style="background-color:#DBDBDB;">
+<section class="section body">
   <div class="container" align="center">
     <div class="col-md-12">
       <div class="card" style="border-color:#B03A2E; background: transparent;">
@@ -272,7 +272,7 @@
                 </div>  
             </div><br>
             <div class="col-md-12" align="right">
-              <input type="submit" class="btn btn-primary btn-block py-3" value="PDF" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;">
+              <a href="{{ route('listadoPDF') }}" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
             </div>
              <!-- </form>-->
           </div>
