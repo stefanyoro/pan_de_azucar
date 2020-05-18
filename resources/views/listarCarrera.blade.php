@@ -14,7 +14,7 @@
     <div class="col-md-12">
       <div class="card" style="border-color:#B03A2E; background: transparent;">
         <div class="card-header" style="background-color: #B03A2E; height: 40px;">
-            <p  style="color:white; text-align:left;"> Listado de la Carrera</p> 
+            <p  style="color:white; text-align:left;"> Listado de las Carreras</p> 
         </div>
         <div class="card-body" style="background-color: #0000;">
               <!--<form action="listarCarrera" method="post">@csrf-->

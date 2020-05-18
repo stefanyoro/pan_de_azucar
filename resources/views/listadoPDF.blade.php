@@ -1,20 +1,31 @@
 
 <style>
-table {
-  border-collapse: collapse;
-}
+  img {
+    width: 90px;
+    height: 50px;
+    position: absolute;
+            top: 01px;
+            left: 01px;
+  } 
 
-table, td, th {
-  border: 1px solid black;
-}
+  table {
+    border-collapse: collapse;
+  }
+
+  table, td, th {
+    border: 1px solid black;
+  }
 </style>
+
+
+<img src="img/logo2.jpg">
 <div style=" text-align:center;">
-	<h3><b>listado de carrera PDF</b></h3>
+	<h3><b>Listado de Carreras</b></h3>
 </div>
-<table class="table">
+<table class="table" style=" text-align:center;">
 <thead>  
     <tr>
-      <th >N◦</th>
+      <th >Num</th>
       <th >Fecha Carrera</th>
       <th >Nombre Carrera</th>
       <th >Hora</th>
