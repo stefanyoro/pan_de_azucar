@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 
 use App\Role;
 use App\User;
@@ -8,7 +9,7 @@ use App\Persona;
 use App\Administrador;
 use App\Entrenador;
 use App\Nutricionista;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -71,7 +72,7 @@ class AdministradorController extends Controller
             $nutricionista->save();
         }
         
-        return view('registroUsuario')->with('data',['Mensaje'=> '¡El usuario fue registrado con éxito!']);
+        return redirect()->back()->with('data',['mensaje'=> '¡El usuario fue registrado con éxito!']);
     }
 
      public function listadoUsuarios()

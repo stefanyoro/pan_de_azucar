@@ -75,8 +75,7 @@ class InscripcionCorredorescontroller extends Controller
    
     public function recibo()
     {
-        //$persona = Auth::User()->persona;
-        $persona  = 'siii';
+        $persona = Auth::User()->persona;
         $pdf = \PDF::loadView('reciboPDF',['persona' => $persona]);
 
         return $pdf->setPaper('a6')->stream('reciboPDF');

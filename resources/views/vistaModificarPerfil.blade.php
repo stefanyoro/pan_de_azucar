@@ -6,10 +6,16 @@
    
     <section class="section">
     	<div class="container" style="text-align: center;">
+    		
 	    	<div class="">
 	    		<div class="row">
 		    		<div class="col-md-1"></div>
 			    	<div class="col-md-10">
+			    		@if(session()->has('data'))
+    						<div class="alert alert-success" role="alert">
+    							{{session('data')['mensaje']}}
+    						</div>		
+    					@endif
 				    	<div class="card" align="center" style="border-color:#B03A2E; ">
 				    		<div class="card-header" align="center" style="background-color: #B03A2E;">
 						    	<a style="color: white;">Modificar perfil</a>
@@ -263,7 +269,7 @@
 																			<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 011.414 0l6.647 6.646a.5.5 0 01-.708.708L8 2.207 1.354 8.854a.5.5 0 11-.708-.708L7.293 1.5z" clip-rule="evenodd"/>
 																		</svg>
 														      			Teléfono local:</p>
-										                      			<input type="text" class="form-control" name="telf_local" id="telf_local" placeholder="0412-5554488" value="{{Auth::user()->persona->telf_local}}">
+										                      			<input type="text" class="form-control" name="telf_local" id="telf_local" placeholder="0212-5554488" value="{{Auth::user()->persona->telf_local}}">
 										                    		</div>
 
 										                    		<div class="col-md-6">
@@ -273,7 +279,7 @@
 																			<path fill-rule="evenodd" d="M8 14a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
 																		</svg>
 										                    			Teléfono celular:</p>
-										                      			<input type="text" class="form-control" name="telf_celular" id="telf_celular" placeholder="0212- 5554488" value="{{Auth::user()->persona->telf_celular}}">
+										                      			<input type="text" class="form-control" name="telf_celular" id="telf_celular" placeholder="0412- 5554488" value="{{Auth::user()->persona->telf_celular}}">
 										                    		</div>
 														      	</div><br>
 

@@ -11,10 +11,7 @@
 |
 */
 // 
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 
 // Login
 	Route::get('InicioSesion', 'Auth\LoginController@ShowLoginForm')->name('InicioSesion');
