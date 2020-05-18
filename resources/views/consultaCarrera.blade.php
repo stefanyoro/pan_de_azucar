@@ -6,7 +6,19 @@
    
 <section class="section" style="background-color: #CAC7C7;">
 
+
+
+
 	<div class="container" align="center">
+		<div class="row">
+	    	<div class="col-md-10 offset-2" >
+				@if(session()->has('data'))
+	    		<div class="alert alert-success" role="alert">
+	    			{{session('data')['mensaje']}}
+	   		 	</div>		
+	   			 @endif
+	   		</div>	
+	   	</div>
 		<div class="row">
 			<!-- <div class="col-md-2"></div> -->
 

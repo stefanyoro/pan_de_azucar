@@ -44,7 +44,7 @@ class CarreraController extends Controller
          //var_dump($carrera->hora);
          //return view('consultaCarrera');
          //return view('listarCarrera');
-        return redirect()->route('consultaCarrera',['id' => $carrera->id]);
+        return redirect()->route('consultaCarrera',['id' => $carrera->id])->with('data',['mensaje'=>'Registro de carrera Exitoso']);
     }
 
         public function consultaCarrera($id)
@@ -95,6 +95,14 @@ class CarreraController extends Controller
 
         return redirect()->back();
 
+    }
+
+        public function listadoPDF(){
+
+        $carrera = 'Listado de carrera';
+        $pdf = \PDF::loadView('listadoPDF',['carrera' => $carrera]);
+   
+     return $pdf->setPaper('a4')->stream('listadoPDF.pdf');
     }
 }
 
