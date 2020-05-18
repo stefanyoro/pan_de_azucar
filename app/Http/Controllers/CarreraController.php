@@ -25,7 +25,6 @@ class CarreraController extends Controller
         Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
 
         $carrera = new Carrera;
-       	//$carrera->adm_id = $request->id; extraer este valor como se hace ??
         $carrera->nom_carrera = $request->nom_carrera;
         $carrera->lugar_salida = $request->lugar_salida;
         $carrera->lugar_llegada= $request->lugar_llegada;
@@ -33,15 +32,16 @@ class CarreraController extends Controller
         $carrera->hora = $request->hora;
         $carrera->meridiano= $request->meridiano;
         $carrera->modalidad= $request->modalidad;
-        $carrera->categoria= $request->categoria;
+        $carrera->categoria= implode(',', $request->categoria);
         $carrera->monto= $request->monto;
-        $carrera->kit_carrera= $request->kit_carrera;
+        $carrera->camisa= $request->camisa;
+        $carrera->comida= $request->comida;
+        $carrera->bebida= $request->bebida;
         $carrera->cupos= $request->cupos;
         $carrera->foto= $foto->getFilename().".".$extension;  
-         $carrera->save();
+        $carrera->save();
 
-         //var_dump($carrera->id);
-
+         //var_dump($carrera->hora);
          //return view('consultaCarrera');
          //return view('listarCarrera');
         return redirect()->route('consultaCarrera',['id' => $carrera->id]);
@@ -49,20 +49,52 @@ class CarreraController extends Controller
 
         public function consultaCarrera($id)
         {
-            //if (isset($id) && !empty($id)) {
-            //} else {
-            //}
-            $carreras =DB::select('select * from carrera where id = ' . $id);
-            //$carreras =\DB::select('select * from carrera1');
+            $carreras = DB::select('select * from carrera where id = ' . $id);
             return view('consultaCarrera')->with('carreras',$carreras); 
-
         }
     public function listarCarrera()
     {
     	//return view('listarCarrera');  
     	$carreras =\DB::select('select * from carrera');
+        foreach ($carreras as $key => $carrera) {
+            $carreras[$key]->array_categorias = explode(',', $carrera->categoria);
+        }
         return view('listarCarrera')->with('carreras',$carreras); 
-    
+    }
+
+    public function modificarCarrera(Request $request)
+    {
+        $carrera = Carrera::find($request->id);
+        //$carrera->adm_id = $request->id; extraer este valor como se hace ??
+         $carrera->nom_carrera = $request->nom_carrera;
+        $carrera->lugar_salida = $request->lugar_salida;
+        $carrera->lugar_llegada= $request->lugar_llegada;
+        $carrera->fecha_carr = $request->fecha_carr;
+        $carrera->hora = $request->hora;
+        $carrera->meridiano= $request->meridiano;
+        $carrera->modalidad= $request->modalidad;
+        $carrera->categoria= implode(',', $request->categoria);
+        $carrera->monto= $request->monto;
+        $carrera->camisa= $request->camisa;
+        $carrera->comida= $request->comida;
+        $carrera->bebida= $request->bebida;
+        $carrera->cupos= $request->cupos;
+        //$carrera->foto= $foto->getFilename().".".$extension;  
+        //dd($carrera);
+        $carrera->save();
+
+        return redirect()->back();
+    }
+
+
+    public function eliminarCarrera(Request $request)
+    { 
+        $carrera = Carrera::find($request->id);
+            $carrera->estatus = 0;
+        $carrera->save();
+
+        return redirect()->back();
+
     }
 }
 

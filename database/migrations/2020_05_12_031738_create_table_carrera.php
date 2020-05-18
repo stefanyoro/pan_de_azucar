@@ -15,7 +15,7 @@ class CreateTableCarrera extends Migration
     {
         Schema::create('carrera', function (Blueprint $table) {
             $table->bigIncrements('id');
-          /*$table->bigIncrements('Estado')*/
+            $table->string('estatus')->default(); /*Para el eliminar la carrera*/
             $table->string('nom_carrera');
             $table->string('lugar_salida');
             $table->string('lugar_llegada');
@@ -25,9 +25,12 @@ class CreateTableCarrera extends Migration
             $table->string('modalidad');
             $table->string('categoria');
             $table->string('monto');
-            $table->string('kit_carrera')->nullable();
+            $table->string('camisa');
+            $table->string('comida');
+            $table->string('bebida');
             $table->string('cupos');
-            $table->string('foto')->nullable(); 
+            $table->string('foto')->nullable();
+            //$table->string('estado')->default(); /*Para el eliminar la carrera vencida*/ 
             $table->timestamps();
         });
     }
