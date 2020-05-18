@@ -41,7 +41,7 @@
                   </thead>
                       <tbody>    
                       @foreach ($carreras as $clave => $carrera)
-                      @if ($carrera->estatus == 1);
+                      @if ($carrera->estatus == 1)
                         <tr>                              
                           <td>{{ $clave + 1}}</td>
                           <td>{{ $carrera->fecha_carr}}</td>
@@ -117,7 +117,7 @@
                                                       <i class="fa fa-calendar" aria-hidden="true"></i>
                                                       Fecha de la carrera:
                                                     </label>
-                                                    <input type="date" class="form-control disablecopypaste" name="fecha_carr" placeholder="fecha_carr" min="<?php echo date('Y-m-d'); ?>" title="El formato debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{ $carrera->fecha_carr}}" required="required">
+                                                    <input type="date" class="form-control disablecopypaste" name="fecha_carr" placeholder="fecha_carr" min="<?php echo date('Y-m-d')?>" title="El formato debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{ $carrera->fecha_carr}}" required="required">
                                                   </div>
                                                 </div>   
                                                 <div class="col-md-2">
