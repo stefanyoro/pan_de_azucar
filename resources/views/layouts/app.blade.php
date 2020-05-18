@@ -72,8 +72,8 @@
                   <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
                   <a class="dropdown-item" href="{{ route('aperturaCarreras') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Apertura de carrera</a>
                   <a class="dropdown-item" href="{{ route('listarCarrera') }}"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
-                  <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
-                  <a class="dropdown-item" href=""><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
+                  <a class="dropdown-item" href="{{ route('inscripcionCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
+                  <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
                   <a class="dropdown-item" href="{{ route('resultadosCarreras') }}">Registrar resultados</a>
                 </div>
               </li>
@@ -82,7 +82,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-check-square" aria-hidden="true"></i> Carreras disponibles</a>
+                  <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-check-square" aria-hidden="true"></i> Carreras disponibles</a>
                   <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-list-ol" aria-hidden="true"></i> Mis inscripciones</a>
                 </div>
               </li>
