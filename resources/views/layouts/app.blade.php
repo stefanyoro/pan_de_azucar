@@ -72,7 +72,7 @@
                   <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
                   <a class="dropdown-item" href="{{ route('aperturaCarreras') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Apertura de carrera</a>
                   <a class="dropdown-item" href="{{ route('listarCarrera') }}"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
-                  <a class="dropdown-item" href="{{ route('inscripcionCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
+                  <a class="dropdown-item" href="{{ route('InscripcionCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
                   <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
                   <a class="dropdown-item" href="{{ route('resultadosCarreras') }}">Registrar resultados</a>
                 </div>
