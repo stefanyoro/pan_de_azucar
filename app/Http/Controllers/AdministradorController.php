@@ -70,8 +70,8 @@ class AdministradorController extends Controller
 
             $nutricionista->save();
         }
-
-        return view('registroUsuario');
+        
+        return view('registroUsuario')->with('data',['Mensaje'=> '¡El usuario fue registrado con éxito!']);
     }
 
      public function listadoUsuarios()

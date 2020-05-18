@@ -169,6 +169,11 @@
 			                      		<div class="col-md-4" align="center">
 			                      			<button type="submit" class="btn btn-success">Crear Usuario</button>
 			                      		</div>
+			                      		@if(session()->has('data'))
+    				<div class="alert alert-success" role="alert">
+    					{{session('data')['mensaje']}}	
+    				</div>
+    			@endif
 			                      		
 			                    	</div>
 			                    </div>
