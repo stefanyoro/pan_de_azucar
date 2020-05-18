@@ -12,8 +12,9 @@
 */
 // 
 
-
-	Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
+Route::get('/', function () {
+    return view('index');
+});
 
 // Login
 	Route::get('InicioSesion', 'Auth\LoginController@ShowLoginForm')->name('InicioSesion');
@@ -23,13 +24,12 @@
 //Recuperación de Contraseñas
 	Route::get('password/reset', 'Auth\ResetPasswordController@showResetForm')->name('password/reset');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset');
+	Route::get('password/confirm', 'Auth\ResetPasswordController@confirm')->name('password/confirm');
 
 // Funciones del Administrador:
 	Route::get('registroUsuario', 'AdministradorController@vistaRegistroUsuario')->name('registroUsuario');
 	Route::post('RegistrarUsuario', 'AdministradorController@RegistrarUsuario')->name('RegistrarUsuario');
 	Route::get('listadoUsuarios', 'AdministradorController@listadoUsuarios')->name('listadoUsuarios');
-
-
 
 // Módulo de Corredores:
 	Route::get('afiliacionCorredor', 'CorredorController@vistaRegistroCorredor')->name('afiliacionCorredor');
@@ -45,9 +45,19 @@
 	Route::post('RegistrarCarrera', 'CarreraController@RegistrarCarrera')->name('RegistrarCarrera');
 	Route::get('consultaCarrera/{id}', 'CarreraController@consultaCarrera')->name('consultaCarrera');
 	Route::get('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
-	Route::post('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
-	Route::post('modificarCarrera', 'CarreraController@modificarCarrera')->name('modificarCarrera');
-	Route::post('eliminarCarrera', 'CarreraController@eliminarCarrera')->name('eliminarCarrera');
+
+// Incripción de Corredores
+Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
+
+Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscripcionCorredores');
+
+Route::get('listadoCorredores', 'InscripcionCorredorescontroller@listadoCorredores')->name('listadoCorredores');
+
+Route::post('supenderCorredor', 'InscripcionCorredoresController@supenderCorredor');
+
+Route::post('modificarPago', 'InscripcionCorredoresController@modificarPago');
+
+Route::get('recibo', 'InscripcionCorredorescontroller@recibo')->name('recibo');
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
@@ -56,6 +66,9 @@
 	Route::get('resultadosCarreras', 'ResultadosController@vistaResultados')->name('resultadosCarreras');
 	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
 	Route::get('/home', 'HomeController@index')->name('home');
+
+//PDF'S
+	Route::get('CarnetPDF', 'PdfController@carnet')->name('CarnetPDF');
 
 Auth::routes();
 

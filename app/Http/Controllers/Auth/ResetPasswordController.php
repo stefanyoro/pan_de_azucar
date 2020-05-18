@@ -22,6 +22,8 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
+        
+
     /**
      * Where to redirect users after resetting their password.
      *
@@ -38,4 +40,8 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+protected function broker()
+{
+    return Password::broker('name');
+}
 }

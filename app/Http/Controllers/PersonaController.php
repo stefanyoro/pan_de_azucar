@@ -27,6 +27,9 @@ class PersonaController extends Controller
              $persona->apellido = $request->apellido;
              $persona->fecha_nac = $request->fecha_nac;
              $persona->direccion = $request->direccion;
+             $persona->telf_local = $request->telf_local;
+             $persona->telf_celular = $request->telf_celular;
+             $persona->tipo_sangre = $request->tipo_sangre; 
          $persona->save();
          return view('registroExitoso');
     }

@@ -25,6 +25,10 @@
               <h1></h1>
                <p class="mb-5" style="font-style: italic;">"Ganar tiene que ver con el corazón, no sólo con las piernas. Se tiene que estar en el lugar correcto".</p>
               <p style="text-align:right;font-family:Latin Modern Roman; font-style: italic;">Lance Armstrong.</p>
+
+               @guest
+              <p><a href="InicioSesion" class="btn btn-white btn-outline-white">Inicia Sesión</a>
+              @endguest
             </div>
           </div>
         </div>

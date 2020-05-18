@@ -15,14 +15,14 @@
 		  		<div class="card-body">
 		    		<div class="">
 				    	<form action="RegistrarCorredor" method="post">@csrf
-				            	<div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  										<p style="position:center; text-align: center;">Datos personales:</p>
+				            	<div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  										<p style="position:center; text-align: center; color: white;">Datos personales:</p>
   									</div>
   									<br>
 				                <div class="row">
 				                    <div class="col-md-6"> 
 				                    	<div class="form-group">
-				    						<select class="form-control" id="nacionalidad" name="nacionalidad">
+				    						<select class="form-control" id="nacionalidad" name="nacionalidad" required="required">
 											    <option selected>Nacionalidad</option>
 											    <option value="Venezolano">Venezolano</option>
 											    <option value="Extranjero">Extranjero</option>
@@ -31,7 +31,7 @@
 				                    </div>  
 				                    <div class="col-md-6">
 				                       <div class="form-group">
-				    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción.">
+				    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción." required="required">
 											    <option selected>Documento</option>
 											    <option value="Pasaporte">Pasaporte</option>
 											    <option value="Cedula">Cédula</option>
@@ -67,12 +67,12 @@
 				                <div class="row" style="margin-top: 15px;">
 				                    <div class="col-md-6"> 
 				                      <div class="form-group">
-				    					<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo).">								
+				    					<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2004-01-01" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." required="required">								
 			  							</div>
 				                    </div> 
 				                    <div class="col-md-6">
 				        				<div class="form-group">
-				    						<select class="form-control" id="rol" name="rol">
+				    						<select class="form-control" id="rol" name="rol" required="required">
 											    <option selected>Tipo</option>
 											    <option value="4">Corredor</option>
 											</select>
@@ -92,8 +92,8 @@
 				                    </div>  
 				                </div><br>
 				               
-				               	<div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  									<p style="position:center; text-align: center;">Composición Corporal:</p>
+				               	<div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  									<p style="position:center; text-align: center; color: white;">Composición Corporal:</p>
   								</div>
   								<br>
 				               
@@ -109,8 +109,8 @@
 				                  </div>
 				                </div><br>
 				               
-				                <div class="card-header" style="height:50px; background-color:#DBDBDB;"> 
-  										<p style="position:center; text-align: center;">Establecer contraseña</p>
+				                <div class="card-header" style="height:50px; background-color:#4C4C4C;"> 
+  										<p style="position:center; text-align: center; color: white;">Establecer contraseña</p>
   								</div>
   									<br>
 				                <div class="row">
