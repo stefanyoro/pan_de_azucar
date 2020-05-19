@@ -20,6 +20,7 @@
     <!-- Theme Style -->
     <link rel="stylesheet" href="{{ asset('css/style.css')}}">
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+  
     @yield('css')
   </head>
   <body>
@@ -101,8 +102,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de entrenamiento</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html">Creación de plan</a>
-                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Creación de plan</a>
+                  <a class="dropdown-item" href="">Listado de planes creados</a>
                 </div>
               </li>
               @endif
@@ -225,7 +226,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de entrenamiento</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html">Creación de plan</a>
+                  <a class="dropdown-item" href="planEntrenamiento">Creación de plan</a>
                   <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
                 </div>
               </li>
