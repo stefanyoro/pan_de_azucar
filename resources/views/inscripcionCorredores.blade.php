@@ -59,9 +59,9 @@
 			    	<a style="color: white;">Informaciòn de Carrera
 			    	</a>
 			  	</div>
-			  	<div class="col-md-12">
-				                    	<p style="text-align: left;">
-				                    	
+			  	
+			  	<div class="col-md-12"> <br>
+				                    	<p style="text-align: left;"<i class="fa fa-newspaper-o" aria-hidden="true"></i>
 				                    	Informacion de Carrera:
 				                      <select class="form-control" name="carrera_id">
 				                      	@foreach($carreras as $carrera)
@@ -83,7 +83,7 @@
 				    	
 				<div class="row">
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">Metodo de pago:</p>  
+				                    	<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Metodo de pago:</p>  
 				                    	<select  class="form-control" name="metodoPago">
 				                    		<option>Pago Movil</option>
 				                    		<option>Transferencia</option>
@@ -91,7 +91,7 @@
 				                    </div>  
 	
 									<div class="col-md-4">
-				                    	<p style="text-align: left;">Banco emisor:</p>  
+				                    	<p style="text-align: left;"><i class="fa fa-university" aria-hidden="true"></i> Banco emisor:</p>  
 				                    
     								<select class="form-control" id="banco" name="banco"><option value="" selected disabled>Seleccione </option>
     								 @foreach($bancos as $banco)
@@ -104,40 +104,29 @@
 								</div>
 
 									<div class="col-md-4">
-				                    	<p style="text-align: left;">Monto:</p>  
+				                    	<p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i> Monto:</p>  
 				                      <input type="number" class="form-control" name="monto"  required="required" value="">
 				                    <br>
 				                    </div>
 				                   
 				                      <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Nº de referencia:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> Nº de referencia:</p>
 				                      <input type="number" class="form-control" name="referencia"  required="required" value="">
 				                    </div>
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Fecha:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-calendar" aria-hidden="true"></i> Fecha:</p>
 				                      <input type="date" class="form-control" name="fecha"  required="required" value="">
 				                    </div> 
 				                     <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Descripciòn:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Descripciòn:</p>
 				                      <input type="text" class="form-control" name="descripcion"  required="required" value="">
 				                    </div> 
-
-
 				           </div>                 
 				                </div> 
-
 				                </div>  
-	
-				               
 				                    <div class="col-md-12">
 				                    	<p style="text-align: left;">
-				                    	
+				               
 				                    </p>
 				                      <input class="btn btn-success" type="submit" value="Enviar">
 				                    </div>  
