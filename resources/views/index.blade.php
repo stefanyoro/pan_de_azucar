@@ -100,25 +100,30 @@
       </div>
 
       <div class="container">
-        
         <div class="row no-gutters">
+          @foreach ($carreras as $clave => $carrera)
+           @if ($carrera->estatus == 1)
           <div class="col-md-6">
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image order-2" style="background-image: url('img/imagen2.jpg');"></div>
-              <div class="text order-1">
-                <h3>1º carrera</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto illo delectus...</p>
-                <p class="sched-time">
-                  <span><span class="fa fa-clock-o"></span> 8:30 AM</span> <br>
-                  <span><span class="fa fa-calendar"></span> Enero 22, 2020</span> <br>
-                  <p><a href="carrera.html" class="btn btn-primary btn-sm">Inscribete</a></p>
-                </p>
-                
-              </div>
-              
+              <div class="bg-image order-2" style="background-image: url('img/pan6.jpg'); height: 22vw;"></div>
+                <div class="text order-1">                
+                  <h3>{{ $clave + 1}}º Carrera <p style="text-indent: 05%;">{{ $carrera->nom_carrera}}</p></h3>
+                  <p>El lugar de salida sera, {{ $carrera->lugar_salida}} y la meta final sera {{ $carrera->lugar_llegada}}.</p>
+                  <p class="sched-time">
+                    <span><span class="fa fa-clock-o"></span> {{ $carrera->hora}}{{ $carrera->meridiano}}</span> <br>
+                    <span><span class="fa fa-calendar"></span> {{ $carrera->fecha_carr}}</span> <br>
+                    <span><span class="fa fa-bicycle"></span> {{ $carrera->modalidad}}</span> <br>
+                    <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos}}</span></p>
+                    <p align="right"><a href="carrera.html" class="btn btn-success btn-sm">Inscribete</a></p>
+                  </p>
+                 
+                </div>              
             </div>
+          </div> 
+          @endif
+          @endforeach 
 
-            <div class="sched d-block d-lg-flex">
+            <!--<div class="sched d-block d-lg-flex">
               <div class="bg-image" style="background-image: url('img/pan6.jpg');"></div>
               <div class="text">
                 <h3>2º carrera</h3>
@@ -129,11 +134,9 @@
                   <p><a href="carrera.html" class="btn btn-primary btn-sm">Inscribete</a></p>
                 </p>
                 
-              </div>
-              
+              </div>  
             </div>
 
-          </div>
 
           <div class="col-md-6">
             <div class="sched d-block d-lg-flex">
@@ -145,8 +148,7 @@
                   <span><span class="fa fa-calendar"></span> marzo 22, 2020</span> <br><p><a href="carrera.html" class="btn btn-primary btn-sm">Inscribete</a></p>
                 <p class="sched-time">
                 </p>                
-              </div>
-              
+              </div>   
             </div>
 
             <div class="sched d-block d-lg-flex">
@@ -162,12 +164,10 @@
               </div>
               
             </div>
-
-          </div>
+          </div>-->
         </div>
         
-
       </div>
-    </section> <!-- .section -->
+</section> <!-- .section -->
  
 @endsection

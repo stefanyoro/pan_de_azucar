@@ -11,10 +11,7 @@
 |
 */
 // 
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 
 // Login
 	Route::get('InicioSesion', 'Auth\LoginController@ShowLoginForm')->name('InicioSesion');
@@ -40,11 +37,16 @@ Route::get('/', function () {
 	Route::post('actualizarPerfil', 'CorredorController@actualizarPerfil')->name('actualizarPerfil');
 
 //Registro de carrera
+	//Registro de carrera
 	Route::get('aperturaCarreras', 'CarreraController@registroCarrera')->name('aperturaCarreras'); 
 	//Route::get('consultaCarrera', 'CarreraController@consultaCarrera')->name('consultaCarrera');
 	Route::post('RegistrarCarrera', 'CarreraController@RegistrarCarrera')->name('RegistrarCarrera');
 	Route::get('consultaCarrera/{id}', 'CarreraController@consultaCarrera')->name('consultaCarrera');
 	Route::get('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
+	Route::post('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
+	Route::post('modificarCarrera', 'CarreraController@modificarCarrera')->name('modificarCarrera');
+	Route::post('eliminarCarrera', 'CarreraController@eliminarCarrera')->name('eliminarCarrera');
+	Route::get('listadoPDF', 'CarreraController@listadoPDF')->name('listadoPDF');
 
 // Incripción de Corredores
 Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
