@@ -89,9 +89,17 @@
             font-size: 12px;
             position: absolute;
             top: 210px;
+            left: 56px;
+            transform: translate(-50%, -50%);
+        }  
+.campo11{
+            font-family: Arial;
+            font-size: 12px;
+            position: absolute;
+            top: 225px;
             left: 38px;
             transform: translate(-50%, -50%);
-        }                
+        }                        
 </style>
 </head>
 <body >
@@ -108,10 +116,13 @@
          <br><br>
            <div>-----------------------------------------------------------</div>
        
-        <div class="campo8"><b>Nombre de la carrera:</b> {{ $persona->numero_doc}}</div>
-        <div class="campo9"><b>Lugar de la Carrera:</b> {{ $persona->numero_doc}}</div> 
-        <div class="campo10"><b>Costo:</b> {{ $persona->numero_doc}}</div>
+        <div class="campo8"><b>Nombre de la carrera:</b> {{ $inscribir->carrera->nom_carrera}}</div>
+        <div class="campo9"><b>Lugar de la Salida:</b>{{ $inscribir->carrera->lugar_salida}} </div> 
+        <div class="campo10"><b>Lugar de Llegada :</b>{{ $inscribir->carrera->lugar_llegada}} </div> 
+        <div class="campo11"><b>Costo:</b>{{ $inscribir->monto}}</div>
+
      </div>
+     
     
     </body>
 </html>

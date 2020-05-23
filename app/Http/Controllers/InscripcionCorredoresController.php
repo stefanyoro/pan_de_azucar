@@ -16,10 +16,16 @@ class InscripcionCorredorescontroller extends Controller
 
 
     // METODOO VERDE//
-	public function inscripcioncorredores()
+	public function inscripcioncorredores($id=null)
     {
      //consulta carrera
-        $carreras = Carrera::all();
+        if($id == null){
+            $carreras = Carrera::all();
+        
+        }else{
+            $carreras = Carrera::where('id', $id)->get();
+        }
+        
         $bancos = Banco::all();
         
          return view('inscripcionCorredores')->with(['carreras'=> $carreras,'bancos'=> $bancos]); 
@@ -28,6 +34,7 @@ class InscripcionCorredorescontroller extends Controller
     public function guardarInscripcionCorredores(Request $request)
     {
         //modelo
+        
         $inscribir = new Inscribir;
         $inscribir->corredor_id = Auth::user()->corredor->id;
         $inscribir->carrera_id = $request->carrera_id;
@@ -73,11 +80,17 @@ class InscripcionCorredorescontroller extends Controller
     }
 
    
-    public function recibo()
+    public function recibo($id)
     {
+
         $persona = Auth::User()->persona;
-        $pdf = \PDF::loadView('reciboPDF',['persona' => $persona]);
+        $carrera = Inscribir::find($id);
+        $pdf = \PDF::loadView('reciboPDF',['persona' => $persona,'inscribir'=>$carrera]);
+
         return $pdf->setPaper('a6')->stream('reciboPDF');
+
     }
     
+
+
 }

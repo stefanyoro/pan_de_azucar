@@ -160,9 +160,10 @@
     </div>
   </div>
 </div>
+ 
+      @csrf
+      <a  href="{{route('recibo', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
 
-      <button class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
-     
       </div>
     </div>
   </div>

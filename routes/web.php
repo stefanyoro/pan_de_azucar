@@ -51,7 +51,9 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 // Incripción de Corredores
 Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
 
-Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscripcionCorredores');
+Route::get('inscripcionCorredores/{id}', 'InscripcionCorredoresController@inscripcioncorredores');
+
+Route::post('guardarInscripcionCorredores', 'InscripcionCorredoresController@guardarInscripcionCorredores')->name('guardarInscripcionCorredores');
 
 Route::get('listadoCorredores', 'InscripcionCorredorescontroller@listadoCorredores')->name('listadoCorredores');
 
@@ -59,7 +61,7 @@ Route::post('supenderCorredor', 'InscripcionCorredoresController@supenderCorredo
 
 Route::post('modificarPago', 'InscripcionCorredoresController@modificarPago');
 
-Route::get('recibo', 'InscripcionCorredorescontroller@recibo')->name('recibo');
+Route::get('recibo/{id}', 'InscripcionCorredorescontroller@recibo')->name('recibo');
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');

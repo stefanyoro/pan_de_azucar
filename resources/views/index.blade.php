@@ -114,7 +114,7 @@
                     <span><span class="fa fa-calendar"></span> {{ $carrera->fecha_carr}}</span> <br>
                     <span><span class="fa fa-bicycle"></span> {{ $carrera->modalidad}}</span> <br>
                     <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos}}</span></p>
-                    <p align="right"><a href="carrera.html" class="btn btn-success btn-sm">Inscribete</a></p>
+                    <p align="right"><a href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-success btn-sm">Inscribete</a></p>
                   </p>
                  
                 </div>              

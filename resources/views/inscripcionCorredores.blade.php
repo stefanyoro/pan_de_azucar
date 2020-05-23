@@ -21,7 +21,7 @@
 		  		<div class="row">
 		    		<div class="">
 				    	
-				        <form method="post"action="InscripcionCorredor">@csrf     
+				        <form method="post"action="{{route('guardarInscripcionCorredores')}}">@csrf     
 				                    <div class="col-md-9">
 				                    	<p style="text-align: left;">
 				                    	
@@ -65,9 +65,7 @@
 				                    	Informacion de Carrera:
 				                      <select class="form-control" name="carrera_id">
 				                      	@foreach($carreras as $carrera)
-				                      	<option value="{{$carrera->id}}">Nombre:{{$carrera->nom_carrera}} -Lugar {{$carrera->lugar_salida}} - Salida{{$carrera->lugar_llegada}} - hora{{$carrera->hora}} {{$carrera->meridiano}} -  -categoria 
-				                      	categoria{{$carrera->categoria}} -
-				                     	monto{{$carrera->monto}}
+				                      	<option value="{{$carrera->id}}">Nombre:{{$carrera->nom_carrera}} -Lugar {{$carrera->lugar_salida}} - hora{{$carrera->hora}} {{$carrera->meridiano}}
 
 				                         </option>
 				                      	@endforeach
@@ -93,7 +91,8 @@
 									<div class="col-md-4">
 				                    	<p style="text-align: left;"><i class="fa fa-university" aria-hidden="true"></i> Banco emisor:</p>  
 				                    
-    								<select class="form-control" id="banco" name="banco"><option value="" selected disabled>Seleccione </option>
+    								<select class="form-control" id="banco" name="banco">
+    									<!--<option value="" selected disabled>Seleccione </option>-->
     								 @foreach($bancos as $banco)
                       					<option  value="{{$banco->codigo}}">
                        					 {{$banco->nombre}}
@@ -105,7 +104,7 @@
 
 									<div class="col-md-4">
 				                    	<p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i> Monto:</p>  
-				                      <input type="number" class="form-control" name="monto"  required="required" value="">
+				                      <input id="monto" type="number" class="form-control" name="monto"  required="required" value="{{$monto = $carrera->monto}}" readonly>
 				                    <br>
 				                    </div>
 				                   
@@ -121,18 +120,23 @@
 				                    	<p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Descripciòn:</p>
 				                      <input type="text" class="form-control" name="descripcion"  required="required" value="">
 				                    </div> 
-				           </div>                 
-				                </div> 
-				                </div>  
-				                    <div class="col-md-12">
-				                    	<p style="text-align: left;">
-				               
-				                    </p>
-				                      <input class="btn btn-success" type="submit" value="Enviar">
-				                    </div>  
-				                    <br>
-				                   </div>
-   				                </div>
+				                    <div id="container"><h1>KIT</h1>
+									<input type="checkbox" name="ch1" value="{{$carrera->camisa}}" id="qr1" />Camisa <br />
+									<input type="checkbox" name="ch1" value="{{$carrera->comida}}" id="qr1" />Comida <br />
+									<input type="checkbox" name="ch1" value="{{$carrera->bebida}}" id="qr1" />Hidrataciòn <br />
+									</div>
+                 
+					                </div> 
+					                </div>  
+					                    <div class="col-md-12">
+					                    	<p style="text-align: left;">
+					                    </p>
+					                      <input class="btn btn-success" type="submit" value="Enviar">
+					                    </div>  
+					                    <br>
+					                   </div>
+	   				                </div>
+
 
 				      	</form>
 
@@ -144,4 +148,28 @@
 
     </section>
 
+@endsection
+@section('scriptJS')
+<script type="text/javascript">
+	function displayVals() {
+      calcUsage();
+}
+var $cbs = $('input[name="ch1"]');
+function calcUsage() {
+    var total = {{$monto}};
+    $cbs.each(function() {
+        if (this.checked)
+            total = parseInt(total) + parseInt(this.value);
+    });
+    $("#usertotal").text(total);
+    $("#monto").val(total);
+}
+
+    $("select").change(displayVals);
+    displayVals();
+//For  checkboxes
+
+$cbs.click(calcUsage);
+
+</script>
 @endsection
