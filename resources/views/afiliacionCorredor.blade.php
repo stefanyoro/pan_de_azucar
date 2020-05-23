@@ -22,7 +22,7 @@
 				                <div class="row">
 				                    <div class="col-md-6"> 
 				                    	<div class="form-group">
-				    						<select class="form-control" id="nacionalidad" name="nacionalidad" required="required">
+				    						<select class="form-control" id="nacionalidad" name="nacionalidad" required>
 											    <option selected>Nacionalidad</option>
 											    <option value="Venezolano">Venezolano</option>
 											    <option value="Extranjero">Extranjero</option>
@@ -31,7 +31,7 @@
 				                    </div>  
 				                    <div class="col-md-6">
 				                       <div class="form-group">
-				    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción." required="required">
+				    						<select class="form-control" id="tipo_doc" name="tipo_doc" data-pattern-error="Selecciona una opción.">
 											    <option selected>Documento</option>
 											    <option value="Pasaporte">Pasaporte</option>
 											    <option value="Cedula">Cédula</option>
@@ -43,7 +43,7 @@
 				                <div class="row">
 				                    <div class="col-md-6"> 
 				                      <div class="form-group">
-				    						<select class="form-control" id="sexo" name="sexo" required="required">
+				    						<select class="form-control" id="sexo" name="sexo">
 											    <option selected>Sexo</option>
 											    <option value="M">M</option>
 											    <option value="F">F</option>
@@ -72,7 +72,7 @@
 				                    </div> 
 				                    <div class="col-md-6">
 				        				<div class="form-group">
-				    						<select class="form-control" id="rol" name="rol" required="required">
+				    						<select class="form-control" id="rol" name="rol" required>
 											    <option selected>Tipo</option>
 											    <option value="4">Corredor</option>
 											</select>
@@ -121,7 +121,7 @@
 				                </div><br>
 
 					           	<div class="custom-control custom-switch" align="left">
-										  <input type="checkbox" class="custom-control-input" id="customSwitch1">
+										  <input type="checkbox" class="custom-control-input" id="customSwitch1" required>
 										  <label class="custom-control-label" for="customSwitch1">Acepto los términos & condiciones y la política de privacidad.</label>
 								</div><br>
 
