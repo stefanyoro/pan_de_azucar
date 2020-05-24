@@ -91,7 +91,8 @@
      <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="/img/logotipo1.png" class="card-img" alt="...">
+      <!-- <img src="/img/logotipo1.png" class="card-img" alt="..."> -->
+      <img src="{{\Storage::url($personaInscribir->carrera->foto)}}" width="100%" height="100%">
     </div>
     <div class="col-md-8">
       <div class="card-body">
