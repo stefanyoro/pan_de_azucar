@@ -21,7 +21,7 @@
 		  		<div class="row">
 		    		<div class="">
 				    	
-				        <form method="post"action="{{route('guardarInscripcionCorredores')}}">@csrf     
+				        <form method="post"action="{{route('guardarInscripcionCorredores')}}" enctype="multipart/form-data" >@csrf     
 				                    <div class="col-md-9">
 				                    	<p style="text-align: left;">
 				                    	
@@ -77,9 +77,14 @@
 			  	</div>
 
 		  		<div class="card-body">
-		    		<div class="">
+		    		
 				    	
 				<div class="row">
+									<div class="col-md-12">
+				                    	<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Capture de Pantalla:</p> 
+				                    	<input type="file" class="form-control" name="comprobante">
+				                    </div>  
+
 				                    <div class="col-md-4">
 				                    	<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Metodo de pago:</p>  
 				                    	<select  class="form-control" name="metodoPago">

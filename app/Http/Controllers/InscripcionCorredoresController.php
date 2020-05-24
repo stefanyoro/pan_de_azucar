@@ -9,6 +9,8 @@ use App\Carrera;
 use App\Banco;
 use App\Corredor;
 use App\Inscribir;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Auth;
 class InscripcionCorredorescontroller extends Controller
 {
@@ -34,7 +36,12 @@ class InscripcionCorredorescontroller extends Controller
     public function guardarInscripcionCorredores(Request $request)
     {
         //modelo
-        
+        //dd($request->file('comprobante'));
+        $comprobante = $request->file("comprobante");
+        $extension = $comprobante->getClientOriginalExtension();
+        Storage::disk('public')->put($comprobante->getFilename().".".$extension, File::get($comprobante));
+
+
         $inscribir = new Inscribir;
         $inscribir->corredor_id = Auth::user()->corredor->id;
         $inscribir->carrera_id = $request->carrera_id;
@@ -44,6 +51,9 @@ class InscripcionCorredorescontroller extends Controller
         $inscribir->descripcion = $request->descripcion;
         $inscribir->monto = $request->monto;
         $inscribir->referencia = $request->referencia;
+        $inscribir->comprobante = $comprobante->getFilename().".".$extension;
+
+
         $inscribir->save();
         return redirect()->back()->with('data',['mensaje'=>'Esperando Confirmaciòn de pago']);
     }
@@ -67,16 +77,27 @@ class InscripcionCorredorescontroller extends Controller
     public function modificarPago(Request $request)
     {
 
-     $inscribir = Inscribir::find($request->id);
+        if ($request->comprobante != null) {
+            $comprobante = $request->file("comprobante");
+            $extension = $comprobante->getClientOriginalExtension();
+            Storage::disk('public')->put($comprobante->getFilename().".".$extension, File::get($comprobante));    
+        }
+        
 
+     $inscribir = Inscribir::find($request->id);
         $inscribir->metodoPago = $request->metodoPago;
        $inscribir->banco = $request->banco;
         $inscribir->fecha = $request->fecha;
         $inscribir->descripcion = $request->descripcion;
         $inscribir->monto = $request->monto;
         $inscribir->referencia = $request->referencia;
+
+        if ($request->comprobante != null)
+        $inscribir->comprobante = $comprobante->getFilename().".".$extension;
         $inscribir->save();        
+        
         return redirect()->back();   
+
     }
 
    
