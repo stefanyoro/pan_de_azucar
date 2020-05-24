@@ -131,18 +131,43 @@
               @endif
             </ul>
            @endguest
-            
-            <ul class="navbar-nav ml-auto">
+        
+
                         <!-- Authentication Links -->
                         @guest
                             
                         @else
+                          <ul class="navbar-nav ml-auto ">
+                          <li class="nav-item dropdown ">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if(App\Inscribir::where('estatus', 1)->count() == 0)
+                                <span class="fa fa-bell-slash-o fa-2x"></span>
+                                @else
+                                <span class="fa fa-bell fa-2x"></span>
+                                @endif
+                                </a>
+
+                                <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+                            @if(Auth::user()->rol == '1')
+                                @if(App\Inscribir::where('estatus', 1)->count() == 0)
+                                    <a class="dropdown-item" href="#">No hay nada para mostrar</a>
+                                @else
+                                    <a class="dropdown-item" href="{{ route('verificarPago') }}">Faltan {{App\Inscribir::all()->count()}} pagos por verificar</a>
+                                @endif
+                            @endif
+                            @if(Auth::user()->rol == '4')
+                                <a class="dropdown-item" href="#">11</a>
+                            @endif
+                                  </div>
+                            </li>
+                          </ul>
+                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                   <a class="dropdown-item" href="verPerfil"> 
                                     <svg class="bi bi-person-square" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                       <path fill-rule="evenodd" d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z" clip-rule="evenodd"/>
