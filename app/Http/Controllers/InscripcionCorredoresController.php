@@ -112,6 +112,21 @@ class InscripcionCorredorescontroller extends Controller
 
     }
     
+    public function verificarPago()
+    {
+        $inscribir = Inscribir::where('estatus', 1)->get();
+        
+         return view('verificarPago',['inscribir'=>$inscribir]);
 
+    }
+
+    public function comprobarPago(Request $id)
+    {
+        $inscribir = Inscribir::find($id)->first();
+        $inscribir->estatus = 0;
+        $inscribir->save();
+
+        return redirect()->back()->with('data',['mensaje'=>'Pago aprobado']);  
+    }
 
 }

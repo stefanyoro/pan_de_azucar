@@ -98,8 +98,9 @@
         <h5 class="card-title">{{$carrera->nom_carrera}}</h5>
         <p> Lugar:{{$carrera->lugar_salida}} - Salida{{$carrera->lugar_llegada}} -hora{{$carrera->hora}}{{$carrera->meridiano}} - -categoria categoria{{$carrera->categoria}} -monto{{$carrera->monto}}</p>
 
+ @if($personaInscribir->estatus != 0)
         <button type="submit" class="btn btn-warning" value="{{$personaInscribir->id}}" aria-hidden="true"  data-toggle="modal" data-target="#modalModificarPago_{{$personaInscribir->id}}"><i class="fa fa-credit-card"></i>Modificar</button>
-     
+@endif
      <!-- Modal modificar -->
 <div class="modal fade" id="modalModificarPago_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="modalModificarPago_{{$personaInscribir->id}}" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -167,14 +168,15 @@
   </div>
 </div>
  
-      @csrf
+      @if($personaInscribir->estatus == 0)
       <a  href="{{route('recibo', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
-
+      @endif
 <!-- Button trigger modal -->
+ @if($personaInscribir->estatus != 0)
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_{{$personaInscribir->id}}">
   Comprobante
 </button>
-
+@endif
 <!-- Modal -->
 <div class="modal fade" id="exampleModal_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModal_{{$personaInscribir->id}}_Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
