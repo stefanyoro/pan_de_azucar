@@ -59,7 +59,7 @@ class InscripcionCorredorescontroller extends Controller
     {
         if (Auth::user()->rol == 4) {
             if (Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first() != null){
-                
+
             $inscribir = Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first();
 
             $inscribir->estatus_corredor = 1;
@@ -98,6 +98,7 @@ class InscripcionCorredorescontroller extends Controller
         $inscribir->descripcion = $request->descripcion;
         $inscribir->monto = $request->monto;
         $inscribir->referencia = $request->referencia;
+        $inscribir->observacion = null;
 
         if ($request->comprobante != null)
         $inscribir->comprobante = $comprobante->getFilename().".".$extension;
@@ -121,7 +122,7 @@ class InscripcionCorredorescontroller extends Controller
     
     public function verificarPago()
     {
-        $inscribir = Inscribir::where('estatus', 1)->get();
+        $inscribir = Inscribir::where('estatus', 1)->where('observacion', null)->get();
         
          return view('verificarPago',['inscribir'=>$inscribir]);
 
@@ -141,5 +142,15 @@ class InscripcionCorredorescontroller extends Controller
     {
         $carreras = Carrera::all();
         return view('carreraDisponible',['carreras'=> $carreras]);
+    }
+        public function observacion(Request $request)
+    {
+         $inscribir = Inscribir::find($request->id);
+         
+            $inscribir->observacion = $request->observacion;
+           // $inscribir->estatus = 0;
+            $inscribir->save();
+
+        return redirect()->back()->with('data',['mensaje'=>'Observacion enviada']); 
     }
 }

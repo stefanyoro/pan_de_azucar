@@ -53,15 +53,49 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Informacion de pago de: {{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="post">@csrf
-          
-        </form>
+        <div class="col-md-12">
+
+                   <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i>Banco:</p>  
+                              <input disabled type="text" class="form-control" name="monto" value="{{App\Banco::where('codigo', $inscribirpersona->banco)->first()->nombre}}">
+                          
+                            </div>
+
+                   <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i>Metodo de pago:</p>  
+                              <input disabled type="text" class="form-control" name="monto" value="{{$inscribirpersona->metodoPago}}">
+                          
+                            </div>
+                            
+                  <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i>Monto:</p>  
+                              <input disabled type="number" class="form-control" name="monto" value="{{$inscribirpersona->monto}}">
+                          
+                            </div>
+                              <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>     
+                            Nº de referencia:</p>
+                              <input disabled type="number" class="form-control" name="referencia" value="{{$inscribirpersona->referencia}}">
+                            </div>
+                            <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-calendar" aria-hidden="true"></i> Fecha:</p>
+                              <input disabled type="date" class="form-control" name="fecha"  required="required" value="{{$inscribirpersona->fecha}}">
+                            </div> 
+                             <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                              Descripciòn:</p>
+                              <input disabled type="text" class="form-control" name="descripcion"  required="required" value="{{$inscribirpersona->descripcion}}">
+                            </div> 
+
+
+      
+      </div>
       </div>
     </div>
   </div>
@@ -72,15 +106,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Comprobante de pago de: {{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="post">@csrf
-          
-        </form>
+         <img src="{{\Storage::url($inscribirpersona->comprobante)}}" width="100%" height="100%">
       </div>
     </div>
   </div>
@@ -91,7 +123,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Verificar Pago {{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Verificar Pago de:  {{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -111,14 +143,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">{{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Rechazar metodo de pago de: {{$inscribirpersona->corredor->user->persona->nombre}} {{$inscribirpersona->corredor->user->persona->apellido}} </h5>
+       
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="" method="post">@csrf
-          
+        <form action="observacion" method="post">@csrf
+        <p style="text-align: left;"><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i>Observaciones</p>
+          <input type="text" name="observacion" class="form-control">
+           <button name="id" value="{{$inscribirpersona->id}}" type="submit" class="btn btn-success">Aceptar</button>
         </form>
       </div>
     </div>

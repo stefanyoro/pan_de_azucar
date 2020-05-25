@@ -18,6 +18,9 @@ class Inscribir extends Model
      return $this->belongsTo(Carrera::class, 'carrera_id');
     }
 
-    
+     public function banco()
+    {
+        return $this->hasOne(Banco::class, 'banco');
+    }
 
 }
