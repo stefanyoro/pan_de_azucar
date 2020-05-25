@@ -107,7 +107,7 @@
             <div class="sched d-block d-lg-flex">
               <div class="bg-image order-2" style="background-image: url('img/pan6.jpg'); height: 22vw;"></div>
                 <div class="text order-1">                
-                  <h3>{{ $clave + 1}}º Carrera <p style="text-indent: 05%;">{{ $carrera->nom_carrera}}</p></h3>
+                  <h3><!--{{ $clave + 1}}º<p style="text-indent: 05%;"> Carrera -->{{ $carrera->nom_carrera}}</p></h3>
                   <p>El lugar de salida sera, {{ $carrera->lugar_salida}} y la meta final sera {{ $carrera->lugar_llegada}}.</p>
                   <p class="sched-time">
                     <span><span class="fa fa-clock-o"></span> {{ $carrera->hora}}{{ $carrera->meridiano}}</span> <br>
