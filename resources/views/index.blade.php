@@ -117,15 +117,18 @@
                   @guest
 
                   @else
-                    @if(App\Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('carrera_id', $carrera->id)->count() == 1)
-                      <p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-info btn-sm">Inscrito</span></p>
+                  @if(Auth::user()->rol == 4)
+                      @if(App\Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('carrera_id', $carrera->id)->count() == 1)
+                          <p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-info btn-sm">Inscrito</span></p>
 
-                    
-                    @elseif($carrera->cupos > App\Inscribir::where('carrera_id', $carrera->id)->count())
-                    <p align="right"><a href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-success btn-sm">Inscribete</a></p>
+                        
+                        @elseif($carrera->cupos > App\Inscribir::where('carrera_id', $carrera->id)->count())
+                        <p align="right"><a href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-success btn-sm">Inscribete</a></p>
 
-                    @else
-                    <p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-danger btn-sm">Agotado</span></p>
+                        @else
+                        <p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-danger btn-sm">Agotado</span></p>
+                      @endif
+
                     @endif
                   @endif
                   </p>
