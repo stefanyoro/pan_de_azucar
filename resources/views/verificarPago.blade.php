@@ -38,14 +38,14 @@
                           <td>{{$inscribirpersona->corredor->user->persona->apellido}}</td>
                           <td>V-{{$inscribirpersona->corredor->user->persona->numero_doc}}</td>
                           <td>
-                            <button class="btn btn-success" data-toggle="modal"  data-toggle="modal" data-target="#informacion_{{$inscribirpersona->id}}"><b><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-info" data-toggle="modal"  data-toggle="modal" data-target="#informacion_{{$inscribirpersona->id}}" title="Informacion"><b><i class="fa fa-info" aria-hidden="true"></i></button>
 
 
-                            <button class="btn btn-warning" data-toggle="modal"  data-toggle="modal" data-target="#comprobante_{{$inscribirpersona->id}}"><b><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-warning" data-toggle="modal"  data-toggle="modal" data-target="  #comprobante_{{$inscribirpersona->id}}"title="comprobante"><b><i class="fa fa-eye" aria-hidden="true"></i></button>
 
-                            <button class="btn btn-info" data-toggle="modal"  data-toggle="modal" data-target="#aceptar_{{$inscribirpersona->id}}"><b><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-success" data-toggle="modal"  data-toggle="modal" data-target="#aceptar_{{$inscribirpersona->id}}"title="Aceptar"><b><i class="fa fa-check-circle" aria-hidden="true"></i></button>
 
-                            <button class="btn btn-danger" data-toggle="modal"  data-toggle="modal" data-target="#rechazar_{{$inscribirpersona->id}}"><b><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                            <button class="btn btn-danger" data-toggle="modal"  data-toggle="modal" data-target="#rechazar_{{$inscribirpersona->id}}"title="Rechazar"><b><i class="fa fa-window-close-o" aria-hidden="true"></i></button>
                           </td>
                         </tr>
 <!-- Modal informacion -->

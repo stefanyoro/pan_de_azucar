@@ -49,7 +49,6 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::get('listadoPDF', 'CarreraController@listadoPDF')->name('listadoPDF');
 
 // Incripción de Corredores
-Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
 
 Route::get('inscripcionCorredores/{id}', 'InscripcionCorredoresController@inscripcioncorredores');
 
@@ -66,7 +65,7 @@ Route::get('recibo/{id}', 'InscripcionCorredorescontroller@recibo')->name('recib
 Route::get('verificarPago', 'InscripcionCorredorescontroller@verificarPago')->name('verificarPago');
 
 Route::post('comprobarPago', 'InscripcionCorredorescontroller@comprobarPago')->name('comprobarPago');
-
+Route::get('carreraDisponible', 'InscripcionCorredorescontroller@carreraDisponible')->name('carreraDisponible');
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');

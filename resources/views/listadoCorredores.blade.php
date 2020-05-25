@@ -3,6 +3,7 @@
 @section('content')
  <section class="section">
   @if(Auth::user()->rol == '4')
+
  <h1> <p class="text-danger" align="center">Carreras Inscriptas por el Corredor</p></h1>
 
   @endif
@@ -43,7 +44,7 @@
     @endif
     @foreach($carrera->inscribir as $clave=> $personaInscribir)
     @if(Auth::user()->rol == '1')
-    @if($personaInscribir->estatus == '1')
+    @if($personaInscribir->estatus == '0')
 
     <tr>
       <th scope="row">{{$clave+1}}</th>

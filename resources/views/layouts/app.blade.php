@@ -91,7 +91,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="{{ route('InscripcionCorredores') }}"><i class="fa fa-check-square" aria-hidden="true"></i> Carreras disponibles</a>
+                  <a class="dropdown-item" href="{{ route('carreraDisponible') }}"><i class="fa fa-check-square" aria-hidden="true"></i> Carreras disponibles</a>
                   <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-list-ol" aria-hidden="true"></i> Mis inscripciones</a>
                 </div>
               </li>
@@ -140,11 +140,22 @@
                           <ul class="navbar-nav ml-auto ">
                           <li class="nav-item dropdown ">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(App\Inscribir::where('estatus', 1)->count() == 0)
-                                <span class="fa fa-bell-slash-o fa-2x"></span>
-                                @else
-                                <span class="fa fa-bell fa-2x"></span>
+                                @if(Auth::user()->rol == '1')
+                                  @if(App\Inscribir::where('estatus', 1)->count() == 0)
+                                  <span class="fa fa-bell-slash-o fa-2x"></span>
+                                  @else
+                                  <span class="fa fa-bell fa-2x"></span>
+                                  @endif
                                 @endif
+
+                                @if(Auth::user()->rol == '4')
+                                  @if(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->count() !== 0)
+                                  <span class="fa fa-bell fa-2x"></span>
+                                  @else
+                                  <span class="fa fa-bell-slash-o fa-2x"></span>
+                                  @endif
+                                @endif
+
                                 </a>
 
                                 <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
@@ -152,11 +163,18 @@
                                 @if(App\Inscribir::where('estatus', 1)->count() == 0)
                                     <a class="dropdown-item" href="#">No hay nada para mostrar</a>
                                 @else
-                                    <a class="dropdown-item" href="{{ route('verificarPago') }}">Faltan {{App\Inscribir::all()->count()}} pagos por verificar</a>
+                                    <a class="dropdown-item" href="{{ route('verificarPago') }}">Pagos por verificar: {{App\Inscribir::where('estatus', 1)->count()}}</a>
                                 @endif
                             @endif
                             @if(Auth::user()->rol == '4')
-                                <a class="dropdown-item" href="#">11</a>
+                              @if(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->count() !== 0)
+
+                              @foreach(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->get() as $verificaciones)
+                                <a class="dropdown-item" href="{{ route('listadoCorredores') }}">Pago verificado de la carrera {{$verificaciones->carrera->nom_carrera}}</a>
+                              @endforeach
+                              @else
+                                 <a class="dropdown-item" href="#">No hay nada para mostrar</a>
+                              @endif
                             @endif
                                   </div>
                             </li>

@@ -18,19 +18,16 @@ class InscripcionCorredorescontroller extends Controller
 
 
     // METODOO VERDE//
-	public function inscripcioncorredores($id=null)
+	public function inscripcioncorredores($id)
     {
+
      //consulta carrera
-        if($id == null){
-            $carreras = Carrera::all();
+        $inscribir= Inscribir::all();
         
-        }else{
-            $carreras = Carrera::where('id', $id)->get();
-        }
-        
+        $carrera = Carrera::find($id);
         $bancos = Banco::all();
         
-         return view('inscripcionCorredores')->with(['carreras'=> $carreras,'bancos'=> $bancos]); 
+         return view('inscripcionCorredores')->with(['carrera'=> $carrera,'bancos'=> $bancos, 'inscribir'=> $inscribir]); 
     }
     
     public function guardarInscripcionCorredores(Request $request)
@@ -60,8 +57,18 @@ class InscripcionCorredorescontroller extends Controller
     
     public function listadocorredores()
     {
+        if (Auth::user()->rol == 4) {
+            if (Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first() != null){
+                
+            $inscribir = Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first();
+
+            $inscribir->estatus_corredor = 1;
+            $inscribir->save();
+            } 
+        }
           $carreras = Carrera::all();
           $bancos = Banco::all();
+
 
          return view('listadoCorredores')->with(['carreras'=> $carreras,'bancos'=> $bancos]);
 
@@ -124,9 +131,15 @@ class InscripcionCorredorescontroller extends Controller
     {
         $inscribir = Inscribir::find($id)->first();
         $inscribir->estatus = 0;
+        $inscribir->estatus_corredor = 0;
         $inscribir->save();
 
         return redirect()->back()->with('data',['mensaje'=>'Pago aprobado']);  
     }
 
+        public function carreraDisponible()
+    {
+        $carreras = Carrera::all();
+        return view('carreraDisponible',['carreras'=> $carreras]);
+    }
 }

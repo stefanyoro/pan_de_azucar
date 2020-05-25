@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- END slider -->
-   
+
     <section class="section">
     
     <div class="container" align="center">
@@ -32,11 +32,11 @@
 				                </div>
 				               
 				                	<div class="col-md-4"> 
-				                		<p style="text-align: left;">
+				                		<p style="text-align: left;"align="center">
 				                    	
 				                    	Nombre:</p>
-				                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()-> persona->nombre}}" readonly
-				                  >
+				                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()-> persona->nombre}}" readonly>
+				                  
 				                    </div> 
 				                    <div class="col-md-4">
 				                    	<p style="text-align: left;"align="center">
@@ -60,16 +60,53 @@
 			    	</a>
 			  	</div>
 			  	
-			  	<div class="col-md-12"> <br>
-				                    	<p style="text-align: left;"<i class="fa fa-newspaper-o" aria-hidden="true"></i>
-				                    	Informacion de Carrera:
-				                      <select class="form-control" name="carrera_id">
-				                      	@foreach($carreras as $carrera)
-				                      	<option value="{{$carrera->id}}">Nombre:{{$carrera->nom_carrera}} -Lugar {{$carrera->lugar_salida}} - hora{{$carrera->hora}} {{$carrera->meridiano}}
+  					<div class="row">
+  						
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Nombre:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->nom_carrera}}" readonly>
+	                    </div>
 
-				                         </option>
-				                      	@endforeach
-				                      </select>
+	                    
+	                   	 <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Lugar de Llegada:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->lugar_salida}}" readonly>
+	                    </div>
+
+	                    
+	                  	 <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	lugar de Salida:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->lugar_llegada}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Hora:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->hora}} {{$carrera->meridiano}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Fecha:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->fecha_carr}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	modalidad:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->modalidad}}" readonly>
+	                    </div>
+  					
+				                      
 				    </div>
 				    <br>
 				    <div class="card-header" style="background-color: #B03A2E;">
@@ -136,7 +173,7 @@
 					                    <div class="col-md-12">
 					                    	<p style="text-align: left;">
 					                    </p>
-					                      <input class="btn btn-success" type="submit" value="Enviar">
+					                      <button class="btn btn-success" name="carrera_id" type="submit" value="{{$carrera->id}}">Enviar</button>
 					                    </div>  
 					                    <br>
 					                   </div>
