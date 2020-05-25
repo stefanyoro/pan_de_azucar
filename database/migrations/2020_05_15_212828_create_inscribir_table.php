@@ -22,7 +22,7 @@ class CreateInscribirTable extends Migration
 
             $table->bigInteger('carrera_id')->unsigned();
             $table->foreign('carrera_id')->references('id')->on('carrera')->onDelete('cascade');
-
+            $table->string('comprobante');
             $table->string('metodoPago');
             $table->string('banco');
             $table->string('fecha');
@@ -30,7 +30,7 @@ class CreateInscribirTable extends Migration
             $table->string('monto');
             $table->string('referencia');
             $table->boolean('estatus')->default(1);
-
+            $table->boolean('estatus_corredor')->default(1);
             $table->timestamps();
 
         });

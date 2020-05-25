@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- END slider -->
-   
+
     <section class="section">
     
     <div class="container" align="center">
@@ -21,7 +21,7 @@
 		  		<div class="row">
 		    		<div class="">
 				    	
-				        <form method="post"action="InscripcionCorredor">@csrf     
+				        <form method="post"action="{{route('guardarInscripcionCorredores')}}" enctype="multipart/form-data" >@csrf     
 				                    <div class="col-md-9">
 				                    	<p style="text-align: left;">
 				                    	
@@ -32,11 +32,11 @@
 				                </div>
 				               
 				                	<div class="col-md-4"> 
-				                		<p style="text-align: left;">
+				                		<p style="text-align: left;"align="center">
 				                    	
 				                    	Nombre:</p>
-				                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()-> persona->nombre}}" readonly
-				                  >
+				                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos." value="{{Auth::user()-> persona->nombre}}" readonly>
+				                  
 				                    </div> 
 				                    <div class="col-md-4">
 				                    	<p style="text-align: left;"align="center">
@@ -59,19 +59,54 @@
 			    	<a style="color: white;">Informaciòn de Carrera
 			    	</a>
 			  	</div>
-			  	<div class="col-md-12">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Informacion de Carrera:
-				                      <select class="form-control" name="carrera_id">
-				                      	@foreach($carreras as $carrera)
-				                      	<option value="{{$carrera->id}}">Nombre:{{$carrera->nom_carrera}} -Lugar {{$carrera->lugar_salida}} - Salida{{$carrera->lugar_llegada}} - hora{{$carrera->hora}} {{$carrera->meridiano}} -  -categoria 
-				                      	categoria{{$carrera->categoria}} -
-				                     	monto{{$carrera->monto}}
+			  	
+  					<div class="row">
+  						
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Nombre:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->nom_carrera}}" readonly>
+	                    </div>
 
-				                         </option>
-				                      	@endforeach
-				                      </select>
+	                    
+	                   	 <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Lugar de Llegada:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->lugar_salida}}" readonly>
+	                    </div>
+
+	                    
+	                  	 <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	lugar de Salida:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->lugar_llegada}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Hora:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->hora}} {{$carrera->meridiano}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	Fecha:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->fecha_carr}}" readonly>
+	                    </div>
+
+	                    <div class="col-md-4">
+	                    	<p style="text-align: left;">
+	                    	
+	                    	modalidad:</p>
+	                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->modalidad}}" readonly>
+	                    </div>
+  					
+				                      
 				    </div>
 				    <br>
 				    <div class="card-header" style="background-color: #B03A2E;">
@@ -79,11 +114,16 @@
 			  	</div>
 
 		  		<div class="card-body">
-		    		<div class="">
+		    		
 				    	
 				<div class="row">
+									<div class="col-md-12">
+				                    	<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Capture de Pantalla:</p> 
+				                    	<input type="file" class="form-control" name="comprobante">
+				                    </div>  
+
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">Metodo de pago:</p>  
+				                    	<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Metodo de pago:</p>  
 				                    	<select  class="form-control" name="metodoPago">
 				                    		<option>Pago Movil</option>
 				                    		<option>Transferencia</option>
@@ -91,9 +131,10 @@
 				                    </div>  
 	
 									<div class="col-md-4">
-				                    	<p style="text-align: left;">Banco emisor:</p>  
+				                    	<p style="text-align: left;"><i class="fa fa-university" aria-hidden="true"></i> Banco emisor:</p>  
 				                    
-    								<select class="form-control" id="banco" name="banco"><option value="" selected disabled>Seleccione </option>
+    								<select class="form-control" id="banco" name="banco">
+    									<!--<option value="" selected disabled>Seleccione </option>-->
     								 @foreach($bancos as $banco)
                       					<option  value="{{$banco->codigo}}">
                        					 {{$banco->nombre}}
@@ -104,46 +145,40 @@
 								</div>
 
 									<div class="col-md-4">
-				                    	<p style="text-align: left;">Monto:</p>  
-				                      <input type="number" class="form-control" name="monto"  required="required" value="">
+				                    	<p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i> Monto:</p>  
+				                      <input id="monto" type="number" class="form-control" name="monto"  required="required" value="{{$monto = $carrera->monto}}" readonly>
 				                    <br>
 				                    </div>
 				                   
 				                      <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Nº de referencia:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> Nº de referencia:</p>
 				                      <input type="number" class="form-control" name="referencia"  required="required" value="">
 				                    </div>
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Fecha:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-calendar" aria-hidden="true"></i> Fecha:</p>
 				                      <input type="date" class="form-control" name="fecha"  required="required" value="">
 				                    </div> 
 				                     <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Descripciòn:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Descripciòn:</p>
 				                      <input type="text" class="form-control" name="descripcion"  required="required" value="">
 				                    </div> 
+				                    <div id="container"><h1>KIT</h1>
+									<input type="checkbox" name="ch1" value="{{$carrera->camisa}}" id="qr1" />Camisa <br />
+									<input type="checkbox" name="ch1" value="{{$carrera->comida}}" id="qr1" />Comida <br />
+									<input type="checkbox" name="ch1" value="{{$carrera->bebida}}" id="qr1" />Hidrataciòn <br />
+									</div>
+                 
+					                </div> 
+					                </div>  
+					                    <div class="col-md-12">
+					                    	<p style="text-align: left;">
+					                    </p>
+					                      <button class="btn btn-success" name="carrera_id" type="submit" value="{{$carrera->id}}">Enviar</button>
+					                    </div>  
+					                    <br>
+					                   </div>
+	   				                </div>
 
-
-				           </div>                 
-				                </div> 
-
-				                </div>  
-	
-				               
-				                    <div class="col-md-12">
-				                    	<p style="text-align: left;">
-				                    	
-				                    </p>
-				                      <input class="btn btn-success" type="submit" value="Enviar">
-				                    </div>  
-				                    <br>
-				                   </div>
-   				                </div>
 
 				      	</form>
 
@@ -155,4 +190,28 @@
 
     </section>
 
+@endsection
+@section('scriptJS')
+<script type="text/javascript">
+	function displayVals() {
+      calcUsage();
+}
+var $cbs = $('input[name="ch1"]');
+function calcUsage() {
+    var total = {{$monto}};
+    $cbs.each(function() {
+        if (this.checked)
+            total = parseInt(total) + parseInt(this.value);
+    });
+    $("#usertotal").text(total);
+    $("#monto").val(total);
+}
+
+    $("select").change(displayVals);
+    displayVals();
+//For  checkboxes
+
+$cbs.click(calcUsage);
+
+</script>
 @endsection

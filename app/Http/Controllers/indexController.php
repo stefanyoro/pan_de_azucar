@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Carrera;
+use App\Inscribir;
 
 class indexController extends Controller
 {
@@ -19,7 +20,8 @@ class indexController extends Controller
      */
     public function indexConsulta()
     {
+        $inscribir= Inscribir::all();
        $carreras = Carrera::all();
-        return view('index')->with('carreras',$carreras); 
+        return view('index')->with(['carreras'=> $carreras, 'inscribir'=> $inscribir]);
     }
 }
