@@ -15,19 +15,14 @@ class CreateResultadoTable extends Migration
     {
         Schema::create('resultado', function (Blueprint $table) {
             $table->bigIncrements('id');
-            //Datos del corredor
-            $table->bigInteger('corredor_id')->unsigned();
-            $table->foreign('corredor_id')->references('id')->on('corredor')->onDelete('cascade');
-            /*//Datos de los inscritos
-            /*$table->bigInteger('inscrito_id')->unsigned();
-            $table->foreign('inscrito_id')->references('id')->on('inscribir')->onDelete('cascade');*/
-            //Datos de la carrera
-            $table->bigInteger('carrera_id')->unsigned();
-            $table->foreign('carrera_id')->references('id')->on('carrera')->onDelete('cascade');
+            
+            //Datos de los inscritos
+            $table->bigInteger('inscribir_id')->unsigned();
+            $table->foreign('inscribir_id')->references('id')->on('inscribir')->onDelete('cascade');
             //datos de la vista
             $table->string('tiempo');
+            $table->string('vuelta');
             $table->string('posicion');
-
             $table->timestamps();
         });
     }

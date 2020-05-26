@@ -272,10 +272,15 @@
             </div>  
           </div><br>
           <div class="col-md-12" align="right">
-          <a href="{{ route('listadoPDF') }}" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+          <a href="listadoPDF/1" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
           </div>
-             <!-- </form>-->
+          <div class="col-md-12" align="right">
+          <a href="listadoPDF/2" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
           </div>
+          <div class="col-md-12" align="right">
+          <a href="listadoPDF/3" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>

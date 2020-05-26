@@ -26,8 +26,7 @@
 				<div class="card" style="width: 60em;">
 				  	<div class="card-body" style="border-radius: 30px;">
 						@foreach ($carreras as $carrera)
-						imagen
-					  	<img src="{{storage_path('app/public/$carrera->foto')}}" class="card-img-top" alt="" width="150" height="450">
+					  	<img src="{{\Storage::url($carrera->foto)}}" width="100%" height="50%">
 					  	<h2 class="card-title" aling="center height:50%" style="color: white; text-align: center; background-color:#B03A2E; height: 03vw;">{{ $carrera->nom_carrera}}</h2>
 					  	<table class="table table-borderless">
 							<thead>

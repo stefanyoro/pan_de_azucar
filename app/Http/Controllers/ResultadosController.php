@@ -4,39 +4,32 @@ namespace App\Http\Controllers;
 //clase MODELO
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
-use App\User;
 use App\Carrera;
-use App\Corredor;
-//use App\Inscribir;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Auth;
+use App\Resultado;
 
 
 class ResultadosController extends Controller
 {
-	public function registroResultados($id)
+	public function registroResultados()
     {
         //consulta carrera
-        $resultado = resultado::all();
-        $carrera = Carrera::find($id);
-        //dd($resultado);
+        //$resultado = resultado::all();
+        $carreras = Carrera::all();
+        //dd($carreras);
 
-        return view('resultadosCarreras')->with(['carreras'=> $carreras, 'resultado'=> $resultado]);
+        return view('resultadosCarreras')->with(['carreras'=> $carreras]);
     }
     
     public function RegistrarResultados(Request $request)
     {
             //dd($request);
-            /*$resultado = new Resultado;
-                $resultado->corredor_id = Auth::user()->corredor->id;
-                $resultado->carrera_id = Auth::user()->carrera_id;
+            $resultado = new Resultado;
+                $resultado->inscribir_id = $request->id;
                 $resultado->tiempo = $request->tiempo;
+                $resultado->vuelta = $request->vuelta;
                 $resultado->posicion = $request->posicion;
-            $resultado->save();*/
-        return view('resultadosCarreras');
-        
+            $resultado->save();
+        return redirect()->back();
     }
     public function verResultados()
     {

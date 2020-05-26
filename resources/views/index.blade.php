@@ -102,10 +102,11 @@
  <div class="container">
         <div class="row no-gutters">
           @foreach ($carreras as $clave => $carrera)
-           @if ($carrera->estatus == 1)
+           @if (($carrera->estatus == 1) and ($carrera->fecha_carr > now()->toDateString()
+  ))
           <div class="col-md-6">
             <div class="sched d-block d-lg-flex">
-              <div class="bg-image order-2" style="background-image: url('img/pan6.jpg'); height: 22vw;"></div>
+              <div class="bg-image order-2"><img src="{{\Storage::url($carrera->foto)}}" width="100%" height="100%"></div>
                 <div class="text order-1">                
                   <h3><!--{{ $clave + 1}}º<p style="text-indent: 05%;"> Carrera -->{{ $carrera->nom_carrera}}</p></h3>
                   <p>El lugar de salida sera, {{ $carrera->lugar_salida}} y la meta final sera {{ $carrera->lugar_llegada}}.</p>
@@ -113,7 +114,7 @@
                     <span><span class="fa fa-clock-o"></span> {{ $carrera->hora}}{{ $carrera->meridiano}}</span> <br>
                     <span><span class="fa fa-calendar"></span> {{ $carrera->fecha_carr}}</span> <br>
                     <span><span class="fa fa-bicycle"></span> {{ $carrera->modalidad}}</span> <br>
-                    <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos}}</span></p>
+                    <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos - App\Inscribir::where('carrera_id', $carrera->id)->count()}}</span></p>
                   @guest
 
                   @else

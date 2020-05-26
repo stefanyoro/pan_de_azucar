@@ -10,13 +10,14 @@
             <p  style="color:white; text-align:left;"> Registro de Resultados</p> 
         </div>
         <!--Datos de las carreras-->
+        @foreach($carreras as $carrera)
         <div class="accordion" id="accordionExample">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header" id="headingOne" style="border-color:#B03A2E; background: transparent;">
                 <h5 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <p  style="color:#B03A2E;"> Nombre de la carrera </p>
+                    <p  style="color:#B03A2E;"> {{$carrera->nom_carrera}}</p>
                   </button>
                 </h5>
               </div>
@@ -34,19 +35,20 @@
                               <th>         </th>
                             </tr>
                           </thead>
-                            <tbody>    
+                            <tbody>
+                            @foreach($carrera->inscribir as $clave=> $personaInscribir)
                                 <tr>
                                   <td> 1 </td>                              
-                                  <td>Odalys</td>
-                                  <td>      
+                                  <td>{{$personaInscribir->corredor->user->persona->nombre}}</td>
+                                  <td>     
                                     <!--<form action="listarCarrera" method="post">@csrf-->
                                     <!-- Tiempo-->  
                                     <div class="btn-group" role="group" aria-label="Basic example">
-                                        <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#exampleModal"class="btn btn-outline-info btn-sm">
+                                        <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#resultado_{{$personaInscribir->id}}"class="btn btn-outline-info btn-sm">
                                         Datos
                                       </button>
                                       <!-- Modal -->
-                                      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal fade" id="resultado_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                           <div class="modal-content">
                                             <div class="modal-header">
@@ -56,21 +58,24 @@
                                               </button>
                                             </div>
                                             <div class="modal-body">
-                                              Ingrese los datos del Corredor "nombreCorredor" en la carrera "Nom_carrera"
-                                              <div class="form-group">
+                                              Ingrese los datos del Corredor "nombreCorredor" en la carrera "Nom_carrera" 
+                                              <form method="post" action="resultadosCarreras">@csrf
+                                              <div class="row">
                                                 <div class="col-md-4">
-                                                  <i class="fa fa-clock-o" aria-hidden="true"></i><input type="text" class="form-control hora" id="hora" name="hora" placeholder="00:00" pattern="(?:0(?![0])|1(?![3-9])){1}\d{1}:[0-5]{1}\d{1}" required="La hora debe tener el formato 00:00 (01:00 por ejemplo)." value="">             
+                                                  <i class="fa fa-clock-o" aria-hidden="true"></i><input type="text" class="form-control tiempo" id="tiempo" name="tiempo" placeholder="00:00:00" pattern="(?:0(?![0])|1(?![3-9])){1}\d{1}:[0-5]{1}\d{1}:[0-5]{1}\d{1}" required="La tiempo debe tener el formato 00:00:00 (01:00:59 por ejemplo)." value="">             
                                                 </div>
                                                 <div class="col-md-4">
-                                                  <input type="text" class="form-control" id="vueltas" name="vueltas" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Vueltas" required="El valor sólo puede tener caracteres numéricos">
+                                                  <input type="text" class="form-control" id="vuelta" name="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Vueltas" required="El valor sólo puede tener caracteres numéricos">
                                                 </div>
                                                 <div class="col-md-4">
-                                                  <input type="text" class="form-control" id="posicion" name="posicion" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Posicion" required="El valor sólo puede tener caracteres numéricos">
+                                                  <input type="text" class="form-control" id="posicion" name="posicion" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Posicion" required="El valor sólo puede tener caracteres numéricos">
                                                 </div>
                                               </div>
+                                              
                                             </div>
                                             <div class="modal-footer">
-                                              <button type="button" class="btn btn-success" >Guardar</button>
+                                              <button type="submit" name="id" value="{{$personaInscribir->id}}" class="btn btn-success" >Guardar</button>
+                                          </form>
                                               <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
                                             </div>
                                           </div>
@@ -79,7 +84,8 @@
                                     </div>
                                   </td>
                                 </tr>
-                              </tbody>
+                              @endforeach
+                            </tbody>
                         </table>
                       </div>
                     </div>
@@ -89,6 +95,7 @@
             </div>
           </div>
         </div>
+        @endforeach
       </div> 
     </div>
   </div>

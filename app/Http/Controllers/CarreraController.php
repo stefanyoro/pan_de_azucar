@@ -96,11 +96,20 @@ class CarreraController extends Controller
         return redirect()->back();
 
     }
+        public function listadoPDF($id){
 
-        public function listadoPDF(){
+        if ($id == 1) {
+           $carreras = Carrera::all(); 
+        }elseif($id == 2){
+            //por transcurrido
+            $carreras = Carrera::all()->where('fecha_carr', '>', date('Y-m-d'));
+        }else{
+            //vencidas
+            $carreras = Carrera::all()->where('fecha_carr', '<=', date('Y-m-d')); 
+        }
 
-        $carreras = Carrera::all();
         $pdf = \PDF::loadView('listadoPDF',['carreras' => $carreras]);
+
 
      return $pdf->setPaper('a4','landscape')->stream('listadoPDF.pdf');
 

@@ -23,4 +23,9 @@ class Inscribir extends Model
         return $this->hasOne(Banco::class, 'banco');
     }
 
+     public function resultado()
+    {
+        return $this->belongsTo(Resultado::class, 'inscribir_id');
+    }
+
 }

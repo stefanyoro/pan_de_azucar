@@ -46,7 +46,7 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::post('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
 	Route::post('modificarCarrera', 'CarreraController@modificarCarrera')->name('modificarCarrera');
 	Route::post('eliminarCarrera', 'CarreraController@eliminarCarrera')->name('eliminarCarrera');
-	Route::get('listadoPDF', 'CarreraController@listadoPDF')->name('listadoPDF');
+	Route::get('listadoPDF/{id}', 'CarreraController@listadoPDF')->name('listadoPDF');
 
 // Incripción de Corredores
 
@@ -73,8 +73,9 @@ Route::post('observacion', 'InscripcionCorredoresController@observacion');
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 
 // Resultados de carreras
-	Route::get('resultadosCarreras/{id}', 'ResultadosController@registroResultados');
-	Route::get('resultadosCarreras', 'ResultadosController@RegistrarResultados')->name('resultadosCarreras');
+	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');
+	Route::post('resultadosCarreras', 'ResultadosController@RegistrarResultados')->name('resultadosCarreras');
+
 
 	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
 	Route::get('/home', 'HomeController@index')->name('home');
