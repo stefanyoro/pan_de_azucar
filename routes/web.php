@@ -71,7 +71,9 @@ Route::get('carreraDisponible', 'InscripcionCorredorescontroller@carreraDisponib
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 
 // Resultados de carreras
-	Route::get('resultadosCarreras', 'ResultadosController@vistaResultados')->name('resultadosCarreras');
+	Route::get('resultadosCarreras/{id}', 'ResultadosController@registroResultados');
+	Route::get('resultadosCarreras', 'ResultadosController@RegistrarResultados')->name('resultadosCarreras');
+
 	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
 	Route::get('/home', 'HomeController@index')->name('home');
 

@@ -20,8 +20,8 @@ class CreateResultadoTable extends Migration
             $table->foreign('corredor_id')->references('id')->on('corredor')->onDelete('cascade');
             /*//Datos de los inscritos
             /*$table->bigInteger('inscrito_id')->unsigned();
-            $table->foreign('inscrito_id')->references('id')->on('inscribir')->onDelete('cascade');*/
-            //Datos de la carrera
+            $table->foreign('inscrito_id')->references('id')->on('inscribir')->onDelete('cascade');
+            //Datos de la carrera*/
             $table->bigInteger('carrera_id')->unsigned();
             $table->foreign('carrera_id')->references('id')->on('carrera')->onDelete('cascade');
             //datos de la vista

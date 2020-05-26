@@ -267,23 +267,18 @@
                         </tr>
                       @endif 
                       @endforeach  
-                      </tbody>
-                    </table>
-                </div>  
-            </div><br>
-            <div class="col-md-12" align="right">
-              <a href="{{ route('listadoPDF') }}" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
-            </div>
+                    </tbody>
+              </table>
+            </div>  
+          </div><br>
+          <div class="col-md-12" align="right">
+          <a href="{{ route('listadoPDF') }}" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+          </div>
              <!-- </form>-->
           </div>
-        </div>
       </div>
     </div>
-      <!-- Button trigger modal -->
-
-<!-- Modal -->
-<!-- Button trigger modal -->
-
+  </div>
 </section>
 <script src="{{asset('js/datatables.min.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
