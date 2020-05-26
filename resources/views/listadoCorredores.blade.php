@@ -178,7 +178,10 @@
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_{{$personaInscribir->id}}">
   Comprobante
 </button>
+
 @endif
+<br><br>
+<p style="color:red;">{{$personaInscribir->observacion}}</p>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModal_{{$personaInscribir->id}}_Label" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -194,9 +197,7 @@
 
       <img src="{{\Storage::url($personaInscribir->comprobante)}}" width="100%" height="100%">
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Guardar</button>
-      </div>
+      
     </div>
   </div>
 </div>

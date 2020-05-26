@@ -67,6 +67,8 @@ Route::get('verificarPago', 'InscripcionCorredorescontroller@verificarPago')->na
 Route::post('comprobarPago', 'InscripcionCorredorescontroller@comprobarPago')->name('comprobarPago');
 Route::get('carreraDisponible', 'InscripcionCorredorescontroller@carreraDisponible')->name('carreraDisponible');
 
+Route::post('observacion', 'InscripcionCorredoresController@observacion');
+
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 

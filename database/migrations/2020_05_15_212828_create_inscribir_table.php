@@ -31,6 +31,7 @@ class CreateInscribirTable extends Migration
             $table->string('referencia');
             $table->boolean('estatus')->default(1);
             $table->boolean('estatus_corredor')->default(1);
+            $table->string('observacion')->nullable();
             $table->timestamps();
 
         });

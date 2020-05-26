@@ -132,7 +132,6 @@
             </ul>
            @endguest
         
-
                         <!-- Authentication Links -->
                         @guest
                             
@@ -149,7 +148,7 @@
                                 @endif
 
                                 @if(Auth::user()->rol == '4')
-                                  @if(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->count() !== 0)
+                                  @if((App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->count() !== 0) or (App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('observacion', null)->count() !== 0))
                                   <span class="fa fa-bell fa-2x"></span>
                                   @else
                                   <span class="fa fa-bell-slash-o fa-2x"></span>
@@ -160,10 +159,10 @@
 
                                 <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
                             @if(Auth::user()->rol == '1')
-                                @if(App\Inscribir::where('estatus', 1)->count() == 0)
+                                @if(App\Inscribir::where('estatus', 1)->where('observacion', null)->count() == 0)
                                     <a class="dropdown-item" href="#">No hay nada para mostrar</a>
                                 @else
-                                    <a class="dropdown-item" href="{{ route('verificarPago') }}">Pagos por verificar: {{App\Inscribir::where('estatus', 1)->count()}}</a>
+                                    <a class="dropdown-item" href="{{ route('verificarPago') }}">Pagos por verificar: {{App\Inscribir::where('estatus', 1)->where('observacion', null)->count()}}</a>
                                 @endif
                             @endif
                             @if(Auth::user()->rol == '4')
@@ -172,10 +171,16 @@
                               @foreach(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->get() as $verificaciones)
                                 <a class="dropdown-item" href="{{ route('listadoCorredores') }}">Pago verificado de la carrera {{$verificaciones->carrera->nom_carrera}}</a>
                               @endforeach
+
+                            
+
+                            
+
                               @else
                                  <a class="dropdown-item" href="#">No hay nada para mostrar</a>
                               @endif
                             @endif
+
                                   </div>
                             </li>
                           </ul>
