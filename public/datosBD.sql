@@ -875,7 +875,7 @@ INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Jesús Enrique Losada', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Jesús María Semprún', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'La Cañada de Urdaneta', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Lagunillas', NULLciudad);
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Lagunillas', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Machiques de Perijá', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Mara', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Maracaibo', NULL, NULL);

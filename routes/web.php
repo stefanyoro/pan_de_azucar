@@ -13,15 +13,6 @@
 // 
 Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 
-Route::get('/ciudades/{id}', function($id)
-{
-	$estados_id = $id;
-
-	$ciudades = Estados::find($estados_id)->ciudades;
-
-	
-    return Response::json($ciudades);
-});
 
 // Login
 	Route::get('InicioSesion', 'Auth\LoginController@ShowLoginForm')->name('InicioSesion');
@@ -82,6 +73,11 @@ Route::post('observacion', 'InscripcionCorredoresController@observacion');
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
+	Route::get('nuevoEjercicio', 'PlanEntrenamientoController@nuevoEjercicio')->name('nuevoEjercicio');
+	Route::post('RegistrarEjercicio', 'PlanEntrenamientoController@RegistrarEjercicio')->name('RegistrarEjercicio');
+	Route::get('listaEjercicios', 'PlanEntrenamientoController@listaEjercicio')->name('listaEjercicios');
+	Route::post('modificarEjercicio', 'PlanEntrenamientoController@modificarEjercicio')->name('modificarEjercicio');
+	Route::post('eliminarEjercicio', 'PlanEntrenamientoController@eliminarEjercicio')->name('eliminarEjercicio');
 
 // Resultados de carreras
 	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');

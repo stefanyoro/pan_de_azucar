@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 //clase MODELO
 use App\User;
@@ -12,6 +14,7 @@ use App\Mtb;
 use App\Ruta;
 use App\Gimnasio;
 use App\PlanEntrenamiento;
+use App\Ejercicios;
 use Auth;
 
 
@@ -60,6 +63,67 @@ class PlanEntrenamientoController extends Controller
             $plan->apellido = $request->apellido;
            
         $plan->save();
+     return redirect()->back()->with('data',['mensaje'=> '¡Su perfil fue modificado con éxito!']);
+
+    }
+
+    public function nuevoEjercicio()
+    {
+        
+        return view('nuevoEjercicio'); 
+    }
+
+    public function RegistrarEjercicio(Request $request)
+    {  //dd($request->file('foto'));
+        $foto = $request->file("foto");
+        $extension = $foto->getClientOriginalExtension();
+        Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
+        
+        $ejercicios = new Ejercicios;
+            $ejercicios->zona = $request->zona;
+            $ejercicios->nombre = $request->nombre;
+            $ejercicios->posicion = $request->posicion;
+            $ejercicios->ejecucion = $request->ejecucion;
+            $ejercicios->respiracion = $request->respiracion;
+            $ejercicios->musculos = $request->musculos;
+            $ejercicios->img = $foto->getFilename().".".$extension; 
+        $ejercicios->save();
+
+    return redirect()->back()->with('data',['mensaje'=> '¡Nuevo ejercicio agregado!']);
+        
+    }
+
+    public function listaEjercicio()
+    {
+        
+        $ejercicios = Ejercicios::all();
+
+        return view('listaEjercicios')->with(['ejercicios'=> $ejercicios]); 
+    }
+
+     public function modificarEjercicio(Request $request)
+    {
+        $ejercicios = Ejercicios::find($request->id);
+        //$carrera->adm_id = $request->id; extraer este valor como se hace ??
+        $ejercicios->zona = $request->zona;
+        $ejercicios->nombre = $request->nombre;
+        $ejercicios->posicion = $request->posicion;
+        $ejercicios->ejecucion = $request->ejecucion;
+        $ejercicios->respiracion = $request->respiracion;
+        $ejercicios->musculos = $request->musculos;
+        //$carrera->foto= $foto->getFilename().".".$extension;  
+        //dd($carrera);
+        $ejercicios->save();
+
+        return redirect()->back();
+    }
+    public function eliminarEjercicio(Request $request)
+    { 
+        $ejercicios = Ejercicios::find($request->id);
+            $ejercicios->estatus = 0;
+        $ejercicios->save();
+
+        return redirect()->back();
 
     }
 
