@@ -101,7 +101,7 @@
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="services.html"><i class="fa fa-apple" aria-hidden="true"></i> Mis planes alimenticios</a>
-                  <a class="dropdown-item" href="planEntrenamiento"><i class="fa fa-bicycle" aria-hidden="true"></i> Mis planes de entrenamiento</a>
+                  <a class="dropdown-item" href="miEntrenamiento"><i class="fa fa-bicycle" aria-hidden="true"></i> Mis planes de entrenamiento</a>
                 </div>
               </li>
               @endif
@@ -111,7 +111,7 @@
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de entrenamiento</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
                   <a class="dropdown-item" href="planEntrenamiento">Creación de plan</a>
-                  <a class="dropdown-item" href="">Listado de planes creados</a>
+                  <a class="dropdown-item" href="listadoPlanesEntrenamiento">Listado de planes creados</a>
                 </div>
                 @endif
                 @if(Auth::user()->rol == '2')
@@ -147,7 +147,7 @@
                           <ul class="navbar-nav ml-auto ">
                           <li class="nav-item dropdown ">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(Auth::user()->rol == '1')
+                                @if((Auth::user()->rol == '1') or (Auth::user()->rol == '2'))
                                   @if(App\Inscribir::where('estatus', 1)->count() == 0)
                                   <span class="fa fa-bell-slash-o fa-2x"></span>
                                   @else
@@ -192,7 +192,10 @@
                                   </div>
                             </li>
                           </ul>
+
+
                          <ul class="navbar-nav ml-auto">
+                          <img src="{{\Storage::url(Auth::user()->img)}}" class="rounded-circle" alt="..." style=" position: relative; bottom: -17px;  height: 35px; width: 35px; ">
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                   {{ Auth::user()->name }} <span class="caret"></span>

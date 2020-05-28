@@ -13,11 +13,11 @@
     	<br>
     	<div class="container">
     		<div class="row">
-    			<div class="col-md-1"></div>
+    			
     			<div class="col-md-4">
-			    	<img src="img/user.jpg" class="rounded-circle" alt="..." style="height: 200px; width: 200px;"><br>
-					  
+			    	<img src="{{\Storage::url(Auth::user()->img)}}" class="rounded-circle" alt="..." style="height: 200px; width: 200px;"><br>
 						<p style="text-indent: 25%;"><h4>{{ Auth::user()->name }} {{Auth::user()->persona->apellido}}</h4></p><br>
+						<b>Nacionalidad:</b> {{Auth::user()->persona->nacionalidad}}<br>
 						<b>Cédula:</b> {{Auth::user()->persona->numero_doc}}<br>
 						<b>Sexo:</b> {{Auth::user()->persona->sexo}}<br>
 						<b>Fecha de nacimiento:</b> {{Auth::user()->persona->fecha_nac}}<br>
@@ -26,7 +26,7 @@
 						<button type="button" class="btn btn-success" onclick="location.href ='{{ route('CarnetPDF') }}'">Carnet</button>
 				</div>
     			
-    			<div class="col-md-7">
+    			<div class="col-md-8">
 			    	<div class="card" style="border-color:#B03A2E;">
 						<div class="card-header" style="background-color:#B03A2E;">
 					    	<a style="color: white; text-align: center;" align="center">Detalles del perfil</a>
@@ -34,12 +34,15 @@
 					  	<div class="card-body">
 					  	<div class="">
 					  		<div class="row">
-					  			<div class="col-md-6">
-					  				<i class="fa fa-flag" aria-hidden="true"></i> <b>Nacionalidad:</b> {{Auth::user()->persona->nacionalidad}}
+					  			<div class="col-md-4">
+					  				<i class="fa fa-flag" aria-hidden="true"></i> <b>Estado:</b> {{Auth::user()->persona->estado}}
 					  			</div>
-					  			<div class="col-md-6">
-					  				<i class="fa fa-chevron-circle-right" aria-hidden="true"></i><b> Dirección:</b> {{Auth::user()->persona->direccion}}
+					  			<div class="col-md-4">
+					  				<i class="fa fa-chevron-circle-right" aria-hidden="true"></i><b> Ciudad:</b> {{Auth::user()->persona->ciudad}}
 					  			</div>	
+					  			<div class="col-md-4">
+					  				<i class="fa fa-chevron-circle-right" aria-hidden="true"></i><b> Municipio:</b> {{Auth::user()->persona->municipio}}
+					  			</div>
 					  		</div><br>
 
 					  		<div class="row">

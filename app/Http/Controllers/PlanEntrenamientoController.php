@@ -24,46 +24,44 @@ class PlanEntrenamientoController extends Controller
     {
     	$usuarios = User::all();
         $personas = Persona::all();
+        $ejercicios = Ejercicios::all();
 
-        return view('planEntrenamiento')->with(['usuarios'=> $usuarios, 'personas'=> $personas]); 
+        return view('planEntrenamiento')->with(['usuarios'=> $usuarios, 'personas'=> $personas, 'ejercicios'=> $ejercicios]); 
     }
 
     public function RegistrarPlanE(Request $request)
     {
+
     	$mtb = new Mtb;
-    		$mtb->dias = implode(',', $request->dias);
+    		$mtb->dias = implode(',', $request->dias_mtb);
     		$mtb->tiempo = $request->tiempo;
-    		$mtb->intensidad = $request->intensidad;
+    		$mtb->intensidad = $request->tipo_intensidad;
     		$mtb->cadencia = $request->cadencia;
     	$mtb->save();
 
     	$ruta = new Ruta;
-    		$ruta->dias = implode(',', $request->dias);
+    		$ruta->dias = implode(',', $request->dias_ruta);
     		$ruta->tiempo = $request->tiempo;
-    		$ruta->intensidad = $request->intensidad;
+    		$ruta->intensidad = $request->tipo_intensidad;
     		$ruta->frecuencia = $request->frecuencia;
     	$ruta->save();
 
     	$gimnasio = new Gimnasio;
     		$gimnasio->zona = $request->zona;
-    		$gimnasio->ejercicio = $request->ejercicio;
-    		$gimnasio->series = $request->series;
+    		$gimnasio->id_ejercicio = $request->ejercicio;
+    		$gimnasio->series = $request->serie;
     		$gimnasio->repeticiones = $request->repeticiones;
     		$gimnasio->peso = $request->peso;
     		$gimnasio->dias = implode(',', $request->dias);
     	$gimnasio->save();
 
     	$plan = new PlanEntrenamiento;
-            $plan->entrenador_id = Auth::user()->id;
             $plan->corredor_id = $request->id_user;
             $plan->mtb_id = $mtb->id;
             $plan->ruta_id = $ruta->id;
             $plan->gimnasio_id = $gimnasio->id;
-            $plan->nombre = $request->nombre;
-            $plan->apellido = $request->apellido;
-           
         $plan->save();
-     return redirect()->back()->with('data',['mensaje'=> '¡Su perfil fue modificado con éxito!']);
+     return redirect()->back()->with('data',['mensaje'=> '¡Su plan de entrenamiento fue creado con éxito!']);
 
     }
 
@@ -125,6 +123,22 @@ class PlanEntrenamientoController extends Controller
 
         return redirect()->back();
 
+    }
+
+     public function miEntrenamiento()
+    {
+        
+        return view('miEntrenamiento'); 
+    }
+     public function listadoPlanesEntrenamiento()
+    {
+        $mtb = Mtb::all();
+        $ruta = Ruta::all();
+        $gimnasio = Gimnasio::all();
+        $usuarios = User::all();
+        $planes = PlanEntrenamiento::all();
+        
+        return view('listadoPlanesEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes]); 
     }
 
 }

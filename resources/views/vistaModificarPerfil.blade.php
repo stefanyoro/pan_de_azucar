@@ -22,7 +22,7 @@
 						  	</div> 
 					  		<div class="card-body" align="center">
 					    		<div class="">
-							    	<form action="actualizarPerfil" method="post">@csrf
+							    	<form action="actualizarPerfil" method="post" enctype="multipart/form-data">@csrf
 							    		<input type="hidden" name="id" value="{{Auth::user()->id}}">
 							    		
 							    		
@@ -35,7 +35,9 @@
 		 														<path fill-rule="evenodd" d="M.002 3a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2h-12a2 2 0 01-2-2V3zm1 9l2.646-2.354a.5.5 0 01.63-.062l2.66 1.773 3.71-3.71a.5.5 0 01.577-.094L15.002 9.5V13a1 1 0 01-1 1h-12a1 1 0 01-1-1v-1zm5-6.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
 															</svg>
 															Foto de perfil:</p>
-															<input type="file" class="form-control-file" id="exampleFormControlFile1">
+															<div class="custom-file">
+								                          		<input type="file" class="form-control" name="foto">
+								                        	</div>
 													</div>
 												</div>
 											</div><br>
@@ -102,24 +104,52 @@
 							                </div>
 
 							                <div class="row" style="margin-top: 15px;">
-							                    <div class="col-md-4"> 
+							                    <div class="col-md-6"> 
 							                    	<div class="form-group">
 							                      		<p style="text-align: left;">Fecha de nacimiento:</p>
-							    							<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2020-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{Auth::user()->persona->fecha_nac}}">								
+							    							<input type="date" class="form-control" id="fecha_nac" name="fecha_nac" placeholder="F Nacimiento" max="2004-01-02" title="El formato de la fecha de nacimiento debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo)." value="{{Auth::user()->persona->fecha_nac}}">								
 						  							</div>
 						  						</div>
 
-						  						<div class="col-md-4"> 
+						  						<div class="col-md-6"> 
 							                    	<p style="text-align: left;">Correo:</p>
 							                    	<input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
 							                    </div>
+							                </div>
+							                     
+									                <div class="row">
+									                	<div class="col-md-4"> 
+									                		<p style="text-align: left;">Estado:</p>
+									                    	<select class="form-control" id="estado" name="estado">
+									                     		<option value="" selected disabled>{{Auth::user()->persona->estado}}</option>
+					    								 		@foreach($estados as $estado)
+					                      							<option  value="{{$estado->id}}">{{$estado->estado}}</option>
+					                    						@endforeach
+					    									</select>
+									                    </div>  
 
-							                    <div class="col-md-4">
-							                    	<p style="text-align: left;">Dirección:</p>
-							                      	<input type="text" class="form-control" id="direccion" name="direccion" required="required" placeholder="Dirección" value="{{Auth::user()->persona->direccion}}">
-							                    </div> 
+									                    <div class="col-md-4"> 
+									                    	<p style="text-align: left;">Ciudad:</p>
+									                     	<select class="form-control" id="ciudad" name="ciudad">
+									                     		<option value="" selected disabled>{{Auth::user()->persona->ciudad}} </option>
+									                     		@foreach($ciudades as $ciudad)
+					                      							<option  value="{{$ciudad->id}}">{{$ciudad->ciudad}}</option>
+					                    						@endforeach
+					    								 		
+					    									</select>
+									                    </div> 
 
-							                </div> 
+									                	<div class="col-md-4"> 
+									                		<p style="text-align: left;">Municipio:</p>
+									                     	<select class="form-control" id="municipio" name="municipio">
+									                     		<option value="" selected disabled> {{Auth::user()->persona->municipio}} </option>
+					    								 		@foreach($municipios as $municipio)
+					                      							<option  value="{{$municipio->id}}">{{$municipio->municipio}}</option>
+					                    						@endforeach
+					    									</select>
+									                    </div> 
+									                </div>
+									                <br>
 
 							                     @if(Auth::user()->rol == '3')
 							                  <div class="col-md-6">

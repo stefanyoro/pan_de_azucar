@@ -1,10 +1,18 @@
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', 'Administrador', NULL, NULL), (NULL, 'Entrenador', 'Entrenador', NULL, NULL), (NULL, 'Nutricionista', 'Nutricionista', NULL, NULL), (NULL, 'Corredor', 'Corredor', NULL, NULL);
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', '1', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', NULL, '1', NULL, NULL, NULL);
 
-INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `direccion`, `created_at`, `updated_at`) VALUES (NULL, '1', 'Venezolano', 'cedula', 'M', 'N/A', 'administrador', 'administrador', '2020-05-12', 'N/A', NULL, NULL);
+INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '1', 'Venezolano', 'cedula', 'M', '6077767', 'Alvaro', 'Linares', '2020-05-12', 'Miranda', 'San Antonio de los Altos', 'Los Salias', 'N/A','N/A','A+', NULL, NULL);
 
 INSERT INTO `administrador` (`id`, `persona_id`, `especialidad`, `grado_Instrucc`, `created_at`, `updated_at`) VALUES (NULL, '1', 'administrador', 'bachiller', NULL, NULL);
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Clen', 'clenvielma@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA43B.tmp.jpg', '2', NULL, NULL, NULL);
+INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '2', 'Venezolano', 'cedula', 'M', '25278612', 'Clen', 'Vielma', '1994-09-30', 'Miranda', 'San Antonio de los Altos', 'Los Salias', 'N/A','N/A','A+', NULL, NULL);
+INSERT INTO `entrenador` (`id`, `persona_id`, `especialidad`, `created_at`, `updated_at`) VALUES (NULL, '2', 'Entrenador', NULL, NULL);
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Stefany', 'stefanyoropeza94@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA897.tmp.jpg', '4', NULL, NULL, NULL);
+INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Venezolano', 'cedula', 'F', '252702416', 'Stefany', 'Oropeza', '1997-01-16', 'Miranda', 'Los Teques', 'Guaicaipuro', 'N/A','N/A','O-', NULL, NULL);
+INSERT INTO `corredor` (`id`, `user_id`, `edad`,`peso`,`estatura`,`grupo_ciclismo`, `created_at`, `updated_at`) VALUES (NULL, '3', '23', '50', '152', 'Pan de azúcar bike team', NULL, NULL);
 
 INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, '100% BANCO, BANCO UNIVERSAL C.A', '0156', NULL, NULL);
 INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCAMIGA, BANCO MICROFINANCIERO C.A', '0172', NULL, NULL);
@@ -29,6 +37,24 @@ INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUE
 INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'MI BANCO, BANCO MICROFINANCIERO C.A', '0169', NULL, NULL);
 INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'VENEZOLANO DE CREDITO</option', '0104', NULL, NULL);
 
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '1', NULL, 'Elevación de rodillas', 'En una barra fija colocar las manos al ancho de los hombros', 'Movimiento ascendente con las piernas', 'Inspirar al momento de ascender y exhalar al extender','Psoas iliaco y recto anterior', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '1', NULL, 'Curl abdominal', 'Acostado, ambas manos detrás de la cabeza', 'Movimiento ascendente contrayendo el abdomen', 'Inspirar al momento de ascender y exhalar al extender','Recto abdominal superior y oblicuos', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '1', NULL, 'Bicicleta en el aire', 'Acostado y piernas recogidas en 90 grados', 'Movimiento de contracción del abdomen', 'Inspirar al momento de ascender y exhalar al extender','Psoas iliaco y tensor de la fascia lata', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '2', NULL, 'Curl de biceps tipo martillo', 'De pie, una mancuerna en cada mano al ancho de los hombros', 'Movimiento ascendente hacia el centro del cuerpo', 'Inspirar al momento de ascender y exhalar al extender','Biceps braquial y braquial anterior', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '2', NULL, 'Press francés en banco', 'Acostado brazo extendido por encima del pecho', 'Movimiento descendente de extensión de los codos', 'Inspirar al momento de ascender y exhalar al extender','Triceps', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '2', NULL, 'Extensión de triceps en polea', 'De pie al ancho de los hombros con los brazos flexionados', 'Movimiento descendente de contracción de los triceps', 'Inspirar al momento de ascender y exhalar al extender','Triceps', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '3', NULL, 'Polea al pecho', 'Sentado con barra y espalda recta', 'Tirar de la barra y llevarla al pecho', 'Inspirar al momento de contracción y exhalar al extender','Espalda, trapecio y romboide', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '3', NULL, 'Remo en máquina', 'Sentado pecho apoyado y brazos extendidos', 'Movimiento de contracción de la espalda, llevando los brazos hacia atrás', 'Inspirar al momento de contracción y exhalar al extender','Dorsal ancho, redondo mayor, deltoide y trapecio', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '3', NULL, 'Peso muerto', 'Agachado, espalda recta y tronco inclinado', 'Movimiento ascendente de contracción, estirando las piernas', 'Inspirar al momento de contracción y exhalar al extender','Espalda, trapecio y glúteos', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '4', NULL, 'Press trasnuca con barra', 'Sentado, espalda recta con la barra tomada', 'Movimiento de press vertical con barra', 'Inspirar al movimiento descendente y exhalar a la posición inicial','Trapecio, triceps y deltoide', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '4', NULL, 'Elevación lateral con mancuerna', 'De pie, espalda recta con brazos paralelos al cuerpo', 'Movimiento ascendente llevando las mancuernas a la altura de los hombros', 'Inspirar al efectuar el movimiento ascendente y exhalar a la posicion inicial','Deltoides y trapecio', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '4', NULL, 'Remo al cuello', 'De pie, espalda recta con brazos al frente', 'Movimiento ascendente llevando la barra hasta el mentón', 'Inspirar al efectuar el movimiento ascendente y exhalar a la posición inicial','Deltoide y trapecio', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '5', NULL, 'Press de banca', 'Acostado boca arriba', 'Sostener la barra más ancho que los hombros', 'Inspirar al hacer el momento descendente y exhalar al realizar el momento ascendente','Pectoral, hombros y triceps', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '5', NULL, 'Aperturas con mancuerna', 'Acostado boca arriba sobre un banco', 'Sostener las mancuernas con los brazos estirados', 'Inspirar al momento de contracción y exhalar al extender','Pectoral, hombros y triceps', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '5', NULL, 'Pull over con barra', 'Apoyar la espalda en un banco', 'Sostener la barra con los brazos extendidos', 'Inspirar al momento de hacer el movimiento descendente y exhalar al ascendente','Pectoral, hombros y triceps', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '6', NULL, 'Sentadillas', 'De pie, con las piernas abiertas y la barra sobre el trapecio', 'Movimiento descendente flexionando las rodillas', 'Inspirar al momento de hacer el movimiento descendente y exhalar a la posicion inicial','Cuádriceps, glúteos y biceps femoral', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '6', NULL, 'Prensa', 'Colocado sobre la máquina y los pies en la plataforma', 'Descienda flexionando ambas rodillas y luego empuje el peso', 'Inspirar al momento de hacer el movimiento descendente y exhalar a la posicion inicial','Cuádriceps, glúteos y biceps femoral', '1', NULL, NULL);
+INSERT INTO `ejercicios` (`id`, `zona`, `img`, `nombre`, `posicion`, `ejecucion`, `respiracion`, `musculos`, `estatus`, `created_at`, `updated_at`) VALUES (NULL, '6', NULL, 'Extensión', 'Sentado a la máquina con ambos pies en los rodillos', 'Efectuar una extensión de piernas', 'Inspirar al momento de hacer el movimiento de extensión y exhalar a la posicion inicial','Cuádriceps', '1', NULL, NULL);
 
 INSERT INTO `estados`(`id`, `estado`, `created_at`, `updated_at`) VALUES (NULL, 'Amazonas', NULL, NULL);
 INSERT INTO `estados`(`id`, `estado`, `created_at`, `updated_at`) VALUES (NULL, 'Anzoátegui', NULL, NULL);
@@ -586,7 +612,7 @@ INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Muñóz', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Páez', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Pedro Camejo', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Rómulo Gallegos'), NULL, NULL);
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Rómulo Gallegos', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '3', 'San Fernando', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '4', 'Atanasio Girardot', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '4', 'Bolívar', NULL, NULL);
@@ -770,7 +796,7 @@ INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Marcano', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Mariño', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Península de Macanao', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Tubores', NULL, NULL);,
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Tubores', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Villalba', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '16', 'Díaz', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '17', 'Agua Blanca', NULL, NULL);
@@ -854,21 +880,22 @@ INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '21', 'Vargas', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Arístides Bastidas', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Bolívar', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Bruzual', NULL, NciudadINSERT INTO `municipios` (`id`, `id_estado`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Cocorote', NULL, NULL);
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Bruzual', NULL, NULL);
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Cocorote', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Independencia', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'José Antonio Páez', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'La Trinidad', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Manuel Monge', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Nirgua', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Peña', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'San Felipe', NULLciudad);
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'San Felipe', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Sucre', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'Urachiche', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '22', 'José Joaquín Veroes', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Almirante Padilla', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Baralt', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Cabimas', NULL, NULL);
-INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Catatumbo', NULL,ciudad;
+INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Catatumbo', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Colón', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Francisco Javier Pulgar', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Páez', NULL, NULL);
@@ -887,3 +914,5 @@ INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Sucre', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '23', 'Valmore Rodríguez', NULL, NULL);
 INSERT INTO `municipios` (`id`, `id_ciudad`, `municipio`, `created_at`, `updated_at`) VALUES (NULL, '24', 'Libertador', NULL, NULL);
+
+

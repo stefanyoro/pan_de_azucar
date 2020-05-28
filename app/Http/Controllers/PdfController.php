@@ -20,4 +20,14 @@ class PdfController extends Controller
    
      return $pdf->setPaper('a6')->stream('CarnetPDF.pdf');
 }
+
+
+    public function planBasico(){
+
+               $pdf = \PDF::loadView('planBasicoPDF');
+   
+     return $pdf->setPaper('a4')->stream('planBasicoPDF.pdf');
+}
+
+
 }
