@@ -19,7 +19,7 @@ class CreateCorredorTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
-            $table->string('edad');
+            $table->string('edad')->nullable();
             $table->string('peso');
             $table->string('estatura');
             $table->string('grupo_ciclismo')->nullable();
