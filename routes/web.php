@@ -13,6 +13,16 @@
 // 
 Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 
+Route::get('/ciudades/{id}', function($id)
+{
+	$estados_id = $id;
+
+	$ciudades = Estados::find($estados_id)->ciudades;
+
+	
+    return Response::json($ciudades);
+});
+
 // Login
 	Route::get('InicioSesion', 'Auth\LoginController@ShowLoginForm')->name('InicioSesion');
 	Route::post('login', 'Auth\LoginController@login')->name('login');
@@ -63,6 +73,7 @@ Route::get('recibo', 'InscripcionCorredorescontroller@recibo')->name('recibo');
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
+	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
 
 // Resultados de carreras
 	Route::get('resultadosCarreras', 'ResultadosController@vistaResultados')->name('resultadosCarreras');

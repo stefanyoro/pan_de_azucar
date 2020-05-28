@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateParroquiasTable extends Migration
+class CreateMtbTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateParroquiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('parroquias', function (Blueprint $table) {
+        Schema::create('mtb', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('id_municipio')->unsigned();
-            $table->foreign('id_municipio')->references('id')->on('municipios')->onDelete('cascade');
-            $table->string('parroquia');
+            $table->string('tiempo');
+            $table->string('intensidad');
+            $table->string('cadencia');
+            $table->string('dias');
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreateParroquiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('parroquias');
+        Schema::dropIfExists('mtb');
     }
 }
