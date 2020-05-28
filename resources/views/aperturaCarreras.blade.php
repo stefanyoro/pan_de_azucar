@@ -130,6 +130,20 @@
                     </div>
                   </div>
                   <div class="row">  
+                    <div class="col-md-6">
+                      <label>
+                        <span style="color: red">*</span><i class="fa fa-refresh" aria-hidden="true"></i> Cantidad de Vueltas:
+                      </label>
+                      <input type="text" class="form-control" id="vuelta" name="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="0" required="El valor sólo puede tener caracteres numéricos">
+                    </div>
+                    <div class="col-md-6">
+                      <label>
+                        <span style="color: red">*</span><i class="fa fa-safari" aria-hidden="true"></i> Cantidad de Kilometraje:
+                      </label>
+                      <input type="text" class="form-control" id="Kilometro" name="Kilometro" pattern='[0-9]{1,30}' data-pattern-error="El costo sólo puede tener caracteres numéricos" placeholder="000" required="required">
+                    </div>
+                  </div><br>
+                  <div class="row">  
                     <div class="col-md-4">
                       <label  class="control-label"><span style="color: red">*</span><i class="fa fa-bicycle" aria-hidden="true"></i> Modalidad:</label>
                       <select class="form-control form-control-lg" id="modalidad" name="modalidad" required="required" >

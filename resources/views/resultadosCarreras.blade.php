@@ -70,6 +70,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
                                             </div>
+                                            <!-- acción del botón  -->
                                             <div class="modal-body">
                                               Ingrese los datos de {{$personaInscribir->corredor->user->persona->nombre}} {{$personaInscribir->corredor->user->persona->apellido}} en la carrera "{{$carrera->nom_carrera}}". <br><br> 
                                               <form method="post" action="resultadosCarreras">@csrf
