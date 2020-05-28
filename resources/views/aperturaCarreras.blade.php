@@ -19,8 +19,8 @@
                       <div class="form-group md-12">
                         <span style="color: red">*</span><i class="fa fa-picture-o" aria-hidden="true"></i>  Imagen publicitaria de la carrera:
                         <div class="custom-file">
-                          <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" required="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo).">
-                          <label class="custom-file-label" for="customFileLang"></label>  
+                          <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" pattern="image/x-png image/jpeg" placeholder="Imagen de la publicidad" required="required" data-pattern-error="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo)." >
+                          <label class="custom-file-label" for="customFileLang" style="text-align:left;">Subir archivo...</label>  
                         </div>    
                       </div>
                     </div> 
@@ -31,15 +31,15 @@
                         <label>
                           <span style="color: red">*</span><i class="fa fa-flag-checkered" aria-hidden="true"></i> Nombre de la carrera: 
                         </label>
-                        <input type="text" class="form-control" id="nom_carrera" name="nom_carrera" placeholder="Bici Rock Carrizal" required="required">
+                        <input type="text" class="form-control" id="nom_carrera" name="nom_carrera" placeholder="Bici Rock Carrizal" data-pattern-error="Debe completar este campo" required="required">
                       </div>  
                       <div class="form-group" align="left">
                         <label for="formGroupExampleInput"><span style="color: red">*</span>
                           <i class="fa fa-map-marker" aria-hidden="true"></i>
                           Lugar de La Carrera:
                         </label> 
-                        <input type="text" class="form-control" id="lugar_salida" name="lugar_salida" placeholder="Lugar de Salida" required="required">
-                        <input type="text" class="form-control" id="lugar_llegada"name="lugar_llegada"  placeholder="Lugar de Llegada" required="required">
+                        <input type="text" class="form-control" id="lugar_salida" name="lugar_salida" placeholder="Lugar de Salida" data-pattern-error="Debe completar este campo" required="required">
+                        <input type="text" class="form-control" id="lugar_llegada"name="lugar_llegada"  placeholder="Lugar de Llegada" data-pattern-error="Debe completar este campo" required="required">
                       </div>
                     </div>
                   </div>
@@ -50,7 +50,7 @@
                           <i class="fa fa-calendar" aria-hidden="true"></i>
                           Fecha de la carrera:
                         </label>
-                        <input type="date" class="form-control disablecopypaste" name="fecha_carr" placeholder="fecha_carr" min="<?php echo date('Y-m-d'); ?>"  required="El formato debe ser: D-M-A." data-pattern-error="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo).">
+                        <input type="date" class="form-control disablecopypaste" name="fecha_carr" placeholder="fecha_carr" min="<?php echo date('Y-m-d'); ?>"  required="El formato debe ser: D-M-A." pattern="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo).">
                       </div>
                     </div>   
                     <div class="col-md-2">
@@ -64,7 +64,7 @@
                             <path d="M7 1h2v2H7V1z"/>
                           </svg> Hora:
                         </label>
-                        <input type="text" class="form-control hora" id="hora" name="hora" placeholder="00:00" value="" pattern="(?:0(?![0])|1(?![3-9])){1}\d{1}:[0-5]{1}\d{1}" required="La hora debe tener el formato 00:00 (01:00 por ejemplo).">            
+                        <input type="text" class="form-control hora" id="hora" name="hora" placeholder="00:00" value="" pattern="(?:0(?![0])|1(?![3-9])){1}\d{1}:[0-5]{1}\d{1}" pattern="La hora debe tener el formato 00:00 (01:00 por ejemplo)." required="required">            
                       </div>  
                     </div>
                     <div class="col-md-3">
@@ -88,7 +88,7 @@
                         </svg>
                         Cupo:
                       </label>
-                      <input type="text" class="form-control" id="cupos" name="cupos" pattern='[0-9]{1,30}' required="El cupo sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="0" >
+                      <input type="text" class="form-control" id="cupos" name="cupos" pattern='[0-9]{1,30}' data-pattern-error="El cupo sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="0" required="required">
                     </div>
                   </div>       
                   <div class="row">
@@ -141,7 +141,7 @@
                       <label>
                         <span style="color: red">*</span><i class="fa fa-usd" aria-hidden="true"></i> Costo:
                       </label>
-                      <input type="text" class="form-control" id="monto" name="monto" pattern='[0-9]{3,30}' required="El costo sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="000.00" >
+                      <input type="text" class="form-control" id="monto" name="monto" pattern='[0-9]{3,30}' data-pattern-error="El costo sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="000.00" required="required">
                     </div>
                     <div class="col-md-4"> 
                       <label><span style="color: red">*</span>
@@ -157,11 +157,11 @@
                         <label class="form-check-label" for="inlineRadio2">No</label>
                       </div>-->
                       <div class="form-group">
-                        <input type="text" class="form-control" id="camisa" name="camisa" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Camisa" required="El valor sólo puede tener caracteres numéricos">
+                        <input type="text" class="form-control" id="camisa" name="camisa" pattern='[0-9]{3,30}' data-pattern-error="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" required="required" placeholder="Camisa" required="El valor sólo puede tener caracteres numéricos">
                         
-                        <input type="text" class="form-control" id="comida" name="comida" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Comida" required="El valor sólo puede tener caracteres numéricos">    
+                        <input type="text" class="form-control" id="comida" name="comida" pattern='[0-9]{3,30}' data-pattern-error="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" required="required" placeholder="Comida" required="El valor sólo puede tener caracteres numéricos">    
 
-                        <input type="text" class="form-control" id="bebida" name="bebida" pattern='[0-9]{3,30}' title="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" placeholder="Hidratacion" required="Elvalor sólo puede tener caracteres numéricos">  
+                        <input type="text" class="form-control" id="bebida" name="bebida" pattern='[0-9]{3,30}' data-pattern-error="El monto sólo puede tener caracteres numéricos" minlength="3" maxlength="12" required="required" placeholder="Hidratacion" required="Elvalor sólo puede tener caracteres numéricos">  
                       </div> 
                     </div>
                   </div>
@@ -182,4 +182,12 @@
     </div>
   </div>
 </section>
+<script>
+  // para traerme el nombre de la img
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
+
+</script>
 @endsection

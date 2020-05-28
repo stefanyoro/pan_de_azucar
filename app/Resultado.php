@@ -22,4 +22,9 @@ class Resultado extends Model
     {
     	return $this->belongsTo(Carrera::class, 'carrera_id');
     }
+
+    public function Inscribir()
+    {
+    	return $this->belongsTo(Incribir::class, 'inscribir_id');
+    }
 }

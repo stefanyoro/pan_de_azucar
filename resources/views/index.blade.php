@@ -114,9 +114,10 @@
                     <span><span class="fa fa-clock-o"></span> {{ $carrera->hora}}{{ $carrera->meridiano}}</span> <br>
                     <span><span class="fa fa-calendar"></span> {{ $carrera->fecha_carr}}</span> <br>
                     <span><span class="fa fa-bicycle"></span> {{ $carrera->modalidad}}</span> <br>
+                    <span class="fa fa-usd"> Costo neto:</span><span style="color: #B03A2E"> {{ $carrera->monto}},00bs.</span><br>
                     <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos - App\Inscribir::where('carrera_id', $carrera->id)->count()}}</span></p>
-                  @guest
 
+                  @guest
                   @else
                   @if(Auth::user()->rol == 4)
                       @if(App\Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('carrera_id', $carrera->id)->count() == 1)
