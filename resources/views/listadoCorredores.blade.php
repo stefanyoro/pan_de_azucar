@@ -3,6 +3,7 @@
 @section('content')
  <section class="section">
   @if(Auth::user()->rol == '4')
+
  <h1> <p class="text-danger" align="center">Carreras Inscriptas por el Corredor</p></h1>
 
   @endif
@@ -43,7 +44,7 @@
     @endif
     @foreach($carrera->inscribir as $clave=> $personaInscribir)
     @if(Auth::user()->rol == '1')
-    @if($personaInscribir->estatus == '1')
+    @if($personaInscribir->estatus == '0')
 
     <tr>
       <th scope="row">{{$clave+1}}</th>
@@ -87,17 +88,21 @@
     @if((Auth::user()->rol == '4') and ($personaInscribir->corredor->user_id == Auth::user()->id))
      
        <div class="row justify-content-md-center">
+        <div class="col-md-8">
      <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
-      <img src="/img/logotipo1.png" class="card-img" alt="...">
+      <!-- <img src="/img/logotipo1.png" class="card-img" alt="..."> -->
+      <img src="{{\Storage::url($personaInscribir->carrera->foto)}}" width="100%" height="100%">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <h5 class="card-title">{{$carrera->nom_carrera}}</h5>
         <p> Lugar:{{$carrera->lugar_salida}} - Salida{{$carrera->lugar_llegada}} -hora{{$carrera->hora}}{{$carrera->meridiano}} - -categoria categoria{{$carrera->categoria}} -monto{{$carrera->monto}}</p>
-        <td><button class="btn btn-warning"><b><i class="fa fa-credit-card" aria-hidden="true"  data-toggle="modal" data-target="#modalModificarPago_{{$personaInscribir->id}}"> Modificar</i></b></button>
-     
+
+ @if($personaInscribir->estatus != 0)
+        <button type="submit" class="btn btn-warning" value="{{$personaInscribir->id}}" aria-hidden="true"  data-toggle="modal" data-target="#modalModificarPago_{{$personaInscribir->id}}"><i class="fa fa-credit-card"></i>Modificar</button>
+@endif
      <!-- Modal modificar -->
 <div class="modal fade" id="modalModificarPago_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="modalModificarPago_{{$personaInscribir->id}}" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -108,14 +113,18 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="modificarPago">
+      <form method="post" action="modificarPago" enctype="multipart/form-data">
         @csrf
       <div class="modal-body">
         <div class="col-md-12">
+                              <div class="col-md-12">
+                              <p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Capture de Pantalla:</p> 
+                              <input type="file" class="form-control" name="comprobante">
+                            </div>  
                               <p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Metodo de pago:</p>  
                               <select  class="form-control" name="metodoPago" value="">
                                 <option @if($personaInscribir->metodoPago == 'Pago Movil') selected @endif>Pago Movil</option>
-                                <option @if($personaInscribir->metodoPago == 'Transferencia') selected @endif>Transferencia</option>
+                                <option @if($personaInscribir->metodoPago == 'Transferencia')selected @endif>Transferencia</option>
                               </select>
                             </div>  
 
@@ -160,12 +169,43 @@
     </div>
   </div>
 </div>
+ 
+      @if($personaInscribir->estatus == 0)
+      <a  href="{{route('recibo', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
+      @endif
+<!-- Button trigger modal -->
+ @if($personaInscribir->estatus != 0)
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal_{{$personaInscribir->id}}">
+  Comprobante
+</button>
 
-      <button class="btn btn-danger"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</button>
-     
+@endif
+<br><br>
+<p style="color:red;">{{$personaInscribir->observacion}}</p>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal_{{$personaInscribir->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModal_{{$personaInscribir->id}}_Label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModal_{{$personaInscribir->id}}_Label">Comprobante</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+
+      <img src="{{\Storage::url($personaInscribir->comprobante)}}" width="100%" height="100%">
+      </div>
+      
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
     @endif

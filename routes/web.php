@@ -56,12 +56,13 @@ Route::get('/ciudades/{id}', function($id)
 	Route::post('listarCarrera', 'CarreraController@listarCarrera')->name('listarCarrera');
 	Route::post('modificarCarrera', 'CarreraController@modificarCarrera')->name('modificarCarrera');
 	Route::post('eliminarCarrera', 'CarreraController@eliminarCarrera')->name('eliminarCarrera');
-	Route::get('listadoPDF', 'CarreraController@listadoPDF')->name('listadoPDF');
+	Route::get('listadoPDF/{id}', 'CarreraController@listadoPDF')->name('listadoPDF');
 
 // Incripción de Corredores
-Route::get('inscripcionCorredores', 'InscripcionCorredoresController@inscripcioncorredores')->name('InscripcionCorredores');
 
-Route::post('InscripcionCorredor', 'InscripcionCorredoresController@guardarInscripcionCorredores');
+Route::get('inscripcionCorredores/{id}', 'InscripcionCorredoresController@inscripcioncorredores');
+
+Route::post('guardarInscripcionCorredores', 'InscripcionCorredoresController@guardarInscripcionCorredores')->name('guardarInscripcionCorredores');
 
 Route::get('listadoCorredores', 'InscripcionCorredorescontroller@listadoCorredores')->name('listadoCorredores');
 
@@ -69,14 +70,24 @@ Route::post('supenderCorredor', 'InscripcionCorredoresController@supenderCorredo
 
 Route::post('modificarPago', 'InscripcionCorredoresController@modificarPago');
 
-Route::get('recibo', 'InscripcionCorredorescontroller@recibo')->name('recibo');
+Route::get('recibo/{id}', 'InscripcionCorredorescontroller@recibo')->name('recibo');
+
+Route::get('verificarPago', 'InscripcionCorredorescontroller@verificarPago')->name('verificarPago');
+
+Route::post('comprobarPago', 'InscripcionCorredorescontroller@comprobarPago')->name('comprobarPago');
+Route::get('carreraDisponible', 'InscripcionCorredorescontroller@carreraDisponible')->name('carreraDisponible');
+
+Route::post('observacion', 'InscripcionCorredoresController@observacion');
 
 // Plan de entrenamiento
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
 
 // Resultados de carreras
-	Route::get('resultadosCarreras', 'ResultadosController@vistaResultados')->name('resultadosCarreras');
+	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');
+	Route::post('resultadosCarreras', 'ResultadosController@RegistrarResultados')->name('resultadosCarreras');
+
+
 	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
 	Route::get('/home', 'HomeController@index')->name('home');
 

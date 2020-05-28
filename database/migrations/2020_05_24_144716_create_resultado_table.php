@@ -15,6 +15,14 @@ class CreateResultadoTable extends Migration
     {
         Schema::create('resultado', function (Blueprint $table) {
             $table->bigIncrements('id');
+            
+            //Datos de los inscritos
+            $table->bigInteger('inscribir_id')->unsigned();
+            $table->foreign('inscribir_id')->references('id')->on('inscribir')->onDelete('cascade');
+            //datos de la vista
+            $table->string('tiempo');
+            $table->string('vuelta');
+            $table->string('posicion');
             $table->timestamps();
         });
     }

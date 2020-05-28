@@ -57,10 +57,29 @@
                           <td>{{ $carrera->comida}}</td>
                           <td>{{ $carrera->bebida}}</td>
                           <td >
+                            <!-- visualizar -->
                             <div class="btn-group" role="group" aria-label="Basic example">
-                              <button type="button" class="btn btn-outline-info btn-sm">
+                              <button type="button" class="btn btn-outline-info btn-sm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#visualizar_{{$carrera->id}}">
                                   <i class="fa fa-eye" aria-hidden="true"></i>
                               </button>
+                              <!-- Modal -->
+                                <div class="modal fade" id="visualizar_{{$carrera->id}}" tabindex="-1" role="dialog" aria-labelledby="visualizarModal_{{$carrera->id}}" aria-hidden="true">
+                                  <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="visualizarModal_{{$carrera->id}}">Imagen publicitaria de la carrera: {{ $carrera->nom_carrera}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <!-- acción del botón  -->
+                                      <div class="modal-body">
+                                        <img src="{{\Storage::url($carrera->foto)}}" width="100%" height="50%">
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
                               <!--Modificar-->
                               <button type="button" class="btn btn-outline-warning btn-sm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificar_{{$carrera->id}}">
                                 <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -86,8 +105,8 @@
                                                   <div class="form-group md-12">
                                                     <span style="color: red">*</span><i class="fa fa-picture-o" aria-hidden="true"></i>  Imagen publicitaria de la carrera:
                                                     <div class="custom-file">
-                                                      <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" required="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo).">
-                                                      <label class="custom-file-label" for="customFileLang"></label>  
+                                                      <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" pattern="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo)." value="{{ $carrera->foto}}" required="required">
+                                                      <label class="custom-file-label" for="customFileLang">{{ $carrera->foto}}</label>
                                                     </div>    
                                                   </div>
                                                 </div> 
@@ -267,23 +286,26 @@
                         </tr>
                       @endif 
                       @endforeach  
-                      </tbody>
-                    </table>
-                </div>  
-            </div><br>
-            <div class="col-md-12" align="right">
-              <a href="{{ route('listadoPDF') }}" class="btn btn-primary btn-block py-3" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>
+                    </tbody>
+              </table>
+            </div>  
+          </div><br>
+          <div class="col-md-12" align="right">
+           <div class="btn-group" role="group">
+              <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" target="_blank" href="listadoPDF/1">Todas las carreras</a>
+                <a class="dropdown-item" target="_blank" href="listadoPDF/2">Carreras por transcurrir</a>
+                <a class="dropdown-item" target="_blank" href="listadoPDF/3">Carreras vencidas</a>
+              </div>
             </div>
-             <!-- </form>-->
           </div>
         </div>
       </div>
     </div>
-      <!-- Button trigger modal -->
-
-<!-- Modal -->
-<!-- Button trigger modal -->
-
+  </div>
 </section>
 <script src="{{asset('js/datatables.min.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
@@ -294,40 +316,47 @@
 
 @endsection
 
-@section('scriptJS')
-<!--tabla de listar carreras-->
-    <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
-    <script>
-         $(document).ready(function(){
-          //$("#listarcarrera").DataTable();
-          var tabla = $("#listarcarrera").DataTable( {
-            "language": {
-                  "sProcessing":     "Procesando...",
-              "sLengthMenu":     "Mostrar _MENU_ registros",
-              "sZeroRecords":    "No se encontraron resultados",
-              "sEmptyTable":     "Ningún dato disponible en esta tabla",
-              "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-              "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
-              "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-              "sInfoPostFix":    "",
-              "sSearch":         "Buscar:",
-              "sUrl":            "",
-              "sInfoThousands":  ",",
-              "sLoadingRecords": "Cargando...",
-              "oPaginate": {
-                "sFirst":    "Primero",
-                "sLast":     "Último",
-                "sNext":     "Siguiente",
-                "sPrevious": "Anterior"
-              },
-              "oAria": {
-                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-              }
+  @section('scriptJS')
+  <!--tabla de listar carreras-->
+  <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
+  <script>
+       $(document).ready(function(){
+        //$("#listarcarrera").DataTable();
+        var tabla = $("#listarcarrera").DataTable( {
+          "language": {
+                "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+              "sFirst":    "Primero",
+              "sLast":     "Último",
+              "sNext":     "Siguiente",
+              "sPrevious": "Anterior"
+            },
+            "oAria": {
+              "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+              "sSortDescending": ": Activar para ordenar la columna de manera descendente"
             }
-          });
+          }
         });
-    </script>
+      });
+  </script>
+  <script>
+    // para traerme el nombre de la img
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script>
 @endsection
 
 

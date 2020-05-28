@@ -6,9 +6,28 @@ INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `num
 
 INSERT INTO `administrador` (`id`, `persona_id`, `especialidad`, `grado_Instrucc`, `created_at`, `updated_at`) VALUES (NULL, '1', 'administrador', 'bachiller', NULL, NULL);
 
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, '100% BANCO, BANCO UNIVERSAL C.A', '0156', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCAMIGA, BANCO MICROFINANCIERO C.A', '0172', NULL, NULL);
 INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCARIBE C.A. BANCO UNIVERSAL', '0114', NULL, NULL);
-
-INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, '100% BANCO, BANCO UNIVERSAL C.A.', '0156', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO ACTIVO', '0171', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO CARONI C.A. BANCO UNIVERSAL', '0128', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO DE LA FANB', '0177', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO DE VENEZUELA', '0102', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO DEL TESORO', '0163', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO EXTERIOR C.A. BANCO UNIVERSAL', '0115', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO MERCANTIL', '0105', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO NACIONAL DE CREDITO', '0191', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO OCCIDENTAL DE DESCUENTO', '0116', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO PLAZA, BANCO UNIVERSAL', '0138', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO PROVINCIAL', '0108', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCO SOFITASA', '0137', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANCRECER, S.A. BANCO MICROFINANCIERO', '0168', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANESCO BANCO UNIVERSAL S.A.C.A', '0134', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BANPLUS BANCO UNIVERSAL, C.A', '0174', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'BFC BANCO FONDO COMUN', '0151', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'DELSUR BANCO UNIVERSAL C.A', '0157', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'MI BANCO, BANCO MICROFINANCIERO C.A', '0169', NULL, NULL);
+INSERT INTO `banco` (`id`, `nombre`, `codigo`, `created_at`, `updated_at`) VALUES (NULL, 'VENEZOLANO DE CREDITO</option', '0104', NULL, NULL);
 
 
 INSERT INTO `estados`(`id`, `estado`, `created_at`, `updated_at`) VALUES (NULL, 'Amazonas', NULL, NULL);
