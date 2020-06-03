@@ -200,7 +200,7 @@
                                                         <label class="form-check-label" for="bebida">Master-B</label>
                                                       </div>
                                                       <div class="form-check form-check-inline">
-                                                        <input type="checkbox" class="form-check-input" id="categoria" name="categoria" value="Master-C" @if(in_array("Master-C",$carrera->array_categorias)) checked @endif>
+                                                        <input type="checkbox" class="form-check-input" id="categoria" name="categoria[]" value="Master-C" @if(in_array("Master-C",$carrera->array_categorias)) checked @endif>
                                                         <label class="form-check-label" for="bebida">Master-C</label>
                                                       </div>
                                                       <div class="form-check form-check-inline">
