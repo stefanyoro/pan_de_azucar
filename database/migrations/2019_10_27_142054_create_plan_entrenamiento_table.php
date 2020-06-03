@@ -22,13 +22,17 @@ class CreatePlanEntrenamientoTable extends Migration
             $table->bigInteger('corredor_id')->unsigned();
             $table->foreign('corredor_id')->references('id')->on('corredor')->onDelete('cascade');
 
+            $table->bigInteger('mtb_id')->unsigned();
+            $table->foreign('mtb_id')->references('id')->on('mtb')->onDelete('cascade');
 
-            $table->bigInteger('nutri_id')->unsigned();
-            $table->foreign('nutri_id')->references('id')->on('nutricionista')->onDelete('cascade');
-            $table->string('modalidad');
-            $table->string('ejercicio');
-            $table->string('series');
-            $table->string('recomendaciones');
+            $table->bigInteger('ruta_id')->unsigned();
+            $table->foreign('ruta_id')->references('id')->on('ruta')->onDelete('cascade');
+
+            $table->bigInteger('gimnasio_id')->unsigned();
+            $table->foreign('gimnasio_id')->references('id')->on('gimnasio')->onDelete('cascade');
+
+            $table->string('nombre')->nullable();
+            $table->string('apellido')->nullable();;
             $table->timestamps();
         });
     }

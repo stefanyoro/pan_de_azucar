@@ -9,16 +9,24 @@ use App\Corredor;
 use App\Administrador;
 use App\Entrenador;
 use App\Nutricionista;
+use App\Estados;
+use App\Ciudades;
+use App\Municipios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class CorredorController extends Controller
 {
     public function vistaRegistroCorredor()
     {
-         return view('afiliacionCorredor'); 
+        $estados = Estados::all();
+        $ciudades = Ciudades::all();
+        $municipios = Municipios::all();
+
+        return view('afiliacionCorredor')->with(['estados'=> $estados, 'ciudades'=> $ciudades, 'municipios'=> $municipios]); 
     }
 
     public function vistaRegistroExitoso()
@@ -46,6 +54,9 @@ class CorredorController extends Controller
             $persona->nombre = $request->nombre;
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
+            $persona->estado = $request->estado;
+            $persona->ciudad = $request->ciudad;
+            $persona->municipio = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           
@@ -58,8 +69,18 @@ class CorredorController extends Controller
             $corredor->peso = $request->peso;
             $corredor->estatura = $request->estatura;
             $corredor->grupo_ciclismo = $request->grupo_ciclismo;
-           
-         $corredor->save();
+           $corredor->save();
+         
+
+       $data=array('user'=> $user);
+        
+        Mail::send('Bienvenido',$data,function($mensaje) use ($user){
+              $mensaje->from('app.noreply.system@gmail.com','Registro exitoso');
+              $mensaje->to('stefanyoropeza94@gmail.com')->subject('Bienvenido');
+            });
+            
+            
+            
 
          return view('registroExitoso');
     }
