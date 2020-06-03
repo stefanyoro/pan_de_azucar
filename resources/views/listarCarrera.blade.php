@@ -292,7 +292,7 @@
           </div><br>
           <div class="col-md-12" align="right">
            <div class="btn-group" role="group">
-              <button id="btnGroupDrop1" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <button id="btnGroupDrop1" style="background-color: #B03A2E;" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
               </button>
               <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
