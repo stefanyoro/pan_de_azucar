@@ -10,28 +10,45 @@
    
 <div class="container" align="center">
     	<div class="col-md-10">
-	    	<div class="card" style="border-color:black;">
+    		@if(session()->has('data'))
+    			<div class="alert alert-success alert-dismissible fade show" role="alert">
+    				{{session('data')['mensaje']}}
+    				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+  					</button>
+    			</div>		
+    		@endif
+
+	    	<div class="card" style="border-color:#B03A2E;">
 	    		<div class="card-header" style="height:50px; background-color: #B03A2E;">
 	    			<a style="color: white;">Datos del corredor</a>
 	    		</div>
 			  		<div class="card-body">
 			  			<br>
 			    		<div class="">
-					        <form action="RegistrarPlanE" method="post">@csrf
+					        <form action="RegistrarPlanE" method="post" id="formulario">@csrf
 					        	<div class="row">
 					        		<div class="col-md-2"></div>
 					        		<div class="col-md-8">
-					        			<form action="RegistrarPlanE" method="post">
+					        			
 											<!-- Button trigger modal -->
-						            		<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
-						            			Directorio
-						            		</button><br><br>      
-						            		<input class="form-control" type="text" name="id_user" id="id_user" disabled>
-						            		<br><br>
-						        		</form>
+											<div class="row">
+												<div class="col-md-10"></div>
+												<div class="col-md-2">
+						            				<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+						            					Directorio
+						            				</button>      
+												</div>
+											</div>
+											<br>
+											<div class="row">
+												<div class="col-md-4">
+						            				<input type="text" class="form-control" id="id_user" name="id_user">
+												</div>
+											</div>
+						        		
 					        		</div>
 					        	</div><br>
-
 					        	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 								<div class="modal-dialog" role="document">
 								    <div class="modal-content">
@@ -45,23 +62,23 @@
 								        <br>
 								            <div class="row">
 								            	<div class="col-md-12">
-													<form id="myForm">
+													<div id="myForm">
 														@foreach($usuarios as $usuario)
 					        							@if($usuario->rol == '4')
 															@foreach($personas as $persona)
 																@if($persona->user_id == $usuario->id)
 										                		<input type="radio" name="radioName" value="{{$persona->user_id}}" />{{$persona->nombre}} {{$persona->apellido}} CI. {{$persona->numero_doc}}<br />
-														@endif
-													@endforeach    	
-											    @endif
-											@endforeach
-								                	</form>
+																	@endif
+																@endforeach    	
+														    @endif
+														@endforeach
+								                	</div>
 								                </div>
 								            </div>
 								        <br>
 								      </div>
 								      <div class="modal-footer">
-								        <button id="obtener" type="button" class="btn btn-primary">Guardar</button>
+								        <button id="obtener" type="button" class="btn btn-success">Guardar</button>
 								      </div>
 								    </div>
 								  </div>
@@ -78,13 +95,13 @@
 					  				<div class="col-md-1"></div>
 					  				<div class="col-md-10">
 					  					<div class="accordion" id="accordionExample">
-								  <div class="card" style="text-align: left;">
-								    <div class="card-header" id="headingOne">
-								      <h2 class="mb-0">
-								        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-								          <i class="fa fa-plus-circle" aria-hidden="true" style="color: black;"></i> <a style="color: black;">MTB</a>
-								        </button>
-								      </h2>
+								  			<div class="card" style="text-align: left;">
+								    			<div class="card-header" id="headingOne">
+								      			<h2 class="mb-0">
+								        			<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								          				<i class="fa fa-plus-circle" aria-hidden="true" style="color: black;"></i> <a style="color: black;">MTB</a>
+								        			</button>
+								      			</h2>
 								    </div>
 
 								    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -96,31 +113,31 @@
 								        		</p>
 								        		<div class="form-check form-check-inline">
 												  	&nbsp;<label class="form-check-label" for="Lunes">Lunes &nbsp;</label>
-												  	<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Lunes">
+												  	<input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Lunes">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Martes">Martes &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Martes">
+												  <input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Martes">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Miercoles">Miércoles &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Miercoles">
+													<input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Miercoles">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Jueves">Jueves &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Jueves">
+												  <input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Jueves">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Viernes">Viernes &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Viernes">
+													<input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Viernes">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Sabado">Sábado &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Sabado">
+												  <input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Sabado">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Domingo">Domingo &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Domingo">
+													<input class="form-check-input" type="checkbox" id="dias_mtb" name="dias_mtb[]" value="Domingo">
 												</div>					        		
 								        	</div>
 								        </div><br>
@@ -179,7 +196,8 @@
 								        				<option value="100 rpm - mas">100 rpm - más</option>
 								        			</select>
 								        			
-								        		</div>  		
+								        		</div>  
+
 								        	</div>
 								        </div>
 								      </div>
@@ -202,31 +220,31 @@
 								        		</p>
 								        		<div class="form-check form-check-inline">
 												  	&nbsp;<label class="form-check-label" for="Lunes">Lunes &nbsp;</label>
-												  	<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Lunes">
+												  	<input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Lunes">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Martes">Martes &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Martes">
+												  <input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Martes">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Miercoles">Miércoles &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Miercoles">
+													<input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Miercoles">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Jueves">Jueves &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Jueves">
+												  <input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Jueves">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Viernes">Viernes &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Viernes">
+													<input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Viernes">
 												</div>
 												<div class="form-check form-check-inline">
 												  <label class="form-check-label" for="Sabado">Sábado &nbsp;</label>
-												  <input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Sabado">
+												  <input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Sabado">
 												</div>
 												<div class="form-check form-check-inline">
 												  	<label class="form-check-label" for="Domingo">Domingo &nbsp;</label>
-													<input class="form-check-input" type="checkbox" id="dias" name="dias[]" value="Domingo">
+													<input class="form-check-input" type="checkbox" id="dias_ruta" name="dias_ruta[]" value="Domingo">
 												</div>					        		
 								        	</div>
 								        </div><br>
@@ -307,35 +325,38 @@
 												<div class="form-group">
 						      						<select class="form-control" id="zona" name="zona" onChange="mostrar(this.value);">
 						        						<option selected disabled>Seleccione..</option>
-						        						<option value="hombros">Hombros</option>
-						        						<option value="pecho">Pecho</option>
-						        						<option value="espalda">Espalda</option>
-						        						<option value="abdomen">Abdomen</option>
-						        						<option value="brazos">Brazos</option>
-						        						<option value="piernas">Piernas</option>
+						        						<option value="4">Hombros</option>
+						        						<option value="5">Pecho</option>
+						        						<option value="3">Espalda</option>
+						        						<option value="1">Abdomen</option>
+						        						<option value="2">Brazos</option>
+						        						<option value="6">Piernas</option>
 												    </select>
 												</div> 
 											</div>
 
 										</div>
 										<!-- Ejercicios - Entrenamiento --> 
+										
+											
 											<div class="col-md-12">
-												<div id="hombros" style="display: none;">
-													<p style="text-align: left;">Ejercicios de hombros:</p>
+												<div id="4" style="display: none;">
+													<p style="text-align: left;">Ejercicios de Hombros:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
-						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Press frontal con barra">Press frontal con barra</option>
-						        							<option value="Press trasnuca con barra">Press trasnuca con barra</option>
-						        							<option value="Elevacion con mancuerna">Elevacion con mancuerna</option>
-						        							<option value="Elevacion frontal">Elevacion frontal</option>
-						        							<option value="Remo al cuello">Remo al cuello</option>
+							        							<option selected disabled>Seleccione..</option>
+						      								@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '4')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
+
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series"data-pattern-error="El nombre sólo puede tener caracteres alfabéticos.">
 														</div>
 
 														<div class="col-md-4">
@@ -382,25 +403,27 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
+											
+											
 											<div class="col-md-12">
-												<div id="pecho" style="display: none;">
+												<div id="5" style="display: none;">
 													<p style="text-align: left;">Ejercicios de pecho:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
 						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Press de banca">Press de banca</option>
-							        						<option value="Apertura con mancuerna">Apertura con mancuerna</option>
-							        						<option value="Pull over con barra">Pull over con barra</option>
-							        						<option value="Flexiones de pecho">Flexiones de pecho</option>
-							        						<option value="Cruce con poleas">Cruce con poleas</option>
+						        							@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '5')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series"data-pattern-error="El nombre sólo puede tener caracteres alfabéticos.">
 														</div>
 
 														<div class="col-md-4">
@@ -447,25 +470,25 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
 											<div class="col-md-12">
-												<div id="espalda" style="display: none;">
+												<div id="3" style="display: none;">
 													<p style="text-align: left;">Ejercicios de espalda:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
 						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Polea al pecho">Polea al pecho</option>
-							        						<option value="Polea trasnuca">Polea trasnuca</option>
-							        						<option value="Remo con mancuerna">Remo con mancuerna</option>
-							        						<option value="Dominadas con barra">Dominadas con barra</option>
-							        						<option value="Remo en maquina">Remo en maquina</option>
+						        							@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '3')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
 														</div>
 
 														<div class="col-md-4">
@@ -512,25 +535,25 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
 											<div class="col-md-12">
-												<div id="abdomen" style="display: none;">
+												<div id="1" style="display: none;">
 													<p style="text-align: left;">Ejercicios de abdomen:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
 						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Curl abdominal">Curl abdominal</option>
-							        						<option value="Flexion de piernas">Flexion de piernas</option>
-							        						<option value="Twist con peso">Twist con peso</option>
-							        						<option value="Elevacion de tronco">Elevacion de tronco</option>
-							        						<option value="Bicicleta en el aire">Bicicleta en el aire</option>
+						        							@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '1')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
 														</div>
 
 														<div class="col-md-4">
@@ -577,25 +600,25 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
 											<div class="col-md-12">
-												<div id="brazos" style="display: none;">
+												<div id="2" style="display: none;">
 													<p style="text-align: left;">Ejercicios de brazos:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
 						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Curl de biceps">Curl de biceps</option>
-							        						<option value="Curl de biceps martillo">Curl de biceps martillo</option>
-							        						<option value="Press frances">Press frances</option>
-							        						<option value="Extension de triceps mancuerna">Extension de triceps mancuerna</option>
-							        						<option value="Extension de triceps polea">Extension de triceps polea</option>
+						        							@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '2')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
 														</div>
 
 														<div class="col-md-4">
@@ -642,25 +665,25 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
 											<div class="col-md-12">
-												<div id="piernas" style="display: none;">
+												<div id="6" style="display: none;">
 													<p style="text-align: left;">Ejercicios de piernas:</p>
 													<div class="form-group">
 						      							<select class="form-control" id="ejercicio" name="ejercicio">
 						        							<option selected disabled>Seleccione..</option>
-						        							<option value="Sentadillas">Sentadillas</option>
-							        						<option value="Curl de piernas">Curl de piernas</option>
-							        						<option value="Gemelos en maquina">Gemelos en maquina</option>
-							        						<option value="Prensa">Prensa</option>
-							        						<option value="Extensiones">Extensiones</option>
+						        							@foreach ($ejercicios as $ejercicio)
+						      									@if($ejercicio->zona == '6')
+							        								<option value="{{$ejercicio->id}}">{{$ejercicio->nombre}}</option>
+							        							@endif
+							        						@endforeach
 												    	</select>
 													</div> 
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="series" name="series" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
 														</div>
 
 														<div class="col-md-4">
@@ -707,7 +730,7 @@
 																</div>					        		
 								        				</div>
 								        			</div>
-								        		</div><br>
+								        		</div>
 											</div>
 
 											
@@ -721,7 +744,7 @@
 								<div class="row">				           		
 								    <div class="col-md-8"></div>                  		
 							        <div class="col-md-4">
-							            <input type="submit" class="btn btn-success" value="Guardar" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;">
+							            <input type="submit" class="btn btn-success" value="Guardar" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;" onclick="submitform();">
 							        </div>			                     		
 							    </div>
 					
@@ -749,58 +772,63 @@
 
     });
 
+    function submitform(){
+      	
+      	document.getElementById('formulario').submit();
+      }
+
      function mostrar(id) {
-            if (id == "hombros") {
-                $("#hombros").show();
-                $("#pecho").hide();
-                $("#espalda").hide();
-                $("#abdomen").hide();
-                $("#brazos").hide();
-                $("#piernas").hide();
+            if (id == "4") {
+                $("#4").show();
+                $("#5").hide();
+                $("#3").hide();
+                $("#1").hide();
+                $("#2").hide();
+                $("#6").hide();
             }
 
-            if (id == "pecho") {
-                $("#pecho").show();
-                $("#hombros").hide();
-                $("#espalda").hide();
-                $("#abdomen").hide();
-                $("#brazos").hide();
-                $("#piernas").hide();
+            if (id == "5") {
+                $("#5").show();
+                $("#4").hide();
+                $("#3").hide();
+                $("#1").hide();
+                $("#2").hide();
+                $("#6").hide();
             }
-             if (id == "espalda") {
-                $("#espalda").show();
-                $("#pecho").hide();
-                $("#hombros").hide();
-                $("#abdomen").hide();
-                $("#brazos").hide();
-                $("#piernas").hide();
-            }
-
-             if (id == "abdomen") {
-                $("#abdomen").show();
-                $("#pecho").hide();
-                $("#hombros").hide();
-                $("#espalda").hide();
-                $("#brazos").hide();
-                $("#piernas").hide();
+             if (id == "3") {
+                $("#3").show();
+                $("#5").hide();
+                $("#4").hide();
+                $("#1").hide();
+                $("#2").hide();
+                $("#6").hide();
             }
 
-             if (id == "brazos") {
-                $("#brazos").show();
-                $("#pecho").hide();
-                $("#hombros").hide();
-                $("#espalda").hide();
-                $("#abdomen").hide();
-                $("#piernas").hide();
+             if (id == "1") {
+                $("#1").show();
+                $("#5").hide();
+                $("#4").hide();
+                $("#3").hide();
+                $("#2").hide();
+                $("#6").hide();
             }
 
-            if (id == "piernas") {
-                $("#piernas").show();
-                $("#brazos").hide();
-                $("#pecho").hide();
-                $("#hombros").hide();
-                $("#espalda").hide();
-                $("#abdomen").hide();
+             if (id == "2") {
+                $("#2").show();
+                $("#5").hide();
+                $("#4").hide();
+                $("#3").hide();
+                $("#1").hide();
+                $("#6").hide();
+            }
+
+            if (id == "6") {
+                $("#6").show();
+                $("#2").hide();
+                $("#5").hide();
+                $("#4").hide();
+                $("#3").hide();
+                $("#1").hide();
             }
         }
 </script>

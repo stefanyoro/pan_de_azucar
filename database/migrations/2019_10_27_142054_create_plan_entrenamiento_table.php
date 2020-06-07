@@ -16,11 +16,7 @@ class CreatePlanEntrenamientoTable extends Migration
         Schema::create('plan_entrenamiento', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('entrenador_id')->unsigned();
-            $table->foreign('entrenador_id')->references('id')->on('entrenador')->onDelete('cascade');
-
             $table->bigInteger('corredor_id')->unsigned();
-            $table->foreign('corredor_id')->references('id')->on('corredor')->onDelete('cascade');
 
             $table->bigInteger('mtb_id')->unsigned();
             $table->foreign('mtb_id')->references('id')->on('mtb')->onDelete('cascade');
@@ -30,9 +26,6 @@ class CreatePlanEntrenamientoTable extends Migration
 
             $table->bigInteger('gimnasio_id')->unsigned();
             $table->foreign('gimnasio_id')->references('id')->on('gimnasio')->onDelete('cascade');
-
-            $table->string('nombre')->nullable();
-            $table->string('apellido')->nullable();;
             $table->timestamps();
         });
     }

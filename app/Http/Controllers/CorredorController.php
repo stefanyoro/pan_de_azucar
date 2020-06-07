@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class CorredorController extends Controller
 {
@@ -36,13 +38,18 @@ class CorredorController extends Controller
 
     public function RegistrarCorredor(Request $request)
     {
+        //dd($request->file('foto'));
+        $foto = $request->file("foto");
+        $extension = $foto->getClientOriginalExtension();
+        Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
+
          //dd($request);
          $user = new User;
              $user->name= $request->nombre;
              $user->email= $request->correo;
              $user->password = bcrypt($request->password);
              $user->rol = $request->rol;
-             $user->img = $request->img;
+             $user->img = $foto->getFilename().".".$extension;
          $user->save();
         
          $persona = new Persona;
@@ -93,15 +100,23 @@ class CorredorController extends Controller
 
     public function vistaModificarPerfil()
     {   
-        return view('vistaModificarPerfil'); 
+        $estados = Estados::all();
+        $ciudades = Ciudades::all();
+        $municipios = Municipios::all();
+
+        return view('vistaModificarPerfil')->with(['estados'=> $estados, 'ciudades'=> $ciudades, 'municipios'=> $municipios]); 
     }
 
     public function actualizarPerfil(Request $request){
+
+        $foto = $request->file("foto");
+        $extension = $foto->getClientOriginalExtension();
+        Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
         
        $user = User::find($request->id);
              $user->name= $request->nombre;
              $user->email= $request->correo;
-             $user->img = $request->img;
+             $user->img = $foto->getFilename().".".$extension;
          $user->save();
         
         $persona = Persona::find($request->id);
@@ -113,7 +128,9 @@ class CorredorController extends Controller
             $persona->nombre = $request->nombre;
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
-            $persona->direccion = $request->direccion;
+            $persona->estado = $request->estado;
+            $persona->ciudad = $request->ciudad;
+            $persona->municipio = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           

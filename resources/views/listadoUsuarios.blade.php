@@ -22,7 +22,7 @@
 	                <div class="row">
 	                    <div class="col-md-12 table-responsive"> 
 		                    <table id="listadoUsuarios" class="table table-borderless">
-		                        <thead style="text-align: center;">  
+		                        <thead>  
 		                          <tr>
 		                            <th >N◦</th>
 		                            <th >Nombre</th>
@@ -37,7 +37,18 @@
 			                                <!-- <td>{{ $usuario->id}}</td>-->
 			                                <td>{{ $usuario->name}}</td>
 			                                <td>{{ $usuario->email}}</td>
-			                                <td>{{ $usuario->rol}}</td>
+                                      @if($usuario->rol == '1')
+			                                   <td>Administrador</td>
+                                      @endif
+                                      @if($usuario->rol == '2')
+                                         <td>Entrenador</td>
+                                      @endif
+                                      @if($usuario->rol == '3')
+                                         <td>Nutricionista</td>
+                                      @endif
+                                      @if($usuario->rol == '4')
+                                         <td>Corredor</td>
+                                      @endif
 			                               
 			                           	</tr>
 		                           		@endforeach

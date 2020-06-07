@@ -78,6 +78,8 @@ Route::post('observacion', 'InscripcionCorredoresController@observacion');
 	Route::get('listaEjercicios', 'PlanEntrenamientoController@listaEjercicio')->name('listaEjercicios');
 	Route::post('modificarEjercicio', 'PlanEntrenamientoController@modificarEjercicio')->name('modificarEjercicio');
 	Route::post('eliminarEjercicio', 'PlanEntrenamientoController@eliminarEjercicio')->name('eliminarEjercicio');
+	Route::get('miEntrenamiento', 'PlanEntrenamientoController@miEntrenamiento')->name('miEntrenamiento');
+	Route::get('listadoPlanesEntrenamiento', 'PlanEntrenamientoController@listadoPlanesEntrenamiento')->name('listadoPlanesEntrenamiento');
 
 // Resultados de carreras
 	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');
@@ -89,6 +91,7 @@ Route::post('observacion', 'InscripcionCorredoresController@observacion');
 
 //PDF'S
 	Route::get('CarnetPDF', 'PdfController@carnet')->name('CarnetPDF');
+	Route::get('planBasicoPDF', 'PdfController@planBasico')->name('planBasicoPDF');
 
 Auth::routes();
 

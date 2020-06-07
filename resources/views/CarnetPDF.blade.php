@@ -70,7 +70,7 @@
 <body>
     <div class="contenedor">
         <img src="img/carnet5.png">
-        <img src="img/person_1.jpg" class="foto">
+        <img img src="{{\Storage::url(Auth::user()->img)}}" class="foto">
         <div class="">
             <div class="row">
                 <div class="col-md-6"><div class="campo1"><b>Nombre:</b> {{ $persona->nombre}} {{ $persona->apellido}}</div></div>
