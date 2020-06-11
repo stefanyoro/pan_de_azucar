@@ -1,16 +1,16 @@
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `created_at`, `updated_at`) VALUES (NULL, 'Administrador', 'Administrador', NULL, NULL), (NULL, 'Entrenador', 'Entrenador', NULL, NULL), (NULL, 'Nutricionista', 'Nutricionista', NULL, NULL), (NULL, 'Corredor', 'Corredor', NULL, NULL);
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', NULL, '1', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`,`password2`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'administrador', 'admin@admin.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C','$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', NULL, '1', NULL, NULL, NULL);
 
 INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '1', 'Venezolano', 'cedula', 'M', '6077767', 'Alvaro', 'Linares', '2020-05-12', 'Miranda', 'San Antonio de los Altos', 'Los Salias', 'N/A','N/A','A+', NULL, NULL);
 
 INSERT INTO `administrador` (`id`, `persona_id`, `especialidad`, `grado_Instrucc`, `created_at`, `updated_at`) VALUES (NULL, '1', 'administrador', 'bachiller', NULL, NULL);
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Clen', 'clenvielma@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA43B.tmp.jpg', '2', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`,`password2`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Clen', 'clenvielma@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA43B.tmp.jpg', '2', NULL, NULL, NULL);
 INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '2', 'Venezolano', 'cedula', 'M', '25278612', 'Clen', 'Vielma', '1994-09-30', 'Miranda', 'San Antonio de los Altos', 'Los Salias', 'N/A','N/A','A+', NULL, NULL);
 INSERT INTO `entrenador` (`id`, `persona_id`, `especialidad`, `created_at`, `updated_at`) VALUES (NULL, '2', 'Entrenador', NULL, NULL);
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Stefany', 'stefanyoropeza94@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA897.tmp.jpg', '4', NULL, NULL, NULL);
+INSERT INTO `users` (`id`, `name`, `email`, `password`,`password2`, `img`,`rol`, `remember_token`, `created_at`, `updated_at`) VALUES (NULL, 'Stefany', 'stefanyoropeza94@gmail.com', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', '$2y$10$RGfpQ643xb1.KYiRm5NWoujC3P/3ARhHAb6xJk0da.qAdrFIr.Y4C', 'phpA897.tmp.jpg', '4', NULL, NULL, NULL);
 INSERT INTO `persona` (`id`, `user_id`, `nacionalidad`, `tipo_doc`, `sexo`, `numero_doc`, `nombre`, `apellido`, `fecha_nac`, `estado`, `ciudad`, `municipio`,`telf_local`,`telf_celular`,`tipo_sangre`, `created_at`, `updated_at`) VALUES (NULL, '3', 'Venezolano', 'cedula', 'F', '252702416', 'Stefany', 'Oropeza', '1997-01-16', 'Miranda', 'Los Teques', 'Guaicaipuro', 'N/A','N/A','O-', NULL, NULL);
 INSERT INTO `corredor` (`id`, `user_id`, `edad`,`peso`,`estatura`,`grupo_ciclismo`, `created_at`, `updated_at`) VALUES (NULL, '3', '23', '50', '152', 'Pan de azúcar bike team', NULL, NULL);
 

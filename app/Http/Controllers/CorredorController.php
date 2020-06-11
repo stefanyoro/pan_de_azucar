@@ -48,6 +48,7 @@ class CorredorController extends Controller
              $user->name= $request->nombre;
              $user->email= $request->correo;
              $user->password = bcrypt($request->password);
+             $user->password2 = bcrypt($request->password2);
              $user->rol = $request->rol;
              $user->img = $foto->getFilename().".".$extension;
          $user->save();
