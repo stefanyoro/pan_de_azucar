@@ -24,6 +24,8 @@ class CreateTableCarrera extends Migration
             $table->string('meridiano');
             $table->string('modalidad');
             $table->string('categoria');
+            $table->string('vuelta');
+            $table->string('kilometraje');
             $table->string('monto');
             $table->string('camisa');
             $table->string('comida');

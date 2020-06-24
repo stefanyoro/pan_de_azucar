@@ -22,13 +22,14 @@ class ResultadosController extends Controller
     
     public function RegistrarResultados(Request $request)
     {
-            //dd($request);
-            $resultado = new Resultado;
+
+            foreach ($request->tiempo as $key => $value) {
+                $resultado = new Resultado;
                 $resultado->inscribir_id = $request->id;
-                $resultado->tiempo = $request->tiempo;
-                $resultado->vuelta = $request->vuelta;
-                $resultado->posicion = $request->posicion;
+                $resultado->tiempo = $value;
             $resultado->save();
+            }
+            
         return redirect()->back();
     }
     public function verResultados()
