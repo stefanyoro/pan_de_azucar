@@ -78,7 +78,7 @@
                                                 <div class="row"> 
                                                   <div class="col-md-6">
                                                     <i class="fa fa-arrows" aria-hidden="true"></i> Vueltas
-                                                    <input type="text" class="form-control" id="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" required="El valor sólo puede tener caracteres numéricos" value="{{$carrera->vuelta}}">
+                                                    <input type="text" class="form-control" id="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" required="El valor sólo puede tener caracteres numéricos" value="{{$carrera->vuelta}}" disabled>
                                                   </div>                                                  
                                                   <div class="col-md-6">
                                                     <i class="fa fa-trophy" aria-hidden="true"></i> Posicion
