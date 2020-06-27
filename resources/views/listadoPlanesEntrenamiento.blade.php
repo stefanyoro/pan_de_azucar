@@ -69,7 +69,7 @@
                                         	</div>
                                         </div>
                                         <p style="text-align:center;"><b>Plan de entrenamiento personalizado</b></p>
-                                        <p style="text-align:left;"><b>MTB</b></p>
+                                        <p style="text-align:left; color: #B03A2E;"><b>MTB</b></p>
                                       
                                         <div class="row">
                                         	<div class="col-md-6">
@@ -87,7 +87,7 @@
                                         		<b>Días:</b> {{$plan->mtb->dias}}
                                         	</div>
                                         </div><br>
-                                        <p style="text-align:left;"><b>RUTA</b></p>
+                                        <p style="text-align:left; color: #B03A2E;"><b>RUTA</b></p>
                                       
                                         <div class="row">
                                         	<div class="col-md-6">
@@ -102,10 +102,10 @@
                                         		<b>Cadencia:</b> {{$plan->ruta->frecuencia}}
                                         	</div>
                                         	<div class="col-md-6">
-                                        		<b>Días:</b> {{$plan->mtb->dias}}
+                                        		<b>Días:</b> {{$plan->ruta->dias}}
                                         	</div>
                                         </div><br>
-                                        <p style="text-align:left;"><b>GIMNASIO</b></p>
+                                        <p style="text-align:left; color:#B03A2E;"><b>GIMNASIO</b></p>
                                       
                                         <div class="row">
                                         	<div class="col-md-6">
@@ -129,8 +129,9 @@
                                         		@endif
                                         	</div>
                                         	<div class="col-md-6">
+                                           
                                         		<b>Nombre:</b> {{$plan->gimnasio->ejercicios->nombre}}
-                                        	</div>
+                                          </div>
                                         </div><br>
                                         <div class="row">
                                         	<div class="col-md-4">
@@ -142,6 +143,12 @@
                                         	<div class="col-md-4">
                                         		<b>Peso:</b> {{$plan->gimnasio->peso}}
                                         	</div>
+                                        </div><br>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                              <b>Días:</b> {{$plan->gimnasio->dias}}                                            
+                                          </div>
+                                          
                                         </div>
                                       </div>
                                     </div>

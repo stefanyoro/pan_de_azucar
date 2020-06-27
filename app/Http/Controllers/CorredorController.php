@@ -9,9 +9,6 @@ use App\Corredor;
 use App\Administrador;
 use App\Entrenador;
 use App\Nutricionista;
-use App\Estados;
-use App\Ciudades;
-use App\Municipios;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -24,11 +21,8 @@ class CorredorController extends Controller
 {
     public function vistaRegistroCorredor()
     {
-        $estados = Estados::all();
-        $ciudades = Ciudades::all();
-        $municipios = Municipios::all();
-
-        return view('afiliacionCorredor')->with(['estados'=> $estados, 'ciudades'=> $ciudades, 'municipios'=> $municipios]); 
+       
+        return view('afiliacionCorredor'); 
     }
 
     public function vistaRegistroExitoso()
@@ -64,13 +58,12 @@ class CorredorController extends Controller
             $persona->fecha_nac = $request->fecha_nac;
             $persona->estado = $request->estado;
             $persona->ciudad = $request->ciudad;
-            $persona->municipio = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           
          $persona->save();
 
-         //dd($request);
+         
          $corredor = new Corredor;
             $corredor->user_id = $user->id;
             $corredor->edad = $request->edad;
@@ -82,9 +75,9 @@ class CorredorController extends Controller
 
        $data=array('user'=> $user);
         
-        Mail::send('Bienvenido',$data,function($mensaje) use ($user){
+        Mail::send('Bienvenido',$data,function($mensaje) use ($user, $request){
               $mensaje->from('app.noreply.system@gmail.com','Registro exitoso');
-              $mensaje->to('stefanyoropeza94@gmail.com')->subject('Bienvenido');
+              $mensaje->to($request->correo)->subject('Bienvenido');
             });
             
             
@@ -101,11 +94,8 @@ class CorredorController extends Controller
 
     public function vistaModificarPerfil()
     {   
-        $estados = Estados::all();
-        $ciudades = Ciudades::all();
-        $municipios = Municipios::all();
 
-        return view('vistaModificarPerfil')->with(['estados'=> $estados, 'ciudades'=> $ciudades, 'municipios'=> $municipios]); 
+        return view('vistaModificarPerfil'); 
     }
 
     public function actualizarPerfil(Request $request){
@@ -131,7 +121,6 @@ class CorredorController extends Controller
             $persona->fecha_nac = $request->fecha_nac;
             $persona->estado = $request->estado;
             $persona->ciudad = $request->ciudad;
-            $persona->municipio = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           

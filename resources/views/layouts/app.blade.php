@@ -179,7 +179,6 @@
                               @foreach(App\Inscribir::where('corredor_id',Auth::user()->corredor->id)->where('estatus_corredor', 0)->get() as $verificaciones)
                                 <a class="dropdown-item" href="{{ route('listadoCorredores') }}">Pago verificado de la carrera {{$verificaciones->carrera->nom_carrera}}</a>
                               @endforeach
-
                             
 
                             
@@ -192,8 +191,6 @@
                                   </div>
                             </li>
                           </ul>
-
-
                          <ul class="navbar-nav ml-auto">
                           <img src="{{\Storage::url(Auth::user()->img)}}" class="rounded-circle" alt="..." style=" position: relative; bottom: -17px;  height: 35px; width: 35px; ">
                             <li class="nav-item dropdown">
@@ -215,6 +212,11 @@
                                     </svg>
                                      Modificar perfil
                                   </a>
+                                  <a class="dropdown-item" href="cambiarContraseña"> 
+                                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                                     Contraseña
+                                  </a>
+
                                   <a class="dropdown-item" href="{{ route('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i> Salir</a>
                                         @csrf
                                     </form>
@@ -225,8 +227,8 @@
           </div>
         </div>
       </nav>
-      
     </header>
+
     <!-- END header -->
     <div>
       @yield('content')
@@ -270,6 +272,7 @@
         </div>
       </div>
     </footer>
+
     <!-- END footer -->
 
     <!-- loader -->

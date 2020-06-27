@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+<br>
 <section class="section" style="background-color: white;">
     <div class="container" align="center">
         <div class="col-md-10">
@@ -40,10 +41,11 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '1')
+              @if($ejercicio->estatus == '1')
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -191,6 +193,7 @@
               </td>
             </tr>
             @endif
+            @endif
           @endforeach  
         </tbody>
       </table>
@@ -223,10 +226,11 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '2')
+             @if($ejercicio->estatus == '1')
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -283,9 +287,9 @@
                                 <div class="modal-body">
                                   <div class="card-body">
                                     <div class="col-md-12">
-                                      <form action="modificarEjercicio" method="post" >@csrf
+                                      <form action="modificarEjercicio" method="post" enctype="multipart/form-data" >@csrf
                                         <input type="hidden" name="id" value="{{$ejercicio->id}}">
-                                          <div class="row"> 
+                                            <div class="row"> 
                                             <div class="col-md-10"></div>
                                               <div class="col-md-2">    
                                                 <div class="form-group">
@@ -293,6 +297,7 @@
                                                     <input type="text" class="form-control" id="zona" name="zona" placeholder="" value="{{ $ejercicio->zona}}" required="required">
                                                 </div>  
                                               </div>
+                                            </div>
                                             <div class="row"> 
                                               <div class="col-md-6">    
                                                 <div class="form-group">
@@ -357,7 +362,7 @@
                                 </button>
                               </div>
                               <!-- acción del botón  -->
-                                <form action="eliminarEjercicio" method="post">@csrf
+                                <form action="eliminarEjercicio" method="post" enctype="multipart/form-data">@csrf
                                   <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                   <div class="modal-body">
                                     <h4> ¿Usted está seguro que desea eliminar el ejercicio "<b>{{$ejercicio->nombre}}</b>" ?</h4>
@@ -372,6 +377,7 @@
                         </div>
               </td>
             </tr>
+            @endif
             @endif
           @endforeach  
         </tbody>
@@ -405,10 +411,11 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '3')
+             @if($ejercicio->estatus == '1')
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -465,7 +472,7 @@
                                 <div class="modal-body">
                                   <div class="card-body">
                                     <div class="col-md-12">
-                                      <form action="modificarEjercicio" method="post" >@csrf
+                                      <form action="modificarEjercicio" method="post" enctype="multipart/form-data" >@csrf
                                         <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                             <div class="row"> 
                                             <div class="col-md-10"></div>
@@ -475,6 +482,7 @@
                                                     <input type="text" class="form-control" id="zona" name="zona" placeholder="" value="{{ $ejercicio->zona}}" required="required">
                                                 </div>  
                                               </div>
+                                            </div>
                                             <div class="row"> 
                                               <div class="col-md-6">    
                                                 <div class="form-group">
@@ -539,7 +547,7 @@
                                 </button>
                               </div>
                               <!-- acción del botón  -->
-                                <form action="eliminarAbdomen" method="post">@csrf
+                                <form action="eliminarEjercicio" method="post" enctype="multipart/form-data">@csrf
                                   <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                   <div class="modal-body">
                                     <h4> ¿Usted está seguro que desea eliminar el ejercicio "<b>{{$ejercicio->nombre}}</b>" ?</h4>
@@ -554,6 +562,7 @@
                         </div>
               </td>
             </tr>
+            @endif
             @endif
           @endforeach  
         </tbody>
@@ -587,10 +596,11 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '4')
+             @if($ejercicio->estatus == '1')
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -629,7 +639,7 @@
                       </div>
                   </div>
                                 
-                <!--Modificar-->
+                 <!--Modificar-->
                   <button type="button" class="btn btn-outline-warning btn-sm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificar_{{$ejercicio->id}}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
@@ -647,7 +657,7 @@
                                 <div class="modal-body">
                                   <div class="card-body">
                                     <div class="col-md-12">
-                                      <form action="modificarEjercicio" method="post" >@csrf
+                                      <form action="modificarEjercicio" method="post" enctype="multipart/form-data" >@csrf
                                         <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                             <div class="row"> 
                                             <div class="col-md-10"></div>
@@ -657,6 +667,7 @@
                                                     <input type="text" class="form-control" id="zona" name="zona" placeholder="" value="{{ $ejercicio->zona}}" required="required">
                                                 </div>  
                                               </div>
+                                            </div>
                                             <div class="row"> 
                                               <div class="col-md-6">    
                                                 <div class="form-group">
@@ -721,7 +732,7 @@
                                 </button>
                               </div>
                               <!-- acción del botón  -->
-                                <form action="eliminarAbdomen" method="post">@csrf
+                                <form action="eliminarEjercicio" method="post" enctype="multipart/form-data">@csrf
                                   <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                   <div class="modal-body">
                                     <h4> ¿Usted está seguro que desea eliminar el ejercicio "<b>{{$ejercicio->nombre}}</b>" ?</h4>
@@ -737,6 +748,8 @@
               </td>
             </tr>
             @endif
+            @endif
+
           @endforeach  
         </tbody>
       </table>
@@ -769,10 +782,11 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '5')
+             @if($ejercicio->estatus == '1')
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -811,7 +825,7 @@
                       </div>
                   </div>
                                 
-                <!--Modificar-->
+                 <!--Modificar-->
                   <button type="button" class="btn btn-outline-warning btn-sm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificar_{{$ejercicio->id}}">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </button>
@@ -829,7 +843,7 @@
                                 <div class="modal-body">
                                   <div class="card-body">
                                     <div class="col-md-12">
-                                      <form action="modificarEjercicio" method="post" >@csrf
+                                      <form action="modificarEjercicio" method="post" enctype="multipart/form-data" >@csrf
                                         <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                             <div class="row"> 
                                             <div class="col-md-10"></div>
@@ -839,6 +853,7 @@
                                                     <input type="text" class="form-control" id="zona" name="zona" placeholder="" value="{{ $ejercicio->zona}}" required="required">
                                                 </div>  
                                               </div>
+                                            </div>
                                             <div class="row"> 
                                               <div class="col-md-6">    
                                                 <div class="form-group">
@@ -903,7 +918,7 @@
                                 </button>
                               </div>
                               <!-- acción del botón  -->
-                                <form action="eliminarAbdomen" method="post">@csrf
+                                <form action="eliminarEjercicio" method="post" enctype="multipart/form-data">@csrf
                                   <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                   <div class="modal-body">
                                     <h4> ¿Usted está seguro que desea eliminar el ejercicio "<b>{{$ejercicio->nombre}}</b>" ?</h4>
@@ -918,6 +933,7 @@
                         </div>
               </td>
             </tr>
+            @endif
             @endif
           @endforeach  
         </tbody>
@@ -951,10 +967,12 @@
           </tr>
         </thead>
         <tbody>    
-          @foreach ($ejercicios as $ejercicio)
+          @foreach ($ejercicios as $clave => $ejercicio)
             @if($ejercicio->zona == '6')
+            @if($ejercicio->estatus == '1')
+
             <tr>                              
-              <td>{{ $ejercicio->id}}</td>
+              <td>{{ $clave + 1}}</td>
               <td>{{ $ejercicio->nombre}}</td>
               <td>{{ $ejercicio->ejecucion}}</td>
               <td >
@@ -1011,7 +1029,7 @@
                                 <div class="modal-body">
                                   <div class="card-body">
                                     <div class="col-md-12">
-                                      <form action="modificarEjercicio" method="post" >@csrf
+                                      <form action="modificarEjercicio" method="post" enctype="multipart/form-data" >@csrf
                                         <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                             <div class="row"> 
                                             <div class="col-md-10"></div>
@@ -1021,6 +1039,7 @@
                                                     <input type="text" class="form-control" id="zona" name="zona" placeholder="" value="{{ $ejercicio->zona}}" required="required">
                                                 </div>  
                                               </div>
+                                            </div>
                                             <div class="row"> 
                                               <div class="col-md-6">    
                                                 <div class="form-group">
@@ -1085,7 +1104,7 @@
                                 </button>
                               </div>
                               <!-- acción del botón  -->
-                                <form action="eliminarAbdomen" method="post">@csrf
+                                <form action="eliminarEjercicio" method="post" enctype="multipart/form-data">@csrf
                                   <input type="hidden" name="id" value="{{$ejercicio->id}}">
                                   <div class="modal-body">
                                     <h4> ¿Usted está seguro que desea eliminar el ejercicio "<b>{{$ejercicio->nombre}}</b>" ?</h4>
@@ -1100,6 +1119,7 @@
                         </div>
               </td>
             </tr>
+            @endif
             @endif
           @endforeach  
         </tbody>

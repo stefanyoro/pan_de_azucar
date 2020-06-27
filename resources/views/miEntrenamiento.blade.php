@@ -29,7 +29,7 @@
 			  					
 			  					<div class="text-justify">
 			  						Este plan de entrenamiento esta creado en un nivel básico para todos los corredores de la página. Duración: 1 semana.
-			  					</div>
+			  					</div><br>
 			  					<img src="img/PDF.png" style=" width: 70px; height: 80px;">
 			  					<br><br>
 			  					<button type="button" class="btn btn-success" onclick="location.href ='{{ route('planBasicoPDF') }}'">PDF</button>

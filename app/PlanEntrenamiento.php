@@ -23,4 +23,9 @@ class PlanEntrenamiento extends Model
     {
     	return $this->hasOne(Gimnasio::class, 'id');
     }
+
+    public function ejercicio()
+    {
+        return $this->hasOne(Ejercicios::class, 'id');
+    }
 }

@@ -356,7 +356,7 @@
 													<div class="row">
 														<div class="col-md-4">
 															<p style="text-align: left;">Series:</p>
-									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series"data-pattern-error="El nombre sólo puede tener caracteres alfabéticos.">
+									                    	<input type="text" class="form-control" id="serie" name="serie" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="Sólo números de 1 a 2 dígitos." placeholder="Nº series">
 														</div>
 
 														<div class="col-md-4">

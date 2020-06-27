@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
 
             $table->bigInteger('rol')->unsigned();
             $table->foreign('rol')->references('id')->on('roles')->onDelete('cascade');
-
+            $table->boolean('estatus')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });

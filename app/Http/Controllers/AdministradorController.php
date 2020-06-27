@@ -13,6 +13,7 @@ use App\Nutricionista;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AdministradorController extends Controller
 {
@@ -29,6 +30,7 @@ class AdministradorController extends Controller
              $user->name= $request->nombre;
              $user->email= $request->correo;
              $user->password = bcrypt($request->password);
+             $user->password2 = bcrypt($request->password2);
              $user->rol = $request->rol;
              $user->img = $request->img;
          $user->save();
@@ -42,7 +44,8 @@ class AdministradorController extends Controller
             $persona->nombre = $request->nombre;
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
-            $persona->direccion = $request->direccion;
+            $persona->estado = $request->estado;
+            $persona->ciudad = $request->ciudad;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre; 
@@ -78,9 +81,60 @@ class AdministradorController extends Controller
      public function listadoUsuarios()
     {
         
-        $usuarios =\DB::select('select * from users'); 
+        $usuarios = User::all();
 
         return view('listadoUsuarios')->with('usuarios',$usuarios); 
     }
 
+
+    public function enviarContraseña (Request $request){
+
+        if (User::where('email',$request->email)->get()->count() == 0) {
+            
+            return redirect()->back()->with('data',['mensaje'=> 'El correo no está registrado.']);
+        }else{  
+            $datos = uniqid();
+
+                $user = User::where('email',$request->email)->get()->first();
+                $user->password = bcrypt($datos);
+
+
+                $data=array('password'=> $datos);
+            
+            Mail::send('contraseña',$data,function($mensaje) use ($request){
+                $mensaje->from('app.noreply.system@gmail.com','Recuperar Contraseña');
+                $mensaje->to($request->email)->subject('Recuperar Contraseña');
+            });
+
+        $user->save();
+        return redirect()->back()->with('data',['mensaje'=> '¡Su contraseña fue enviada con éxito!']);
+        }
+    }
+
+    public function eliminarUsuario(Request $request)
+    { 
+        $usuario = User::find($request->id);
+            $usuario->estatus = 0;
+        $usuario->save();
+
+        return redirect()->back()->with('data',['mensaje'=> '¡El usuario fue eliminado con éxito!']);
+
+    }
+
+    public function recuperarContraseña()
+    {
+       
+        return view('cambiarContraseña'); 
+    }
+    public function cambiarContraseña(Request $request)
+    {
+        $user = User::find($request->id);
+             $user->name= $request->nombre;
+             $user->email= $request->correo;
+             $user->password = bcrypt($request->password);
+             $user->password2 = bcrypt($request->password2);
+         $user->save();
+
+        return redirect()->back()->with('data',['mensaje'=> '¡Su contraseña fue cambiada con éxito!']);
+    }
 }

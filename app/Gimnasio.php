@@ -10,6 +10,6 @@ class Gimnasio extends Model
 
    	   public function ejercicios()
     {
-    	return $this->hasOne(Ejercicios::class, 'id');
+    	return $this->belongsTo(Ejercicios::class, 'id_ejercicio');
     }
 }
