@@ -74,28 +74,33 @@
                                             <div class="modal-body">
                                               Ingrese los datos de {{$personaInscribir->corredor->user->persona->nombre}} {{$personaInscribir->corredor->user->persona->apellido}} en la carrera "{{$carrera->nom_carrera}}". <br><br> 
                                               <form method="post" action="resultadosCarreras">@csrf
-                                                <div class="row">
-                                                  <div class="col-md-4">
+                                                <input type="text" value="{{$personaInscribir->id}}" name="id" hidden>
+                                                <div class="row"> 
+                                                  <div class="col-md-6">
                                                     <i class="fa fa-arrows" aria-hidden="true"></i> Vueltas
-                                                    <input type="text" class="form-control" id="vuelta" name="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="Vueltas" required="El valor sólo puede tener caracteres numéricos">
-                                                  </div>
-
-                                                  <div class="col-md-4">
-                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Tiempo 
-                                                    <input type="text" class="form-control tiempo" id="tiempo" name="tiempo" placeholder="00:00:00" pattern="(?:0(?![0])|1(?![3-9])){1}\d{1}:[0-5]{1}\d{1}:[0-5]{1}\d{1}" required="La tiempo debe tener el formato 00:00:00 (01:00:59 por ejemplo)." value="">
-                                                  </div>
-
-                                                  <div class="col-md-4">
+                                                    <input type="text" class="form-control" id="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" required="El valor sólo puede tener caracteres numéricos" value="{{$carrera->vuelta}}">
+                                                  </div>                                                  
+                                                  <div class="col-md-6">
                                                     <i class="fa fa-trophy" aria-hidden="true"></i> Posicion
                                                     <input type="text" class="form-control" id="posicion" name="posicion" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" placeholder="Posicion" required="El valor sólo puede tener caracteres numéricos">
                                                   </div>
                                                 </div>
-                                              </form>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="submit" name="id" value="{{$personaInscribir->id}}" class="btn btn-success" >Guardar</button>                                        
-                                              <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
-                                            </div>
+                                                <div class="row">
+                                                  @for($i=1; $i<=$carrera->vuelta; $i++)
+                                                  <div class="col-md-12">
+                                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Tiempo 
+                                                    <div class="tiempos col-md-12">
+                                                      <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:00:00"  required="La tiempo debe tener el formato 00:00:00 (01:00:59 por ejemplo)." value="">
+                                                    </div>
+                                                  </div>
+                                                  @endfor
+                                                </div>                                              
+                                              </div>
+                                              <div class="modal-footer">
+                                               <button type="submit" name="id" value="{{$personaInscribir->id}}" class="btn btn-success" >Guardar</button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-primary">Cerrar</button>
+                                              </div>
+                                            </form>
                                           </div>
                                         </div>
                                       </div>

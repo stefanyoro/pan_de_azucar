@@ -140,7 +140,7 @@
                       <label>
                         <span style="color: red">*</span><i class="fa fa-safari" aria-hidden="true"></i> Cantidad de Kilometraje:
                       </label>
-                      <input type="text" class="form-control" id="Kilometro" name="Kilometro" pattern='[0-9]{1,30}' data-pattern-error="El costo sólo puede tener caracteres numéricos" placeholder="000" required="required">
+                      <input type="text" class="form-control" id="kilometraje" name="kilometraje" pattern='[0-9]{1,30}' data-pattern-error="El costo sólo puede tener caracteres numéricos" placeholder="000" required="required">
                     </div>
                   </div><br>
                   <div class="row">  

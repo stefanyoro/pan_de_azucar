@@ -21,8 +21,6 @@ class CreateResultadoTable extends Migration
             $table->foreign('inscribir_id')->references('id')->on('inscribir')->onDelete('cascade');
             //datos de la vista
             $table->string('tiempo');
-            $table->string('vuelta');
-            $table->string('posicion');
             $table->timestamps();
         });
     }
