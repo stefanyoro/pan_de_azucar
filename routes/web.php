@@ -24,10 +24,17 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password/reset');
 	Route::get('password/confirm', 'Auth\ResetPasswordController@confirm')->name('password/confirm');
 
+//Contraseñas
+	Route::get('recuperarContraseña', 'ContraseñaController@recuperarContraseña')->name('recuperarContraseña');
+
 // Funciones del Administrador:
 	Route::get('registroUsuario', 'AdministradorController@vistaRegistroUsuario')->name('registroUsuario');
 	Route::post('RegistrarUsuario', 'AdministradorController@RegistrarUsuario')->name('RegistrarUsuario');
 	Route::get('listadoUsuarios', 'AdministradorController@listadoUsuarios')->name('listadoUsuarios');
+	Route::get('cambiarContraseña', 'AdministradorController@recuperarContraseña')->name('cambiarContraseña');
+	Route::post('enviarContraseña', 'AdministradorController@enviarContraseña')->name('enviarContraseña');
+	Route::post('eliminarUsuario', 'AdministradorController@eliminarUsuario')->name('eliminarUsuario');
+	Route::post('cambiarContraseña', 'AdministradorController@cambiarContraseña')->name('cambiarContraseña');
 
 // Módulo de Corredores:
 	Route::get('afiliacionCorredor', 'CorredorController@vistaRegistroCorredor')->name('afiliacionCorredor');

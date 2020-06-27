@@ -7,19 +7,38 @@
 @endsection
 
 @section('content')
+<style type="text/css">
+hr {
+  height: 3px;
+  background-color: #B03A2E;
+}
+</style>
 
     <!-- END slider -->
 <section class="section body">
 	<div class="container" align="center">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        @if(session()->has('data'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('data')['mensaje']}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>    
+        @endif
+      </div>
+      
+    </div>
     	<div class="col-md-12">
       		<div class="card" style="border-color:#B03A2E; background: transparent;">
         		<div class="card-header" style="background-color: #B03A2E; height: 40px;">
             		<p  style="color:white; text-align:left;"> Listado de Usuarios</p> 
         		</div>
           		<div class="card-body" style="background-color: #0000;">
-	            <div class="">
-	             
-	                <div class="row">
+	             <div class="">
+	               <div class="row">
 	                    <div class="col-md-12 table-responsive"> 
 		                    <table id="listadoUsuarios" class="table table-borderless">
 		                        <thead>  
@@ -30,9 +49,10 @@
 		                            <th >rol</th>
 		                          </tr>
 		                        </thead>
-		                            <tbody>
+		                        <tbody>
 		                            	@foreach ($usuarios as $clave => $usuario)
-                              <tr>
+                                    @if($usuario->estatus == '1')
+                                    <tr>
                                       <td>{{ $clave + 1}}</td>
 			                                <!-- <td>{{ $usuario->id}}</td>-->
 			                                <td>{{ $usuario->name}}</td>
@@ -49,17 +69,99 @@
                                       @if($usuario->rol == '4')
                                          <td>Corredor</td>
                                       @endif
-			                               
-			                           	</tr>
+
+                                      <td>
+                                      
+                                      <!-- visualizar -->
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                          <button type="button" class="btn btn-outline-info btn-sm" type="button" class="btn btn-primary" data-toggle="modal" data-target="#visualizar_{{$usuario->id}}">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                          </button>
+                                          <!-- Modal -->
+                                            <div class="modal fade" id="visualizar_{{$usuario->id}}" tabindex="-1" role="dialog" aria-labelledby="visualizarModal_{{$usuario->id}}" aria-hidden="true">
+                                              <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                      <div class="modal-header" style="text-align: center;">
+                                                        <h5 class="modal-title" id="visualizarModal_{{$usuario->id}}">{{$usuario->name}} {{$usuario->persona->apellido}}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                        <!-- acción del botón  -->
+                                                          <div class="modal-body">
+                                                              <div class="card-body">
+                                                                <div class="row">
+                                                                  <div class="col-md-5"></div>
+                                                                  <div class="col-md-6">
+                                                                    <img src="{{\Storage::url(Auth::user()->img)}}" class="rounded-circle" alt="..." style="height: 150px; width: 150px;">
+                                                                  </div>
+                                                                </div>
+                                                                <br>
+                                                                <div class="row">
+                                                                  <div class="col-md-6"><b>Nacionalidad:</b> {{$usuario->persona->nacionalidad}} </div>
+                                                                  <div class="col-md-6"><b>N° documento:</b> {{$usuario->persona->numero_doc}}</div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                  <div class="col-md-4"><b>Sexo:</b> {{$usuario->persona->sexo}} </div>
+                                                                  <div class="col-md-8"><b>Fecha de nacimiento: </b> {{$usuario->persona->fecha_nac}}</div>
+                                                                </div><br>
+                                                                <div class="row">
+                                                                  <div class="col-md-12"><b>Correo: </b> {{$usuario->email}}</div>
+                                                                </div>
+                                                                <hr></hr>
+                                                                
+                                                                 <div class="row">
+                                                                  <div class="col-md-6"><b>Telefono móvil:</b> {{$usuario->persona->telf_celular}} </div>
+                                                                  <div class="col-md-6"><b>Telefono local: </b> {{$usuario->persona->telf_local}}</div>
+                                                                </div><br>
+
+                                                              </div>
+                                                          </div>
+                                                  </div>
+                                              </div>
+                                            </div>
+                                        </div>
+
+                                      <!--Eliminar-->
+                                        <button type="button" class="btn btn-outline-danger btn-sm"data-toggle="modal" data-target="#eliminar_{{$usuario->id}}">
+                                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                        </button>
+                                            <!-- Modal -->
+                                              <div class="modal fade" id="eliminar_{{$usuario->id}}" tabindex="-1" role="dialog" aria-labelledby="eliminarModal_{{$usuario->id}}" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="eliminarModal_{{$usuario->id}}">Eliminar...</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <!-- acción del botón  -->
+                                                      <form action="eliminarUsuario" method="post" enctype="multipart/form-data">@csrf
+                                                        <input type="hidden" name="id" value="{{$usuario->id}}">
+                                                        <div class="modal-body">
+                                                          <h4> ¿Usted está seguro que desea inhabilitar al usuario "<b>{{$usuario->name}}</b>"?</h4>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                          <button type="submit" class="btn btn-success" >Si</button>
+                                                          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                                        </div>
+                                                      </form> 
+                                                  </div>
+                                                </div>
+                                              </div>
+                                             
+                                      </td>
+			                             </tr>
+                                   @endif
 		                           		@endforeach
-		                            </tbody>
+		                        </tbody>
 		                    </table>
 	                    </div>  
-	                </div>
-
-	              </div>
+	               </div>
+	             </div>
 	            </div>
-          		</div>
+          </div>
       		</div>
       	</div>
     </div>

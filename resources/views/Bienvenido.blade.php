@@ -5,7 +5,7 @@
         <title>Registro exitoso</title>
     </head>
     <body>
-        <h2>¡Bienvenido {{ $user->name }}!</h2>
+        <h2>¡Bienvenido a Pan de Azúcar {{ $user->name }}!</h2>
         ¡Gracias por registrarte!
         <br>
         <div class="text-justify">
@@ -14,8 +14,9 @@
         <br>
         <b>Datos de registro:</b>
         <br>
+            <b>Nombre:</b> {{$user->name}}<br>
+
             <b>Correo:</b> {{$user->email}}<br>
-            <b>Contraseña:</b> {{$user->password}}
         
         <p>¡Esperamos que nuestra aplicación te sea de gran utilidad!</p>
 

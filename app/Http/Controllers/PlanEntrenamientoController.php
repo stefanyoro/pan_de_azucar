@@ -137,8 +137,9 @@ class PlanEntrenamientoController extends Controller
         $gimnasio = Gimnasio::all();
         $usuarios = User::all();
         $planes = PlanEntrenamiento::all();
+        $ejercicios = Ejercicios::all();
         
-        return view('listadoPlanesEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes]); 
+        return view('listadoPlanesEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]); 
     }
 
 }

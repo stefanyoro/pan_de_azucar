@@ -20,6 +20,14 @@
     	
     <div class="container" align="left">
     	<div class="col-md-8">
+    		 @if ($errors->any())
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>¡El correo o número de documento ya existen!</strong> 
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                @endif
 	    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 	    		<div class="card-header" style="background-color: #B03A2E;">
 			    	
@@ -104,33 +112,17 @@
 				                
 				                <p style="text-align: left;">Dirección:</p>
 				                <div class="row">
-				                	<div class="col-md-4"> 
-				                    	<select class="form-control" id="estado" name="estado">
-				                     		<option value="" selected disabled> Estado</option>
-    								 		@foreach($estados as $estado)
-                      							<option  value="{{$estado->estado}}">{{$estado->estado}}</option>
-                    						@endforeach
-    									</select>
+				                	<div class="col-md-6"> 
+				                    	<select class="form-control" id="estado" name="estado"></select>
 				                    </div>  
 
-				                    <div class="col-md-4"> 
-				                     	<select class="form-control" id="ciudad" name="ciudad">
-				                     		<option value="" selected disabled> Ciudad </option>
-				                     		@foreach($ciudades as $ciudad)
-                      							<option  value="{{$ciudad->ciudad}}">{{$ciudad->ciudad}}</option>
-                    						@endforeach
-    								 		
+				                    <div class="col-md-6"> 
+				                     	
+				                     		 <select class="form-control" id="municipio" name="municipio"></select>
     									</select>
 				                    </div> 
 
-				                	<div class="col-md-4"> 
-				                     	<select class="form-control" id="municipio" name="municipio">
-				                     		<option value="" selected disabled> Municipio </option>
-    								 		@foreach($municipios as $municipio)
-                      							<option  value="{{$municipio->municipio}}">{{$municipio->municipio}}</option>
-                    						@endforeach
-    									</select>
-				                    </div> 
+				                	
 				                </div>
 				                <br>
 				                <div class="row" style="margin-top: 15px;">
@@ -209,6 +201,10 @@
 @section('scriptJS')
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/municipios.js"></script>
+<script src="js/select_estados.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
 
 <script>
     $('select#estado').change(function(){
@@ -221,7 +217,8 @@
             });
         }, 'json');
     });
-
+	
+	
     $(document).ready(function() {
 	//variables
 	var pass1 = $('[name=password]');
@@ -258,4 +255,30 @@
 	coincidePassword();
 	});
 });
+
+$(function(){
+        $('#RegistrarCorredor').validate({
+            rules :{
+                correo : {
+                    required: true,
+                    correo: true
+                },
+                 numero_doc : {
+                    required: true,
+                    numero_doc: true
+                }
+            },
+            messages : {
+                correo : {
+                    required: "Debe ingresar el correo",
+                    correo: "El correo ya existe."
+                },
+                numero_doc : {
+                    required : "Debe ingresar un nombre",
+                   	numero_doc: "El correo ya existe."
+                }
+            }
+        });    
+    });
+
 </script>

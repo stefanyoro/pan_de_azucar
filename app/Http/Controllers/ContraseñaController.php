@@ -4,22 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-use App\UserIlluminate\Contracts\Auth\CanResetPassword;
-use App\UserIlluminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
-class ResetPasswordController extends Controller
+class ContraseñaController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
-    */
-
+   
     use ResetsPasswords;
 
         
@@ -46,6 +38,7 @@ class ResetPasswordController extends Controller
        
         return view('recuperarContraseña'); 
     }
+    
     public function enviarContraseña (Request $request){
 
         $datos = uniqid();

@@ -116,40 +116,6 @@
 							                    	<input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
 							                    </div>
 							                </div>
-							                     
-									                <div class="row">
-									                	<div class="col-md-4"> 
-									                		<p style="text-align: left;">Estado:</p>
-									                    	<select class="form-control" id="estado" name="estado">
-									                     		<option value="" selected disabled>{{Auth::user()->persona->estado}}</option>
-					    								 		@foreach($estados as $estado)
-					                      							<option  value="{{$estado->id}}">{{$estado->estado}}</option>
-					                    						@endforeach
-					    									</select>
-									                    </div>  
-
-									                    <div class="col-md-4"> 
-									                    	<p style="text-align: left;">Ciudad:</p>
-									                     	<select class="form-control" id="ciudad" name="ciudad">
-									                     		<option value="" selected disabled>{{Auth::user()->persona->ciudad}} </option>
-									                     		@foreach($ciudades as $ciudad)
-					                      							<option  value="{{$ciudad->id}}">{{$ciudad->ciudad}}</option>
-					                    						@endforeach
-					    								 		
-					    									</select>
-									                    </div> 
-
-									                	<div class="col-md-4"> 
-									                		<p style="text-align: left;">Municipio:</p>
-									                     	<select class="form-control" id="municipio" name="municipio">
-									                     		<option value="" selected disabled> {{Auth::user()->persona->municipio}} </option>
-					    								 		@foreach($municipios as $municipio)
-					                      							<option  value="{{$municipio->id}}">{{$municipio->municipio}}</option>
-					                    						@endforeach
-					    									</select>
-									                    </div> 
-									                </div>
-									                <br>
 
 							                     @if(Auth::user()->rol == '3')
 							                  <div class="col-md-6">

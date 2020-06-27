@@ -14,10 +14,10 @@ class CreateGimnasioTable extends Migration
     public function up()
     {
         Schema::create('gimnasio', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('zona');
             $table->bigInteger('id_ejercicio')->unsigned();
             $table->foreign('id_ejercicio')->references('id')->on('ejercicios')->onDelete('cascade');
+            $table->bigIncrements('id');
+            $table->string('zona');
             $table->string('series')->nullable();
             $table->string('repeticiones')->nullable();
             $table->string('peso')->nullable();
