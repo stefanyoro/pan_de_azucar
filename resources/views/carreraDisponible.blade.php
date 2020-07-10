@@ -2,11 +2,27 @@
  
 @section('content')
 
- </section> <!-- .section -->
-    <section class="section bg-light element-animate">
-    	<h1 align="center">Carreras Disponibles</h1>
-    	<br>
-      <div class="container">
+    <!-- END slider -->
+
+    <section class="section">
+    
+    <div class="container" align="center">
+      <div class="col-md-9">
+        @if(session()->has('data'))
+    <div class="alert alert-success" role="alert">
+        {{session('data')['mensaje']}}
+    </div>    
+    @endif
+
+        <div class="card" style="border-color:#B03A2E; background: transparent;">
+          <div class="card-header" style="background-color: #B03A2E;">
+            <a style="color: white;">Inscripciòn Corredor</a>
+          </div>
+          <br>
+          <div class="row">
+            <div class="">
+              
+            <div class="container">
         <div class="row no-gutters">
           @foreach ($carreras as $clave => $carrera)
           @if (($carrera->estatus == 1) and ($carrera->fecha_carr > now()->toDateString()
@@ -25,7 +41,7 @@
                     <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos - App\Inscribir::where('carrera_id', $carrera->id)->count()}}</span></p>
 
                     @if(App\Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('carrera_id', $carrera->id)->count() == 1)
-                    	<p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-info btn-sm">Inscrito</span></p>
+                      <p align="right"><span href="inscripcionCorredores/{{$carrera->id}}" class="btn btn-info btn-sm">Inscrito</span></p>
 
                     
                     @elseif($carrera->cupos > App\Inscribir::where('carrera_id', $carrera->id)->count())
@@ -40,11 +56,14 @@
             </div>
           </div> 
           @endif
-          @endforeach 
+          @endforeach       
 
-   </div>
-        
+            </div>
+<br>      </div>
+
       </div>
+    </div>
+
 </section> <!-- .section -->
  
 

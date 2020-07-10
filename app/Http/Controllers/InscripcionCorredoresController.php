@@ -76,9 +76,9 @@ class InscripcionCorredorescontroller extends Controller
     public function supenderCorredor(Request $request)
     {
         $inscribir = Inscribir::find($request->id);
-        $inscribir->estatus =0;
-        $inscribir->save();
+        $inscribir->delete();
         return redirect()->back();
+
     }
 
     public function modificarPago(Request $request)
