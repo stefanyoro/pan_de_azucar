@@ -209,6 +209,12 @@
                                     </svg>
                                      Modificar perfil
                                   </a>
+                                  @if(Auth::user()->rol == '1')
+                                  <a class="dropdown-item" href="/banco"> 
+                                    <i class="fa fa-bank" aria-hidden="true"></i>
+                                     Banco receptor
+                                  </a>
+                                  @endif
                                   <a class="dropdown-item" href="cambiarContraseña"> 
                                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
                                      Contraseña
