@@ -12,7 +12,7 @@
 @endif
 </div>
   <div class="container" align="center">
-    <div class="col-md-12">
+    <div class="col-md-9">
       <div class="card" style="border-color:#B03A2E; background: transparent;">
         <div class="card-header" style="background-color: #B03A2E; height: 40px;">
             <p  style="color:white; text-align:left;"> Listado de las Carreras</p> 
