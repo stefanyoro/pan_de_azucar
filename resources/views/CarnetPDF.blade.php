@@ -38,7 +38,7 @@
             font-size: 14px;
             position: absolute;
             top: 320px;
-            left: 9px;
+            left: 80px;
             transform: translate(-50%, -50%);
         }
         .campo4{
@@ -46,7 +46,7 @@
             font-size: 14px;
             position: absolute;
             top: 350px;
-            left: 106px;
+            left: 70px;
             transform: translate(-50%, -50%);
         }
         .campo5{
@@ -70,7 +70,7 @@
 <body>
     <div class="contenedor">
         <img src="img/carnet5.png">
-        <img img src="{{\Storage::url(Auth::user()->img)}}" class="foto">
+        <img img src="img/stefany.jpg" class="foto">
         <div class="">
             <div class="row">
                 <div class="col-md-6"><div class="campo1"><b>Nombre:</b> {{ $persona->nombre}} {{ $persona->apellido}}</div></div>

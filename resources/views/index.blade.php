@@ -113,7 +113,8 @@
                   <p class="sched-time">
                     <span><span class="fa fa-clock-o"></span> {{ $carrera->hora}}{{ $carrera->meridiano}}</span> <br>
                     <span><span class="fa fa-calendar"></span> {{ $carrera->fecha_carr}}</span> <br>
-                    <span><span class="fa fa-bicycle"></span> {{ $carrera->modalidad}}</span> <br>
+                    <span><span class="fa fa-bicycle"></span> {{ $carrera->vuelta}} vueltas en {{ $carrera->modalidad}}</span><br>
+                    <span><span class="fa fa-safari"></span> {{ $carrera->kilometraje}}km </span> <br>
                     <span class="fa fa-usd"> Costo neto:</span><span style="color: #B03A2E"> {{ $carrera->monto}},00bs.</span><br>
                     <p style="text-align: right;"><span>Cupos Disponibles: {{ $carrera->cupos - App\Inscribir::where('carrera_id', $carrera->id)->count()}}</span></p>
 

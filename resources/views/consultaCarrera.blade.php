@@ -15,6 +15,9 @@
 				@if(session()->has('data'))
 	    		<div class="alert alert-success" role="alert">
 	    			{{session('data')['mensaje']}}
+	    			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    					<span aria-hidden="true">&times;</span>
+  					</button>
 	   		 	</div>		
 	   			 @endif
 	   		</div>	
@@ -26,7 +29,7 @@
 				<div class="card" style="width: 60em;">
 				  	<div class="card-body" style="border-radius: 30px;">
 						@foreach ($carreras as $carrera)
-					  	<img src="{{\Storage::url($carrera->foto)}}" width="100%" height="50%">
+					  	<img src="{{\Storage::url($carrera->foto)}}" width="100%" height="35%">
 					  	<h2 class="card-title" aling="center height:50%" style="color: white; text-align: center; background-color:#B03A2E; height: 03vw;">{{ $carrera->nom_carrera}}</h2>
 					  	<table class="table table-borderless">
 							<thead>
@@ -70,7 +73,13 @@
 													Hora:
 												</b> 
 												{{ $carrera->hora}} {{ $carrera->meridiano}}
-											</p>
+											</p>										
+								    	<p>
+								    		<b>
+								    			<i class="fa fa-safari" aria-hidden="true"></i> Cantidad de Kilometraje:
+								    		</b>
+								    		{{ $carrera->kilometraje}}km.
+								    	</p>
 										<b>
 											<i class="fa fa-bookmark-o" aria-hidden="true"></i>
 											Categorias 
@@ -95,6 +104,12 @@
 									    		<p style="text-indent: 10%;"><b>Camisa:</b>{{ $carrera->camisa}},00 bs.</p>
 									    		<p style="text-indent: 10%;"><b>Comida:</b>{{ $carrera->comida}},00 bs.</p>
 									    		<p style="text-indent: 10%;"><b>Hidratación:</b>{{ $carrera->bebida}},00 bs.</p>
+									    	</p>
+									    	<p>
+									    		<b>
+									    			<i class="fa fa-refresh" aria-hidden="true"></i> Cantidad de Vueltas:
+									    		</b>
+									    		{{ $carrera->vuelta}}
 									    	</p>
 									    	
 									    	<br>
