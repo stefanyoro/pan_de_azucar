@@ -5,7 +5,7 @@
   @if(Auth::user()->rol == '4')
 
 
-  <div class="col-md-6 offset-md-3">
+  <div class="col-md-8 offset-md-2">
   <div class="card" style="border-color:#B03A2E; background: transparent;">
 				<div class="card-header" style="background-color: #B03A2E;">
           <a style="color: white;">Inscripciòn Corredor</a>
@@ -16,7 +16,7 @@
   @endif
   @if(Auth::user()->rol == '1')
   
-  <div class="col-md-6 offset-md-3">
+  <div class="col-md-8 offset-md-2">
   <div class="card" style="border-color:#B03A2E; background: transparent;">
 				<div class="card-header" style="background-color: #B03A2E;">
 					<a style="color: white;">Inscripciòn Corredor</a>
@@ -186,7 +186,8 @@
                               </div>
 
                               @if($personaInscribir->estatus == 0)
-                              <a href="{{route('recibo', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>PDF</a>
+                              <a href="{{route('recibo', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Recibo PDF</a>
+                              <a href="{{route('numero', [ 'id' => $personaInscribir->id])}}" class="btn btn-danger" value="{{$personaInscribir->id}}" target="_blank"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>Numero PDF</a>
                               @endif
                               <!-- Button trigger modal -->
                               @if($personaInscribir->estatus != 0)

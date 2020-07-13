@@ -16,8 +16,8 @@ class BancoReceptor extends Model
          'remember_token',
     ];
 
-    public function banco()
+     public function banco()
     {
-        return $this->belongsToMany(Banco::class, 'banco_id');
+     return $this->belongsTo(Banco::class, 'banco_id');
     }
 }

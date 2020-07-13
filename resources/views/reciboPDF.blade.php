@@ -57,7 +57,7 @@
             font-size: 12px;
             position: absolute;
             top: 135px;
-            left: 40px;
+            left: 20px;
             transform: translate(-50%, -50%);
         }
 .campo7{
@@ -81,7 +81,7 @@
             font-size: 12px;
             position: absolute;
             top: 195px;
-            left: 76px;
+            left: 72px;
             transform: translate(-50%, -50%);
         }
 .campo10{
@@ -89,7 +89,7 @@
             font-size: 12px;
             position: absolute;
             top: 210px;
-            left: 56px;
+            left: 78px;
             transform: translate(-50%, -50%);
         }  
 .campo11{
@@ -97,9 +97,53 @@
             font-size: 12px;
             position: absolute;
             top: 225px;
-            left: 38px;
+            left: 32px;
+            transform: translate(-50%, -50%);
+        }  
+
+.campo12{
+            font-family: Arial;
+            font-size: 12px;
+            position: absolute;
+            top: 255px;
+            left: 50px;
             transform: translate(-50%, -50%);
         }                        
+
+.campo13{
+            font-family: Arial;
+            font-size: 12px;
+            position: absolute;
+            top: 270px;
+            left: 38px;
+            transform: translate(-50%, -50%);
+        }     
+
+.campo14{
+            font-family: Arial;
+            font-size: 12px;
+            position: absolute;
+            top: 285px;
+            left: 38px;
+            transform: translate(-50%, -50%);
+        }    
+.campo15{
+            font-family: Arial;
+            font-size: 12px;
+            position: absolute;
+            top: 300px;
+            left: 46px;
+            transform: translate(-50%, -50%);
+        }  
+.campo16{
+            font-family: Arial;
+            font-size: 14px;
+            position: absolute;
+            top: 400px;
+            left: 200px;
+            transform: translate(-50%, -50%);
+        }            
+                                         
 </style>
 </head>
 <body >
@@ -120,6 +164,13 @@
         <div class="campo9"><b>Lugar de la Salida:</b>{{ $inscribir->carrera->lugar_salida}} </div> 
         <div class="campo10"><b>Lugar de Llegada :</b>{{ $inscribir->carrera->lugar_llegada}} </div> 
         <div class="campo11"><b>Costo:</b>{{ $inscribir->monto}}</div>
+        <br><br><br>
+         <div>-----------------------------------------------------------</div>
+         <div class="campo12"><b>Kit del Competidor</b></div>
+        <div class="campo13"><b>Camisa:</b>{{ $inscribir->carrera->camisa}} </div>
+        <div class="campo14"><b>Comida:</b>{{ $inscribir->carrera->comida}} </div>
+        <div class="campo15"><b>Hidratacion:</b>{{ $inscribir->carrera->bebida}} </div>
+        <div class="campo16"><b>Monto Total:</b>{{$inscribir->monto}} </div>
 
      </div>
      

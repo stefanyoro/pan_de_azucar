@@ -68,7 +68,7 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::post('comprobarPago', 'InscripcionCorredorescontroller@comprobarPago')->name('comprobarPago');
 	Route::get('carreraDisponible', 'InscripcionCorredorescontroller@carreraDisponible')->name('carreraDisponible');
 	Route::post('observacion', 'InscripcionCorredoresController@observacion');
-
+	Route::get('numero/{id}', 'InscripcionCorredorescontroller@numero')->name('numero');
 // Plan de entrenamientos
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
