@@ -81,7 +81,7 @@
 					<div class="col-md-4">
 						<p style="text-align: left;">
 
-							lugar de Salida:</p>
+							Lugar de Salida:</p>
 						<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->lugar_llegada}}" readonly>
 					</div>
 
@@ -102,7 +102,7 @@
 					<div class="col-md-4">
 						<p style="text-align: left;">
 
-							modalidad:</p>
+							Modalidad:</p>
 						<input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento" value="{{$carrera->modalidad}}" readonly>
 					</div>
 
@@ -110,25 +110,12 @@
 				</div>
 				<br>
 				
-				<div class="card-header" style="background-color: #B03A2E;">
-					<a style="color: white;">Bancos Receptor</a>
-				</div>
+				
 				<div class="card-body">
 						<div class="row">
 
-							@foreach(\App\BancoReceptor::all() as $bancoR)
-							<div class="col-md-4">
-								<p style="text-align: left;">
-									Cedula:</p>
-									<input class="form-control" type="text" value="{{$bancoR->titular}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->cedula}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->banco_id->banco}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->cuenta}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->tipo}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->telefono}}" disabled>
-									<input class="form-control" type="text" value="{{$bancoR->correo}}" disabled>
-								</div>
-								@endforeach
+							
+								<!-- Button trigger modal -->
 						</div>
 				</div>
 				<div class="card-header" style="background-color: #B03A2E;">
@@ -137,11 +124,51 @@
 			
 				
 				<div class="card-body">
+					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalCenter">
+
+ Banco Receptor
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle" >Banco Receptor</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        @foreach($bancoR as $bancoRe)
+     
+  <div class="container"style="text-align:left;">
+    <div>-----------------------------------------------------------------------------</div>   
+    	<div><b>Nombre del Banco:</b> {{$bancoRe->banco->nombre}}</div>
+        <div><b>Nombre del Titular:</b> {{$bancoRe->titular}}</div>
+		<div><b>Cèdula de Identidad:</b> {{$bancoRe->cedula}}</div>
+		<div><b>Tipo de cuenta:</b> {{$bancoRe->cuenta}}</div>
+		<div><b>Nùmero de Telefono:</b> {{$bancoRe->telefono}}</div>
+		<div><b>Nombre del Titular:</b> {{$bancoRe->titular}}</div>
+        <div><b>Correo:</b> {{$bancoRe->correo}}</div>
+    <div>-----------------------------------------------------------------------------</div>   
+</div>
+                    
+        @endforeach
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 					<div class="row">
 						<div class="col-md-12">
-							<h1>KIT</h1>
+							<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Kit de Corredor:</p>
+							
 							<center>
 								<input type="checkbox" name="ch1" value="{{$carrera->camisa}}" id="qr1" />Camisa
 								<input type="checkbox" name="ch1" value="{{$carrera->comida}}" id="qr1" />Comida
@@ -149,6 +176,12 @@
 								<input type="checkbox" onClick="toggle(this)" /> Seleccionar/Deseleccionar todos<br><br>
 
 							</center>
+						</div>
+
+						<div class="col-md-4">
+							<p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i> Monto:</p>
+							<input id="monto" type="number" class="form-control" name="monto" required="required" value="{{$monto = $carrera->monto}}" readonly>
+							<br>
 						</div>
 
 						<div class="col-md-4">
@@ -173,11 +206,7 @@
 							</select>
 						</div>
 
-						<div class="col-md-4">
-							<p style="text-align: left;"><i class="fa fa-usd" aria-hidden="true"></i> Monto:</p>
-							<input id="monto" type="number" class="form-control" name="monto" required="required" value="{{$monto = $carrera->monto}}" readonly>
-							<br>
-						</div>
+						
 
 						<div class="col-md-4">
 							<p style="text-align: left;"><i class="fa fa-sort-numeric-desc" aria-hidden="true"></i> Nº de referencia:</p>

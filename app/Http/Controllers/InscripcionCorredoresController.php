@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Carrera;
 use App\Banco;
+use App\bancoReceptor;
 use App\Corredor;
 use App\Inscribir;
 use Illuminate\Support\Facades\Storage;
@@ -20,14 +21,14 @@ class InscripcionCorredorescontroller extends Controller
     // METODOO VERDE//
 	public function inscripcioncorredores($id)
     {
-
      //consulta carrera
         $inscribir= Inscribir::all();
         
         $carrera = Carrera::find($id);
         $bancos = Banco::all();
+        $bancoR = BancoReceptor::all();
         
-         return view('inscripcionCorredores')->with(['carrera'=> $carrera,'bancos'=> $bancos, 'inscribir'=> $inscribir]); 
+         return view('inscripcionCorredores')->with(['carrera'=> $carrera,'bancos'=> $bancos, 'inscribir'=> $inscribir,'bancoR'=>$bancoR]); 
     }
     
     public function guardarInscripcionCorredores(Request $request)
@@ -117,6 +118,17 @@ class InscripcionCorredorescontroller extends Controller
         $pdf = \PDF::loadView('reciboPDF',['persona' => $persona,'inscribir'=>$carrera]);
 
         return $pdf->setPaper('a6')->stream('reciboPDF');
+
+    }
+
+    public function numero($id)
+    {
+
+        $persona = Auth::User()->persona;
+        $carrera = Inscribir::find($id);
+        $pdf = \PDF::loadView('numeroPDF',['persona' => $persona,'inscribir'=>$carrera]);
+
+        return $pdf->setPaper('a6', 'landscape')->stream('numeroPDF');
 
     }
     
