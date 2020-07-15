@@ -33,6 +33,8 @@
                       <th >Categoria</th>
                       <th >  Monto   </th>
                       <th >Cupos</th>
+                      <th >  Vueltas   </th>
+                      <th >Kilometros</th>
                       <th >Costo camisa</th>
                       <th >Costo comida</th>
                       <th >Costo bebida</th>
@@ -53,6 +55,8 @@
                           <td>{{ $carrera->categoria}}</td>
                           <td>{{ $carrera->monto}}</td>
                           <td>{{ $carrera->cupos}}</td>
+                          <td>{{ $carrera->vuelta}}</td>
+                          <td>{{ $carrera->kilometraje}}</td>
                           <td>{{ $carrera->camisa}}</td>
                           <td>{{ $carrera->comida}}</td>
                           <td>{{ $carrera->bebida}}</td>
@@ -105,7 +109,7 @@
                                                   <div class="form-group md-12">
                                                     <span style="color: red">*</span><i class="fa fa-picture-o" aria-hidden="true"></i>  Imagen publicitaria de la carrera:
                                                     <div class="custom-file">
-                                                      <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" pattern="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo)." value="{{ $carrera->foto}}" required="required">
+                                                      <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" placeholder="Imagen de la publicidad" pattern="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo)." value="{{ $carrera->foto}}">
                                                       <label class="custom-file-label" for="customFileLang">{{ $carrera->foto}}</label>
                                                     </div>    
                                                   </div>
@@ -214,6 +218,20 @@
                                                   </div>
                                                 </div>
                                               </div>
+                                              <div class="row">  
+                                                <div class="col-md-6">
+                                                  <label>
+                                                    <span style="color: red">*</span><i class="fa fa-refresh" aria-hidden="true"></i> Cantidad de Vueltas:
+                                                  </label>
+                                                  <input type="text" class="form-control" id="vuelta" name="vuelta" pattern='[0-9]{1,30}' title="El monto sólo puede tener caracteres numéricos" minlength="1" maxlength="3" value="{{ $carrera->vuelta}}" required="required">
+                                                </div>
+                                                <div class="col-md-6">
+                                                  <label>
+                                                    <span style="color: red">*</span><i class="fa fa-safari" aria-hidden="true"></i> Cantidad de Kilometraje:
+                                                  </label>
+                                                  <input type="text" class="form-control" id="kilometraje" name="kilometraje" pattern='[0-9]{1,30}' data-pattern-error="El costo sólo puede tener caracteres numéricos" value="{{ $carrera->kilometraje}}" required="required">
+                                                </div>
+                                              </div>
                                               <div class="row">                                            
                                                 <div class="col-md-4">
                                                   <label  class="control-label"><i class="fa fa-bicycle" aria-hidden="true"></i> Modalidad:</label>
@@ -267,7 +285,7 @@
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
-                                      <!-- acción del botón  -->
+                                      <!-- acción del botón Eliminar -->
                                       <form action="eliminarCarrera" method="post" enctype="multipart/form-data">@csrf
                                         <input type="hidden" name="id" value="{{$carrera->id}}">
                                           <div class="modal-body">

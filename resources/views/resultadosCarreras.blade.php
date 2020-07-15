@@ -16,7 +16,8 @@
             <p  style="color:white; text-align:left;"> Registro de Resultados</p> 
         </div>
         <!--Datos de las carreras-->
-        @foreach($carreras as $carrera) 
+        @foreach($carreras as $carrera)
+        @if ($carrera->estatus == 1) 
         <div class="accordion" id="accordionExample_{{$carrera->id}}">
           <div class="col-md-12">          
             <div class="card">
@@ -118,6 +119,7 @@
             </div> 
           </div>
         </div>
+        @endif 
         @endforeach  
       </div>
     </div>

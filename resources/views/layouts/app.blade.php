@@ -69,18 +69,17 @@
               @if(Auth::user()->rol == '1')
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Carreras</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04"> 
-                  
-                  <a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">                  
+                  <!--<a class="dropdown-item" href="resultadosCarreras"><i class="fa fa-table" aria-hidden="true"></i> Registrar resultados</a>-->
                   <a class="dropdown-item" href="{{ route('aperturaCarreras') }}"><i class="fa fa-file-text-o" aria-hidden="true"></i> Apertura de carrera</a>
-                  <a class="dropdown-item" href="{{ route('listarCarrera') }}"><i class="fa fa-list" aria-hidden="true"></i> Listado de Carreras</a>
-
-                  <a class="dropdown-item" href="{{ route('verificarPago') }}"><i class="fa fa-list" aria-hidden="true"></i>Verificar Corredores</a>
+                  <a class="dropdown-item" href="{{ route('listarCarrera') }}"><i class="fa fa-list" aria-hidden="true"></i> Listado de carreras</a>
+                  <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
+                  <a class="dropdown-item" href="{{ route('verificarPago') }}"><i class="fa fa-list" aria-hidden="true"></i> Verificar corredores</a>
                   @if(Auth::user()->rol == '4')
                   <a class="dropdown-item" href="{{ route('InscripcionCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Inscripción de la carrera</a>
                   @endif
-                  <a class="dropdown-item" href="{{ route('listadoCorredores') }}"><i class="fa fa-ticket" aria-hidden="true"></i> Corredores inscritos</a>
-                  <a class="dropdown-item" href="{{ route('resultadosCarreras') }}">Registrar resultados</a>
+                  
+                  
                 </div>
               </li>
               @endif
@@ -129,9 +128,19 @@
                 </div>
               </li>
               @endif
-              @if((Auth::user()->rol == '4') or (Auth::user()->rol == '1'))
-              <li class="nav-item">
-                <a class="nav-link" href="verResultados">Resultados</a>
+              @if((Auth::user()->rol == '1'))
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resultados</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">                   
+                  <a class="dropdown-item" href="{{ route('resultadosCarreras') }}"><i class="fa fa-table" aria-hidden="true"></i> Registro de resultados</a>
+                  <a class="dropdown-item" href="{{ route('verResultados') }}"><i class="fa fa-list-ol" aria-hidden="true"></i>  Publicación de resultados<a>
+                  <!--<a class="dropdown-item" href="verResultados1"> Resultados</a>-->
+                </div>         
+              </li>
+              @endif
+              @if((Auth::user()->rol == '4'))
+              <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('verResultados') }}">Resultados</a>                        
               </li>
               @endif
             </ul>

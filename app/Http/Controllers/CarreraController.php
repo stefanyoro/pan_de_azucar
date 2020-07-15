@@ -76,7 +76,7 @@ class CarreraController extends Controller
         $carrera->meridiano= $request->meridiano;
         $carrera->modalidad= $request->modalidad;
         $carrera->categoria= implode(',', $request->categoria);
-        $carrera->Vuelta= $request->Vuelta;
+        $carrera->vuelta= $request->vuelta;
         $carrera->kilometraje= $request->kilometraje;
         $carrera->monto= $request->monto;
         $carrera->camisa= $request->camisa;

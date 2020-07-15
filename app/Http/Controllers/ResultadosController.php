@@ -34,6 +34,18 @@ class ResultadosController extends Controller
     }
     public function verResultados()
     {
-         return view('verResultados'); 
+        $carreras = Carrera::all();
+         return view('verResultados1')->with(['carreras'=> $carreras]); 
+    }
+    public function informacionCarrera()
+    {
+        $carreras = Carrera::all();
+         return view('verResultados')->with(['carreras'=> $carreras]); 
+    }
+        public function resultadosPDF(){
+
+               $pdf = \PDF::loadView('resultadosPDF');
+   
+        return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
     }
 }

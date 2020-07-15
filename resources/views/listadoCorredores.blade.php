@@ -66,8 +66,8 @@
                     <td>{{$personaInscribir->corredor->user->persona->nombre}}</td>
                     <td>{{$personaInscribir->corredor->user->persona->apellido}}</td>
                     <td>{{$personaInscribir->corredor->user->persona->numero_doc}}</td>
-                    <td><button class="btn btn-warning"><i class="fa fa-credit-card" aria-hidden="true"></i></button>
-
+                    <td>
+                      
                       <button class="btn btn-danger" data-toggle="modal" data-toggle="modal" data-target="#supenderCorredor_{{$personaInscribir->id}}"><b><i class="fa fa-trash-o" aria-hidden="true"></i></button></b>
                   </tr>
                   <!-- Modal eliminar -->
@@ -108,7 +108,9 @@
                         <div class="row no-gutters">
                           <div class="col-md-4">
                             <!-- <img src="/img/logotipo1.png" class="card-img" alt="..."> -->
+                            <div class="col-md-8 offset-md-2">
                             <img src="{{\Storage::url($personaInscribir->carrera->foto)}}" width="100%" height="100%">
+                          </div>
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">

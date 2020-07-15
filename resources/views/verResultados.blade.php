@@ -10,7 +10,7 @@
   <div class="container" align="left">
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-12">
           <div class="card " style="border-color:#B03A2E; background: transparent;">        
             <div class="card-header" style="background-color: #B03A2E; height: 40px; width: 100%">
               <p  style="color:white; text-align:left;"> Resultados </p> 
@@ -20,45 +20,20 @@
                 <div class="card-body">
                   <h5 class="card-title">
                     <div class="row">
-                      <div class="col-md-6"> Carrera:</div> 
+                      <div class="col-md-2"> Carrera:</div> 
                         <!-- Button trigger modal -->
-                          <div class="col-md-6" align="right">
-                            <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#carrera" title="Directorio de carrera">
-                              <i class="fa fa-bicycle" aria-hidden="true"></i>
-                            </button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="carrera" tabindex="-1" role="dialog" aria-labelledby="carreraModal" aria-hidden="true">
-                              <div class="modal-dialog" role="document" align="left">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="carreraModal">Selecciona la carrera</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <div class="form-check form-check-inline">
-                                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                                      <label class="form-check-label" for="inlineRadio1">
-                                        Nombre de la carrera
-                                      </label>
-                                    </div>
-                                  <div style="padding: 50px 20px 20px 0px" align="center"><button type="button" class="btn btn-primary">Aceptar</button></div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
+                          <div class="col-md-10" align="right">
+                            <p class="card-text" align="center">
+                              <input class="form-control form-control-lg" type="text" value="" style="text-align: center;" placeholder="Rodada 1" disabled>
+                            </p>                            
                           </div>
                         </div>
-                        </h5>
-                        <p class="card-text" align="center">
-                          <input class="form-control form-control-lg" type="text" placeholder="..selencione una carrera..." disabled>
-                        </p>                  
-                      </div>
+                      </h5>                                          
                     </div>
+                  </div>
                 <div class=" col-md-12" style="padding: 20px;">
                 
-                  <div class="row">
+                <div class="row">
                       <div class="col-md-12 table-responsive"> 
                         <table id="listarcarrera" class="table">
                           <thead>  
@@ -72,10 +47,90 @@
                           </thead>
                           <tbody>
                             <tr>
-                              <td>12345</td>
+                              <td>25702598</td>
+                              <td>Krisbell Romero</td>
+                              <td>Senior</td>
+                              <td><i class="fa fa-trophy" aria-hidden="true"></i> 01 </td>
+                              <td>
+                                <!-- Tiempo -->
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal1" title="Tiempo del corredor">
+                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+                                  <div class="modal-dialog " role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel1">Tiempos de: "Krisbell Romero"</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <!-- acción del botón  -->
+                                      <div class="modal-body">
+                                        
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
+                                        <div class="tiempos col-md-12">
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:25:15" value="" disabled>
+                                        </div>
+                                         <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
+                                        <div class="tiempos col-md-12">
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:15" value="" disabled>
+                                        </div>                           
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tbody>
+                            <tr>
+                              <td>25237682</td>
                               <td>Odalys Urbina</td>
                               <td>Senior</td>
-                              <td>01</td>
+                              <td><i class="fa fa-star" aria-hidden="true"></i> 02 </td>
+                              <td>
+                                <!-- Tiempo -->
+                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal2" title="Tiempo del corredor">
+                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                  <div class="modal-dialog " role="document">
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel2">Tiempos de: "Odalys Urbina"</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <!-- acción del botón  -->
+                                      <div class="modal-body">
+                                       
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
+                                        <div class="tiempos col-md-12">
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:32:05" value="" disabled>
+                                        </div>
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
+                                        <div class="tiempos col-md-12">
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:05" value="" disabled>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                          <tbody>
+                            <tr>
+                              <td>25702416</td>
+                              <td>Stefany Oropeza</td>
+                              <td>Senior</td>
+                              <td><i class="fa fa-star" aria-hidden="true"></i> 03 </td>
                               <td>
                                 <!-- Tiempo -->
                                 <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Tiempo del corredor">
@@ -87,17 +142,22 @@
                                   <div class="modal-dialog " role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "Odalys Urbina"</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "Stefany Oropeza"</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
                                       </div>
                                       <!-- acción del botón  -->
                                       <div class="modal-body">
+                                        
                                         <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
                                         <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="tiempo" value="" disabled>
-                                        </div>                                 
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:48:53" value="" disabled>
+                                        </div>
+                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
+                                        <div class="tiempos col-md-12">
+                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:53" value="" disabled>
+                                        </div>                         
                                       </div>
                                     </div>
                                   </div>
@@ -105,12 +165,12 @@
                               </td>
                             </tr>
                           </tbody>                          
-                        </table>                      
+                        </table>                     
                         <div class="col-md-12" align="left">
                           <div class="btn-group" role="group">
-                            <button type="button" style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm">
+                            <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="{{ route('resultadosPDF') }}">
                               <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                            </button>
+                            </a>                   
                           </div>
                         </div>              
                       </div>
@@ -121,13 +181,13 @@
           </div>
         </div>
 
-        <div class="card col-md-5" align="center">
+        <!--<div class="card col-md-5" align="center">
           <div class="card-body">
             <h1 class="card-title">Deja tu comentario</h1>
             <p class="card-text" >...En construcción...</p>
             <a href="#" class="btn btn-primary" style="padding: 5px 85px">Comenta</a>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
   </div>  
