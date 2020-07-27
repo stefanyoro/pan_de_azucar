@@ -57,6 +57,8 @@ class PlanEntrenamientoController extends Controller
 
     	$plan = new PlanEntrenamiento;
             $plan->corredor_id = $request->id_user;
+            $plan->nombre = $request->nombre;
+            $plan->fecha = $request->fecha;
             $plan->mtb_id = $mtb->id;
             $plan->ruta_id = $ruta->id;
             $plan->gimnasio_id = $gimnasio->id;
@@ -127,8 +129,14 @@ class PlanEntrenamientoController extends Controller
 
      public function miEntrenamiento()
     {
+        $mtb = Mtb::all();
+        $ruta = Ruta::all();
+        $gimnasio = Gimnasio::all();
+        $usuarios = User::all();
+        $planes = PlanEntrenamiento::all();
+        $ejercicios = Ejercicios::all();
         
-        return view('miEntrenamiento'); 
+        return view('miEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]); 
     }
      public function listadoPlanesEntrenamiento()
     {
@@ -140,6 +148,20 @@ class PlanEntrenamientoController extends Controller
         $ejercicios = Ejercicios::all();
         
         return view('listadoPlanesEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]); 
+    }
+
+    public function entrenamientoPDF(){
+
+        $mtb = Mtb::all();
+        $ruta = Ruta::all();
+        $gimnasio = Gimnasio::all();
+        $usuarios = User::all();
+        $planes = PlanEntrenamiento::all();
+        $ejercicios = Ejercicios::all();
+
+        $pdf = \PDF::loadView('EntrenamientoPDF',['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]);
+
+        return $pdf->setPaper('a4')->stream('EntrenamientoPDF.pdf');
     }
 
 }

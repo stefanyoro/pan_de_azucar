@@ -149,7 +149,7 @@
 				               
 				                <div class="row">
 				                  <div class="col-md-4">
-				                    <input type="text" class="form-control" id="edad" name="edad" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="" placeholder="Edad">
+				                   
 				                  </div>
 				                  <div class="col-md-4">
 				                    <input type="text" class="form-control" id="peso" name="peso" minlength="2" maxlength="3" pattern="[0-9]{2,3}" required="required" data-pattern-error="Debe expresarse en kg." title="El peso debe estar expresado en kg." placeholder="Peso">

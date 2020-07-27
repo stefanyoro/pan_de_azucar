@@ -22,7 +22,7 @@ class CreateCorredorTable extends Migration
             $table->string('edad')->nullable();
             $table->string('peso');
             $table->string('estatura');
-            $table->string('grupo_ciclismo')->nullable();
+            $table->string('grupo_ciclismo');
 
             $table->timestamps();
         });

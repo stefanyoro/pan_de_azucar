@@ -30,7 +30,7 @@
             font-size: 14px;
             position: relative;
             top: 270px;
-            left: -19px;
+            left: -21px;
             transform: translate(-50%, -50%);
         }
         .campo3{
@@ -46,7 +46,7 @@
             font-size: 14px;
             position: absolute;
             top: 350px;
-            left: 70px;
+            left: 95px;
             transform: translate(-50%, -50%);
         }
         .campo5{

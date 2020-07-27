@@ -32,6 +32,7 @@ class CorredorController extends Controller
 
     public function RegistrarCorredor(Request $request)
     {
+        
         //dd($request->file('foto'));
         $foto = $request->file("foto");
         $extension = $foto->getClientOriginalExtension();
@@ -57,7 +58,7 @@ class CorredorController extends Controller
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
             $persona->estado = $request->estado;
-            $persona->ciudad = $request->ciudad;
+            $persona->ciudad = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           
@@ -120,7 +121,7 @@ class CorredorController extends Controller
             $persona->apellido = $request->apellido;
             $persona->fecha_nac = $request->fecha_nac;
             $persona->estado = $request->estado;
-            $persona->ciudad = $request->ciudad;
+            $persona->ciudad = $request->municipio;
             $persona->telf_local = $request->telf_local;
             $persona->telf_celular = $request->telf_celular;
             $persona->tipo_sangre = $request->tipo_sangre;           

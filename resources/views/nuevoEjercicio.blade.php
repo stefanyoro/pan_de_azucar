@@ -25,7 +25,7 @@
 			  		<div class="card-body">
 			  			<br>
 			    		<div class="">
-					        <form action="RegistrarEjercicio" method="post" enctype="multipart/form-data">@csrf   
+					        <form action="RegistrarEjercicio" method="post" enctype="multipart/form-data" id="formulario">@csrf   
 					  			<div class="row">
 					  				<div class="col-md-12">
 					  				<p style="text-align: left;">Zonas de ejercicio:</p>
@@ -57,13 +57,14 @@
 					  			</div>
 					  			<br>
 					  			<div class="row"> 
-			                    <div class="col-md-8"> 
+			                    <div class="col-md-6"> 
+			                    	<p style="text-align: left;">Imágen del ejercicio:</p>
 			                      <div class="form-group md-12">
-			                         <p style="text-align: left;"><i class="fa fa-picture-o" aria-hidden="true"></i> Imagen del ejercicio:</p>
-			                        <div class="custom-file">
-			                          <input type="file" class="form-control" name="foto">
-			                            
-			                        </div>    
+                        
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="foto" lang="es" name="foto" accept="image/x-png image/jpeg" pattern="image/x-png image/jpeg" placeholder="Imagen de la publicidad" required="required" data-pattern-error="La foto debe tener el formato .jpeg o .png (imag.png o imag.jpeg por ejemplo)." >
+                          <label class="custom-file-label" for="customFileLang" style="text-align:left;">Subir archivo...</label>  
+                        </div>  
 			                      </div>
 			                    </div> 
 			                  </div> 
@@ -71,26 +72,26 @@
 								<div class="row">
 									<div class="col-md-4">
 										<p style="text-align: left;">Nombre:</p>
-						                	<input type="text" class="form-control" id="nombre" name="nombre" title="Nombre del ejercicio." placeholder="Ej. Elevación frontal">
+						                	<input type="text" class="form-control" id="nombre" name="nombre" title="Nombre del ejercicio." placeholder="Ej. Elevación frontal" required>
 									</div>
 									<div class="col-md-4">
 										<p style="text-align: left;">Posición:</p>
-						                	<input type="text" class="form-control" id="posicion" name="posicion" title="Posición para realizar el ejercicio." placeholder="Ej. Sentado sobre la máquina">
+						                	<input type="text" class="form-control" id="posicion" name="posicion" title="Posición para realizar el ejercicio." placeholder="Ej. Sentado sobre la máquina" required>
 									</div>
 									<div class="col-md-4">
 										<p style="text-align: left;">Ejecución:</p>
-						                	<input type="text" class="form-control" id="ejecucion" name="ejecucion" title="Ejecución precisa del ejercicio." placeholder="Ej. Llevar la barra hasta arriba">
+						                	<input type="text" class="form-control" id="ejecucion" name="ejecucion" title="Ejecución precisa del ejercicio." placeholder="Ej. Llevar la barra hasta arriba" required>
 									</div>
 								</div>
 								<br>
 								<div class="row">
 									<div class="col-md-6">
 										<p style="text-align: left;">Respiración:</p>
-						                	<input type="text" class="form-control" id="respiracion" name="respiracion" title="Respiración dentro del ejercicio." placeholder="Ej. Inspirar y exhalar">
+						                	<input type="text" class="form-control" id="respiracion" name="respiracion" title="Respiración dentro del ejercicio." placeholder="Ej. Inspirar y exhalar" required>
 									</div>
 									<div class="col-md-6">
 										<p style="text-align: left;">Músculos implicados:</p>
-						                	<input type="text" class="form-control" id="musculos" name="musculos" title="Nombres de los músculos implicados." placeholder="Ej. Espalda,trapecio...">
+						                	<input type="text" class="form-control" id="musculos" name="musculos" title="Nombres de los músculos implicados." placeholder="Ej. Espalda,trapecio..." required>
 									</div>
 									
 								</div>
@@ -109,6 +110,12 @@
     	</div>
     </div>
 </section>
-@endsection
+<script>
+  // para traerme el nombre de la img
+  $(".custom-file-input").on("change", function() {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+  });
 
- 
+</script>
+@endsection 

@@ -42,9 +42,10 @@
 											</div>
 											<br>
 											<div class="row">
-												<div class="col-md-4">
-						            				<input type="text" class="form-control" id="id_user" name="id_user">
+												<div class="col-md-2">
+						            				<input type="text" class="form-control" id="id_user" name="id_user" hidden="hidden">
 												</div>
+												
 											</div>
 						        		
 					        		</div>
@@ -90,7 +91,18 @@
 											<a style="color: white;">Nuevo plan de entrenamiento</a>
 									</div>
 				  				</div><br>
-
+				  				<div class="row">
+				  					<div class="col-md-6">
+				  						<p style="text-align: left;">Nombre del Plan:</p>
+						                	<input type="text" class="form-control" id="nombre" name="nombre" title="Nombre del plan." placeholder="Ej. Plan de fondo." required>
+				  					</div>
+				  					<div class="col-md-6">
+				  						<p style="text-align: left;">Fecha de creación:</p>
+				                      <div class="form-group">
+				    					<input type="date" class="form-control disablecopypaste" name="fecha" placeholder="fecha" min="<?php echo date('Y-m-d'); ?>"  required="El formato debe ser: D-M-A." pattern="La fecha debe tener el formato año-mes-día (1998-05-12 por ejemplo).">						
+			  							</div>
+				  					</div>
+				  				</div><br>
 					  			<div class="row">
 					  				<div class="col-md-1"></div>
 					  				<div class="col-md-10">

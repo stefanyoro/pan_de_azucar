@@ -18,6 +18,9 @@ class CreatePlanEntrenamientoTable extends Migration
 
             $table->bigInteger('corredor_id')->unsigned();
 
+            $table->string('nombre');
+            $table->date('fecha');
+
             $table->bigInteger('mtb_id')->unsigned();
             $table->foreign('mtb_id')->references('id')->on('mtb')->onDelete('cascade');
 

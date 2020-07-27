@@ -135,13 +135,13 @@
                                         </div><br>
                                         <div class="row">
                                         	<div class="col-md-4">
-                                        		<b>Series:</b> {{$plan->gimnasio->series}}
+                                        		<b>Series:</b> {{$plan->gimnasio->series}} 4
                                         	</div>
                                         	<div class="col-md-4">
-                                        		<b>Repeticiones:</b> {{$plan->gimnasio->repeticiones}}
+                                        		<b>Repeticiones:</b> {{$plan->gimnasio->repeticiones}} 12
                                         	</div>
                                         	<div class="col-md-4">
-                                        		<b>Peso:</b> {{$plan->gimnasio->peso}}
+                                        		<b>Peso:</b> {{$plan->gimnasio->peso}} 40 kg
                                         	</div>
                                         </div><br>
                                         <div class="row">

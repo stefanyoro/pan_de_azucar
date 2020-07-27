@@ -15,7 +15,7 @@ class CreateEjerciciosTable extends Migration
     {
         Schema::create('ejercicios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->char('zona')->nullable();
+            $table->char('zona');
             $table->string('img')->nullable();
             $table->string('nombre');
             $table->string('posicion');

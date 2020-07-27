@@ -90,13 +90,7 @@ hr {
                                                         <!-- acción del botón  -->
                                                           <div class="modal-body">
                                                               <div class="card-body">
-                                                                <div class="row">
-                                                                  <div class="col-md-5"></div>
-                                                                  <div class="col-md-6">
-                                                                    <img src="{{\Storage::url(Auth::user()->img)}}" class="rounded-circle" alt="..." style="height: 150px; width: 150px;">
-                                                                  </div>
-                                                                </div>
-                                                                <br>
+                                                               
                                                                 <div class="row">
                                                                   <div class="col-md-6"><b>Nacionalidad:</b> {{$usuario->persona->nacionalidad}} </div>
                                                                   <div class="col-md-6"><b>N° documento:</b> {{$usuario->persona->numero_doc}}</div>

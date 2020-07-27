@@ -6,51 +6,82 @@
 
 @section('content')
 <br>
-<section class="section" style="background-color: white;">
-   
-<div class="container" align="center">
-    	<div class="col-md-10">
-    		@if(session()->has('data'))
-    			<div class="alert alert-success alert-dismissible fade show" role="alert">
-    				{{session('data')['mensaje']}}
-    				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    					<span aria-hidden="true">&times;</span>
-  					</button>
-    			</div>		
-    					@endif
-	    	<div class="card" style="border-color:#B03A2E;">
-	    		<div class="card-header" style="height:50px; background-color: #B03A2E;">
-	    			<a style="color: white;">Solicitud Plan de Entrenamiento</a>
-	    		</div>
-			  		<div class="card-body">
-			  			<div class="row">
-			  				<div class="col-md-6">
-			  				<p style="text-align: center;"><b>PDF Plan de Entrenamiento</b></p><br>
+<section class="section">
+    	<br>
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4">
+    				<div class="card" style="border-color:#B03A2E;">
+						<div class="card-body">
+					    	<div class="">
+					    		<div class="row">
+					    			<div class="col-md-12">
+					    				<p style="text-align: center;"><b>PDF Plan de Entrenamiento</b></p><br>
 			  					
 			  					<div class="text-justify">
 			  						Este plan de entrenamiento esta creado en un nivel básico para todos los corredores de la página. Duración: 1 semana.
 			  					</div><br>
-			  					<img src="img/PDF.png" style=" width: 70px; height: 80px;">
+			  					<center><img src="img/PDF.png" style=" width: 70px; height: 80px;"></center>
 			  					<br><br>
-			  					<button type="button" class="btn btn-success" onclick="location.href ='{{ route('planBasicoPDF') }}'">PDF</button>
+			  					<center><button type="button" class="btn btn-success"><a href="{{ route('planBasicoPDF') }}" target="_black" style="color: white;">PDF</a></button></center>
 			  					
-			  				</div>
-			  				<div class="col-md-6">
-			  				<p style="text-align: center;"><b>Solicitud Plan de Entrenamiento</b></p><br>
-			  					<div class="text-justify">
-			  						¿{{Auth::user()->name}} deseas solicitar un plan de entrenamiento personalizado por el entrenador?
-			  					</div><br>
-			  					<img src="img/PDF.png" style=" width: 70px; height: 80px;"><br><br>
-			  					<button type="button" class="btn btn-success" onclick="location.href ='{{ route('planBasicoPDF') }}'">Solicitar</button>
 
-			  					
-			  				</div>
-			  				
-			  			</div>
-			  			
+									  	
+					    			</div>
+					    
+					    		</div>
+					    	</div>
+					  	</div>
 					</div>
+    				
+    			</div>
+    			<div class="col-md-8">
+    				<div class="card" style="border-color:#B03A2E;">
+						<div class="card-body">
+					    	<div class="">
+					    		<div class="row">
+					    			
+					    			<div class="col-md-12">
+					    				<table id="listadoPlanes" class="table table-borderless">
+		                        <thead>  
+		                          <tr>
+		                            <th>N◦</th>
+		                            <th>Nombre del Plan</th>
+		                            <th>Fecha de Creación</th>
+		                            <th>        </th>
+		                          </tr>
+		                        </thead>
+		                            <tbody>
+		                            	@foreach ($planes as $clave => $plan)
+		                            		@foreach ($usuarios as $usuario)
+		                            			@if($plan->corredor_id == $usuario->id)
+				                              	<tr>
+				                                	<td>{{ $clave + 1}}</td>
+							                        <td>{{ $plan->nombre}}</td>
+							                        <td>{{ $plan->fecha}}</td>
+							                        <td >
+                            <!-- visualizar -->
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                              <button type="button" class="btn btn-outline-info btn-sm"><a href="{{ route('EntrenamientoPDF') }}" target="_black" style="color: white;">
+                                  <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                              </button>
+                             
+                          </td>
+						                        </tr>
+						                        @endif
+						                	@endforeach    
+		                           		@endforeach
+		                            </tbody>
+		                    </table>
+					    				
+					    			</div>
+					    		</div>
+					    	</div>
+					  	</div>
+					</div>
+    				
+    			</div>
 			</div>
-    	</div>
-    </div>
-</section>
+		</div>
+	</section>
 @endsection

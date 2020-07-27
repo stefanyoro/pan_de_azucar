@@ -116,6 +116,19 @@
 							                    	<input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required" value="{{Auth::user()->email}}">
 							                    </div>
 							                </div>
+							                <div class="row" style="margin-top: 15px;">
+							                    <div class="col-md-6"> 
+							                    	<div class="form-group">
+							                      		<p style="text-align: left;">Estado:</p>
+							    							<input type="text" class="form-control" id="estado" name="estado" value="{{Auth::user()->persona->estado}}">								
+						  							</div>
+						  						</div>
+
+						  						<div class="col-md-6"> 
+							                    	<p style="text-align: left;">Ciudad:</p>
+							    						<input type="text" class="form-control" id="municipio" name="municipio" value="{{Auth::user()->persona->ciudad}}">
+							                    </div>
+							                </div>
 
 							                     @if(Auth::user()->rol == '3')
 							                  <div class="col-md-6">
@@ -227,15 +240,12 @@
 			  								<br>
 							               
 							                <div class="row">
-							                  <div class="col-md-4">
-							                  	<p style="text-align: left;">Edad:</p>
-							                    <input type="text" class="form-control" id="edad" name="edad" minlength="1" maxlength="2" pattern="[0-9]{1,2}" required="required" title="" placeholder="Edad" value="{{Auth::user()->corredor->edad}}">
-							                  </div>
-							                  <div class="col-md-4">
+							                 
+							                  <div class="col-md-6">
 							                  	<p style="text-align: left;">Peso:</p>
 							                    <input type="text" class="form-control" id="peso" name="peso" minlength="2" maxlength="3" pattern="[0-9]{2,3}" required="required" data-pattern-error="Debe expresarse en kg." title="El peso debe estar expresado en kg." placeholder="Peso" value="{{Auth::user()->corredor->peso}}">
 							                  </div>
-							                  <div class="col-md-4">
+							                  <div class="col-md-6">
 							                  	<p style="text-align: left;">Estatura:</p>
 							                   <input type="text" class="form-control" id="estatura" name="estatura" minlength="2" maxlength="4" pattern="[0-9]{2,4}" data-pattern-error="Debe expresarse en kg." required="required" title="" placeholder="Estatura" value="{{Auth::user()->corredor->estatura}}">
 							                  </div>
@@ -289,7 +299,7 @@
 																			  	<path fill-rule="evenodd" d="M8 1a7 7 0 100 14A7 7 0 008 1zM0 8a8 8 0 1116 0A8 8 0 010 8z" clip-rule="evenodd"/>
 																			</svg>
 														      			Grupo de ciclismo:</p>
-										                      			<input type="text" class="form-control" id="grupo_ciclismo" name="grupo_ciclismo" placeholder="Grupo al que pertenece" value="{{Auth::user()->corredor->grupo_ciclismo}}">
+										                      			<input type="text" class="form-control" id="grupo_ciclismo" name="grupo_ciclismo" placeholder="Grupo al que pertenece">
 										                    		</div>
 										                    		@endif
 
@@ -303,6 +313,14 @@
 										                      			<div class="form-group">
 												    						<select class="form-control" id="tipo_sangre" name="tipo_sangre">
 																			    <option selected>{{Auth::user()->persona->tipo_sangre}}<option>
+																			    	<option value="A+">A+</option>
+																			    	<option value="A-">A-</option>
+																				    <option value="B+">B+</option>
+																				    <option value="B-">B-</option>
+																				    <option value="AB+">AB+</option>
+																				    <option value="AB+">AB-</option>
+																				    <option value="O+">O+</option>
+																				    <option value="O-">O-</option>
 																			    @if(Auth::user()->persona->tipo_sangre == 'A+')
 																				    <option value="A-">A-</option>
 																				    <option value="B+">B+</option>
