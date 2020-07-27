@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Carrera;
+use App\Inscribir;
 use App\Resultado;
 
 
@@ -32,20 +33,30 @@ class ResultadosController extends Controller
             
         return redirect()->back();
     }
-    public function verResultados()
+    public function verResultados($id)
     {
-        $carreras = Carrera::all();
-         return view('verResultados1')->with(['carreras'=> $carreras]); 
+        $carreras = Carrera::find($id);
+        return view('verResultados')->with(['carreras'=> $carreras]); 
     }
-    public function informacionCarrera()
+    public function informacionCarrera($id)
     {
-        $carreras = Carrera::all();
-         return view('verResultados')->with(['carreras'=> $carreras]); 
-    }
-        public function resultadosPDF(){
+        $carreras = Carrera::all($id);
+       //$resultado = DB::select('select * from carrera where id = ' . $id);
+        //dd($carreras)
+        //$inscribir= Inscribir::all(); 
+        //$inscribir = Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first();
 
-               $pdf = \PDF::loadView('resultadosPDF');
+
+        //$resultado = resultado::all();
+        //dd($resultado);
+        
+        //return view('verResultados1')->with(['carreras'=> $carreras,'inscribir'=> $inscribir]);*/
+        return view('verResultados')->with(['carreras'=> $carreras]); 
+    }
+    public function resultadosPDF(){
+
+        $pdf = \PDF::loadView('resultadosPDF');
    
-        return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
+    return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
     }
 }
