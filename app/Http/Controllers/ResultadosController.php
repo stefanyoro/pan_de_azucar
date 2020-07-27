@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Carrera;
+use App\Inscribir;
 use App\Resultado;
 
 
@@ -27,25 +28,28 @@ class ResultadosController extends Controller
                 $resultado = new Resultado;
                 $resultado->inscribir_id = $request->id;
                 $resultado->tiempo = $value;
+                $resultado->posicion = $request->posicion;
             $resultado->save();
             }
             
         return redirect()->back();
     }
-    public function verResultados()
+    public function verResultados($id)
     {
-        $carreras = Carrera::all();
-         return view('verResultados1')->with(['carreras'=> $carreras]); 
+        $carrera = Carrera::find($id);
+        return view('verResultados')->with(['carrera'=> $carrera]); 
     }
     public function informacionCarrera()
     {
         $carreras = Carrera::all();
-         return view('verResultados')->with(['carreras'=> $carreras]); 
+        return view('verResultados1')->with(['carreras'=> $carreras]); 
     }
-        public function resultadosPDF(){
+    public function resultadosPDF($id){
 
-               $pdf = \PDF::loadView('resultadosPDF');
+        $carreras = Carrera::find($id); 
+        //$carreras = Inscribir::find($id);
+        $pdf = \PDF::loadView('resultadosPDF',['carrera' => $carreras]);
    
-        return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
+    return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
     }
 }

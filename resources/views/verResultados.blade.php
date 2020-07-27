@@ -24,7 +24,7 @@
                         <!-- Button trigger modal -->
                           <div class="col-md-10" align="right">
                             <p class="card-text" align="center">
-                              <input class="form-control form-control-lg" type="text" value="" style="text-align: center;" placeholder="Rodada 1" disabled>
+                              <input class="form-control form-control-lg" type="text" value="" style="text-align: center;" placeholder=" {{$carrera->nom_carrera}}" disabled>
                             </p>                            
                           </div>
                         </div>
@@ -34,160 +34,70 @@
                 <div class=" col-md-12" style="padding: 20px;">
                 
                 <div class="row">
-                      <div class="col-md-12 table-responsive"> 
-                        <table id="listarcarrera" class="table">
-                          <thead>  
-                            <tr>
-                              <th > N◦</th>
-                              <th > Nombre</th>
-                              <th > Categoría</th>
-                              <th > Posicion</th>
-                              <th > Tiempo</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>25702598</td>
-                              <td>Krisbell Romero</td>
-                              <td>Senior</td>
-                              <td><i class="fa fa-trophy" aria-hidden="true"></i> 01 </td>
-                              <td>
-                                <!-- Tiempo -->
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal1" title="Tiempo del corredor">
-                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                </button>
+                  <div class="col-md-12 table-responsive"> 
+                    <table id="listarcarrera" class="table">
+                      <thead>  
+                        <tr>
+                          <th > N◦</th>
+                          <th > Nombre</th>
+                          <th > Apellido</th>
+                          <th > Posicion</th>
+                          <th > Tiempo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @foreach($carrera->inscribir as $clave=> $inscritos)
+                        <tr>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->numero_doc}}</td>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->nombre}} </td>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->apellido}}</td>
+                          <td><i class="fa fa-star" aria-hidden="true"></i> {{$clave+1}} </td>
+                          <td>
+                            <!-- Tiempo -->
+                            <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal_{{$inscritos->corredor->user->persona->id}}" title="Tiempo del corredor">
+                             <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            </button>
 
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-                                  <div class="modal-dialog " role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel1">Tiempos de: "Krisbell Romero"</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <!-- acción del botón  -->
-                                      <div class="modal-body">
-                                        
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:25:15" value="" disabled>
-                                        </div>
-                                         <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:15" value="" disabled>
-                                        </div>                           
-                                      </div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal_{{$inscritos->corredor->user->persona->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModal_{{$inscritos->corredor->user->persona->id}}" aria-hidden="true">
+                              <div class="modal-dialog " role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel_{{$inscritos->corredor->user->persona->id}}">Tiempos de: "{{$inscritos->corredor->user->persona->nombre}}"</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <!-- acción del botón  -->
+                                  <div class="modal-body">
+                                    @foreach($inscritos->resultado as $clave=> $tiempo)
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta {{$clave+1}}
+                                    <div class="tiempos col-md-12">
+                                      <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="{{$tiempo->tiempo}}" value="" disabled>
                                     </div>
+                                    @endforeach
                                   </div>
                                 </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                          <tbody>
-                            <tr>
-                              <td>25237682</td>
-                              <td>Odalys Urbina</td>
-                              <td>Senior</td>
-                              <td><i class="fa fa-star" aria-hidden="true"></i> 02 </td>
-                              <td>
-                                <!-- Tiempo -->
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal2" title="Tiempo del corredor">
-                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                                  <div class="modal-dialog " role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel2">Tiempos de: "Odalys Urbina"</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <!-- acción del botón  -->
-                                      <div class="modal-body">
-                                       
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:32:05" value="" disabled>
-                                        </div>
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:05" value="" disabled>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                          <tbody>
-                            <tr>
-                              <td>25702416</td>
-                              <td>Stefany Oropeza</td>
-                              <td>Senior</td>
-                              <td><i class="fa fa-star" aria-hidden="true"></i> 03 </td>
-                              <td>
-                                <!-- Tiempo -->
-                                <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Tiempo del corredor">
-                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                  <div class="modal-dialog " role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "Stefany Oropeza"</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <!-- acción del botón  -->
-                                      <div class="modal-body">
-                                        
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:48:53" value="" disabled>
-                                        </div>
-                                        <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
-                                        <div class="tiempos col-md-12">
-                                          <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:53" value="" disabled>
-                                        </div>                         
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>                          
-                        </table>                     
-                        <div class="col-md-12" align="left">
-                          <div class="btn-group" role="group">
-                            <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="{{ route('resultadosPDF') }}">
-                              <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
-                            </a>                   
-                          </div>
-                        </div>              
-                      </div>
-                    </div>  
-
+                              </div>
+                            </div>
+                          </td>
+                        </tr>
+                        @endforeach
+                      </tbody>                          
+                    </table>                     
+                    <div class="col-md-12" align="left">
+                      <div class="btn-group" role="group">
+                        <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="/resultadosPDF/{{$carrera->id}}">
+                          <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
+                        </a>                   
+                      </div> 
+                    </div>              
+                  </div>
+                </div> 
               </div>
             </div> 
           </div>
         </div>
-
-        <!--<div class="card col-md-5" align="center">
-          <div class="card-body">
-            <h1 class="card-title">Deja tu comentario</h1>
-            <p class="card-text" >...En construcción...</p>
-            <a href="#" class="btn btn-primary" style="padding: 5px 85px">Comenta</a>
-          </div>
-        </div>-->
       </div>
     </div>
   </div>  

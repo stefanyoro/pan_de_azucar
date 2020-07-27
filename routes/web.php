@@ -86,9 +86,10 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 // Resultados de carreras
 	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');
 	Route::post('resultadosCarreras', 'ResultadosController@RegistrarResultados')->name('resultadosCarreras');
-	Route::get('verResultados1', 'ResultadosController@informacionCarrera')->name('verResultados1');
-	Route::get('verResultados', 'ResultadosController@verResultados')->name('verResultados');
-	Route::get('resultadosPDF', 'ResultadosController@resultadosPDF')->name('resultadosPDF');
+	Route::get('verResultados/{id}', 'ResultadosController@verResultados');
+	//Route::post('verResultados1/{id}', 'ResultadosController@informacionCarrera')->name('verResultados1');
+	Route::get('verResultados', 'ResultadosController@informacionCarrera')->name('verResultados1');
+	Route::get('resultadosPDF/{id}', 'ResultadosController@resultadosPDF')->name('resultadosPDF');
 
 	Route::get('/home', 'HomeController@index')->name('home');
 

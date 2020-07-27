@@ -212,7 +212,7 @@
                                       <!-- acción del botón  -->
                                         <input type="hidden" name="id" value="{{$banco->id}}">
                                           <div class="modal-body">
-                                            <h4> ¿Usted está seguro que desea eliminar el banco receptor Nº {{$banco->id}}?></h4>
+                                            <h4> ¿Usted está seguro que desea eliminar el banco receptor?</h4>
                                           </div>
                                         <div class="modal-footer">
                                           <button type="submit" class="btn btn-success" >Si</button>
