@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Carrera;
 use App\Banco;
-use App\bancoReceptor;
+use App\BancoReceptor;
 use App\Corredor;
 use App\Inscribir;
 use Illuminate\Support\Facades\Storage;

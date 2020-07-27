@@ -35,23 +35,13 @@ class ResultadosController extends Controller
     }
     public function verResultados($id)
     {
-        $carreras = Carrera::find($id);
-        return view('verResultados')->with(['carreras'=> $carreras]); 
+        $carrera = Carrera::find($id);
+        return view('verResultados')->with(['carrera'=> $carrera]); 
     }
-    public function informacionCarrera($id)
+    public function informacionCarrera()
     {
-        $carreras = Carrera::all($id);
-       //$resultado = DB::select('select * from carrera where id = ' . $id);
-        //dd($carreras)
-        //$inscribir= Inscribir::all(); 
-        //$inscribir = Inscribir::where('corredor_id', Auth::user()->corredor->id)->where('estatus_corredor', 0)->first();
-
-
-        //$resultado = resultado::all();
-        //dd($resultado);
-        
-        //return view('verResultados1')->with(['carreras'=> $carreras,'inscribir'=> $inscribir]);*/
-        return view('verResultados')->with(['carreras'=> $carreras]); 
+        $carreras = Carrera::all();
+        return view('verResultados1')->with(['carreras'=> $carreras]); 
     }
     public function resultadosPDF(){
 

@@ -25,7 +25,7 @@ class Inscribir extends Model
 
      public function resultado()
     {
-        return $this->belongsTo(Resultado::class, 'inscribir_id');
+        return $this->hasMany(Resultado::class, 'inscribir_id');
     }
 
 }

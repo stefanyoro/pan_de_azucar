@@ -24,7 +24,7 @@
                         <!-- Button trigger modal -->
                           <div class="col-md-10" align="right">
                             <p class="card-text" align="center">
-                              <input class="form-control form-control-lg" type="text" value="" style="text-align: center;" placeholder="Rodada 1" disabled> {{$carrera->nom_carrera}}
+                              <input class="form-control form-control-lg" type="text" value="" style="text-align: center;" placeholder=" {{$carrera->nom_carrera}}" disabled>
                             </p>                            
                           </div>
                         </div>
@@ -46,11 +46,12 @@
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach($carrera->inscribir as $inscritos)
                         <tr>
-                          <td>25702416</td>
-                          <td>Stefany Oropeza</td>
-                          <td>Senior</td>
-                          <td><i class="fa fa-star" aria-hidden="true"></i> 03 </td>
+                          <td>{{$inscritos->corredor->user->persona->numero_doc}}</td>
+                          <td>{{$inscritos->corredor->user->persona->nombre}}</td>
+                          <td></td>
+                          <td><i class="fa fa-star" aria-hidden="true"></i> 00 </td>
                           <td>
                             <!-- Tiempo -->
                             <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Tiempo del corredor">
@@ -62,28 +63,26 @@
                               <div class="modal-dialog " role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "Stefany Oropeza"</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "{{$inscritos->corredor->user->persona->nombre}}"</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
                                   <!-- acción del botón  -->
                                   <div class="modal-body">
-                                    
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 1
+                                    @foreach($inscritos->resultado as $clave=> $tiempo)
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta {{$clave+1}}
                                     <div class="tiempos col-md-12">
                                       <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:48:53" value="" disabled>
                                     </div>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta 2
-                                    <div class="tiempos col-md-12">
-                                      <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:30:53" value="" disabled>
-                                    </div>                         
+                                    @endforeach
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </td>
                         </tr>
+                        @endforeach
                       </tbody>                          
                     </table>                     
                     <div class="col-md-12" align="left">

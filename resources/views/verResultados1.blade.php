@@ -18,12 +18,14 @@
               							<div class="card-body">
               								@foreach($carreras as $carrera)
                               @if ($carrera->estatus == 1)
-                								<h5 class="card-title">                  									
-                    								<input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1_{{$carrera->id}}" value="option1" >
+                							<a href="/verResultados/{{$carrera->id}}">
+											<h5 class="card-title">                  									
+                    								
                            						<label class="form-check-label" for="inlineRadio1" required="required">
                                   					 {{$carrera->fecha_carr}} - {{$carrera->nom_carrera}} - {{$carrera->modalidad}}
 					                            </label>                            
 					                        </h5>
+											</a>
                                   @endif
 					                        @endforeach                            
 					                    </div>
@@ -32,7 +34,7 @@
 					                <div class="row">
 					                    <div class="col-md-12"align="center">
 					                      <div class="col-md-6" >
-					                         <a href=" {{ route('verResultados1') }}" type="submit" class="btn btn-success btn-block py-3" value="" style=" border:none; outline: none; border-radius: 20px; height: 50px; width: 150px;">selecionar</a>
+					                         
 					                      </div>
 					                    </div>
 					                </div>
