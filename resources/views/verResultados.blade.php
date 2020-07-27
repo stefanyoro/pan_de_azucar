@@ -40,18 +40,18 @@
                         <tr>
                           <th > N◦</th>
                           <th > Nombre</th>
-                          <th > Categoría</th>
+                          <th > Apellido</th>
                           <th > Posicion</th>
                           <th > Tiempo</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($carrera->inscribir as $inscritos)
+                        @foreach($carrera->inscribir as $clave=>$inscritos)
                         <tr>
-                          <td>{{$inscritos->corredor->user->persona->numero_doc}}</td>
-                          <td>{{$inscritos->corredor->user->persona->nombre}}</td>
-                          <td></td>
-                          <td><i class="fa fa-star" aria-hidden="true"></i> 00 </td>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->numero_doc}}</td>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->nombre}} </td>
+                          <td scope="col"> {{$inscritos->corredor->user->persona->apellido}}</td>
+                          <td><i class="fa fa-star" aria-hidden="true"></i> {{$clave+1}} </td>
                           <td>
                             <!-- Tiempo -->
                             <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Tiempo del corredor">
@@ -73,7 +73,7 @@
                                     @foreach($inscritos->resultado as $clave=> $tiempo)
                                     <i class="fa fa-clock-o" aria-hidden="true"></i> Vuelta {{$clave+1}}
                                     <div class="tiempos col-md-12">
-                                      <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="00:48:53" value="" disabled>
+                                      <input type="text" class="form-control tiempo" id="tiempo" name="tiempo[]" placeholder="{{$tiempo->tiempo}}" value="" disabled>
                                     </div>
                                     @endforeach
                                   </div>
@@ -87,7 +87,7 @@
                     </table>                     
                     <div class="col-md-12" align="left">
                       <div class="btn-group" role="group">
-                        <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="{{ route('resultadosPDF') }}">
+                        <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="/resultadosPDF/{{$carrera->id}}">
                           <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
                         </a>                   
                       </div>

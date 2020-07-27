@@ -28,6 +28,7 @@ class ResultadosController extends Controller
                 $resultado = new Resultado;
                 $resultado->inscribir_id = $request->id;
                 $resultado->tiempo = $value;
+                $resultado->posicion = $request->posicion;
             $resultado->save();
             }
             
@@ -43,9 +44,11 @@ class ResultadosController extends Controller
         $carreras = Carrera::all();
         return view('verResultados1')->with(['carreras'=> $carreras]); 
     }
-    public function resultadosPDF(){
+    public function resultadosPDF($id){
 
-        $pdf = \PDF::loadView('resultadosPDF');
+        $carreras = Carrera::find($id); 
+        //$carreras = Inscribir::find($id);
+        $pdf = \PDF::loadView('resultadosPDF',['carrera' => $carreras]);
    
     return $pdf->setPaper('a4')->stream('resultadosPDF.pdf');
     }

@@ -120,7 +120,8 @@
                                         <h3 style="text-align: center;"> 
                                           Se han publicado con éxito los resultados de los corredores pertenecientes a la carrera "<b>{{$carrera->nom_carrera}}</b>"
                                         </h3>                                        
-                                      </div>                                        
+                                      </div><a style="text-align: left;" type="button" class="btn btn-outline-warning btn-sm"  href="/verResultados/{{$carrera->id}}"><i class="fa fa-eye" aria-hidden="true"></i></a> 
+                                                                           
                                     </form>
                                   </div>
                               </div>

@@ -37,7 +37,7 @@
 
           <div class="card-header" id="headingOne">
             <h2 class="mb-0">
-              <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{$carrera->id}}" aria-expanded="true" aria-controls="collapse_{{$carrera->id}}">
+              <button style="color:#B03A2E;" class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_{{$carrera->id}}" aria-expanded="true" aria-controls="collapse_{{$carrera->id}}">
                 {{$carrera->nom_carrera}}-Lugar:{{$carrera->lugar_salida}} - Salida{{$carrera->lugar_llegada}} -hora{{$carrera->hora}}{{$carrera->meridiano}} - -categoria categoria{{$carrera->categoria}} -monto{{$carrera->monto}}
               </button>
             </h2>
@@ -46,13 +46,13 @@
           <div id="collapse_{{$carrera->id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
               <table class="table">
-                <thead class="thead-dark">
+                <thead style="background-color: #B03A2E;">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Cèdula</th>
-                    <th scope="col">Opciones</th>
+                    <th style="color:#FFFF;" scope="col">#</th>
+                    <th style="color:#FFFF;" scope="col">Nombre</th>
+                    <th style="color:#FFFF;" scope="col">Apellido</th>
+                    <th style="color:#FFFF;" scope="col">Cèdula</th>
+                    <th style="color:#FFFF;" scope="col">Opciones</th>
                   </tr>
                 </thead>
                 <tbody>

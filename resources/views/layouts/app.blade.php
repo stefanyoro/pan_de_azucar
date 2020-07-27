@@ -133,14 +133,14 @@
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Resultados</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">                   
                   <a class="dropdown-item" href="{{ route('resultadosCarreras') }}"><i class="fa fa-table" aria-hidden="true"></i> Registro de resultados</a>
-                  <a class="dropdown-item" href=""><i class="fa fa-list-ol" aria-hidden="true"></i>  Publicación de resultados<a>
+                  <a class="dropdown-item" href="{{ route('verResultados1') }}"><i class="fa fa-list-ol" aria-hidden="true"></i>  Publicación de resultados<a>
                   <!--<a class="dropdown-item" href="verResultados1"> Resultados</a>-->
                 </div>         
               </li>
               @endif
               @if((Auth::user()->rol == '4'))
               <li class="nav-item ">
-                  <a class="nav-link" href="">Resultados</a>-->                        
+                  <a class="nav-link" href="{{ route('verResultados1') }}">Resultados</a>                       
               </li>
               @endif
             </ul>

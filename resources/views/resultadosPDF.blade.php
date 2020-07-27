@@ -20,47 +20,31 @@
 
 <img src="img/logo2.jpg">
 <div style=" text-align:center;">
-	<h3><b>Lista de Resultados</b></h3>
+	<h3><b>Lista de Resultados: carrera - </b></h3>
 </div>
 <table class="table" style=" text-align:center;">
   <thead>
     <tr>
       <th > Número de Cedula</th>
       <th > Nombre</th>
-      <th > Categoría</th>
+      <th > Apellido</th>
       <th > Posicion</th>
-      <td> Tiempo Vuelta 1</td>
-      <td> Tiempo Vuelta 2</td>
+       <th>Tiempo por Vuelta</th>
     </tr>
   </thead>
   <tbody>
+   @foreach($carrera->inscribir as $clave=>$inscritos)    
+                       
     <tr>
-      <td>25702598</td>
-      <td>Krisbell Romero</td>
-      <td>Senior</td>
-      <td> 01 </td>
-      <td>00:25:15</td>
-      <td>00:30:15</td>
+      <td> {{$inscritos->corredor->user->persona->numero_doc}}</td>
+      <td> {{$inscritos->corredor->user->persona->nombre}}</td>
+      <td> {{$inscritos->corredor->user->persona->apellido}}</td>
+      <td> {{$clave+1}}</td>
+      <td> @foreach($inscritos->resultado as $clave=> $tiempo)
+       Tiempo {{$clave+1}}: {{$tiempo->tiempo}} <br>   
+    @endforeach
+    </td>
     </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>25237682</td>
-      <td>Odalys Urbina</td>
-      <td>Senior</td>
-      <td> 02 </td>
-      <td>00:32:05</td>
-      <td>00:30:05</td>
-    </tr>
-  </tbody>
-  <tbody>
-    <tr>
-      <td>25702416</td>
-      <td>Stefany Oropeza</td>
-      <td>Senior</td>
-      <td> 03 </td>
-      <td>00:48:53</td>
-      <td>00:30:53</td>
-    </tr>
+    @endforeach
   </tbody>
 </table>
