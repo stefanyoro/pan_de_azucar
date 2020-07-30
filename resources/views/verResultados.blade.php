@@ -46,7 +46,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($carrera->inscribir as $clave=>$inscritos)
+                        @foreach($carrera->inscribir as $clave=> $inscritos)
                         <tr>
                           <td scope="col"> {{$inscritos->corredor->user->persona->numero_doc}}</td>
                           <td scope="col"> {{$inscritos->corredor->user->persona->nombre}} </td>
@@ -54,16 +54,16 @@
                           <td><i class="fa fa-star" aria-hidden="true"></i> {{$clave+1}} </td>
                           <td>
                             <!-- Tiempo -->
-                            <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal" title="Tiempo del corredor">
+                            <button type="button" class="btn btn-outline-success btn-sm" data-toggle="modal" data-target="#exampleModal_{{$inscritos->corredor->user->persona->id}}" title="Tiempo del corredor">
                              <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </button>
 
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="exampleModal_{{$inscritos->corredor->user->persona->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModal_{{$inscritos->corredor->user->persona->id}}" aria-hidden="true">
                               <div class="modal-dialog " role="document">
                                 <div class="modal-content">
                                   <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Tiempos de: "{{$inscritos->corredor->user->persona->nombre}}"</h5>
+                                    <h5 class="modal-title" id="exampleModalLabel_{{$inscritos->corredor->user->persona->id}}">Tiempos de: "{{$inscritos->corredor->user->persona->nombre}}"</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                       <span aria-hidden="true">&times;</span>
                                     </button>
@@ -88,9 +88,9 @@
                     <div class="col-md-12" align="left">
                       <div class="btn-group" role="group">
                         <a style="background-color: #B03A2E;" title="PDF Carrera" class="btn btn-primary btn-sm" target="_blank" href="/resultadosPDF/{{$carrera->id}}">
-                          <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+                          <i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF
                         </a>                   
-                      </div>
+                      </div> 
                     </div>              
                   </div>
                 </div> 
@@ -98,13 +98,6 @@
             </div> 
           </div>
         </div>
-        <!--<div class="card col-md-5" align="center">
-          <div class="card-body">
-            <h1 class="card-title">Deja tu comentario</h1>
-            <p class="card-text" >...En construcción...</p>
-            <a href="#" class="btn btn-primary" style="padding: 5px 85px">Comenta</a>
-          </div>
-        </div>-->
       </div>
     </div>
   </div>  

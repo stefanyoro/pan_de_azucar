@@ -289,7 +289,7 @@
                                       <form action="eliminarCarrera" method="post" enctype="multipart/form-data">@csrf
                                         <input type="hidden" name="id" value="{{$carrera->id}}">
                                           <div class="modal-body">
-                                            <h4> ¿Usted está seguro que desea eliminar la carrera n◦ {{$carrera->id}}, "<b>{{$carrera->nom_carrera}}</b>" ?></h4>
+                                            <h4> ¿Usted está seguro que desea eliminar la carrera n◦ {{$carrera->id}}, "<b>{{$carrera->nom_carrera}}</b>" ?</h4>
                                           </div>
                                         <div class="modal-footer">
                                           <button type="submit" class="btn btn-success" >Si</button>

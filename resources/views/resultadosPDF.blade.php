@@ -20,7 +20,7 @@
 
 <img src="img/logo2.jpg">
 <div style=" text-align:center;">
-	<h3><b>Lista de Resultados: carrera - </b></h3>
+	<h3><b>Lista de Resultados: carrera - {{$carrera->nom_carrera}}</b></h3>
 </div>
 <table class="table" style=" text-align:center;">
   <thead>

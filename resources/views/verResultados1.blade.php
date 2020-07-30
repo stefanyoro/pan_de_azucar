@@ -19,16 +19,15 @@
               								@foreach($carreras as $carrera)
                               @if ($carrera->estatus == 1)
                 							<a href="/verResultados/{{$carrera->id}}">
-											<h5 class="card-title">                  									
-                    								
-                           						<label class="form-check-label" for="inlineRadio1" required="required">
-                                  					 {{$carrera->fecha_carr}} - {{$carrera->nom_carrera}} - {{$carrera->modalidad}}
-					                            </label>                            
-					                        </h5>
-											</a>
-                                  @endif
-					                        @endforeach                            
-					                    </div>
+                                <h5 class="card-title">           									
+                       						<label class="form-check-label" for="inlineRadio1" required="required">
+                              		  {{$carrera->fecha_carr}} - {{$carrera->nom_carrera}} - {{$carrera->modalidad}}
+			                            </label>                            
+                                </h5>
+                              </a>
+                              @endif
+					                   @endforeach                            
+					                  </div>
 					                </div>
 					                <br>
 					                <div class="row">
