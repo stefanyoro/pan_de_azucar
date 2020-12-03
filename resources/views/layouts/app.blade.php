@@ -121,10 +121,18 @@
               @endif
               @if(Auth::user()->rol == '3')
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de alimentación</a>
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Plan de alimenticio</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html">Creación de plan</a>
-                  <a class="dropdown-item" href="planEntrenamiento">Listado de planes creados</a>
+                  <a class="dropdown-item" href="planAlimenticio">Creación de plan</a>
+                  <a class="dropdown-item" href="listado_planAlimenticio">Listado de planes creados</a>
+                </div>
+              </li>
+              @endif
+              @if(Auth::user()->rol == '3')
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Alimentos</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown04">
+                  <a class="dropdown-item" href="nuevoEjercicio">Agregar nuevo</a>
                 </div>
               </li>
               @endif

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateListaAlimentoTable extends Migration
+class CreateHortalizasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,10 @@ class CreateListaAlimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('lista_alimento', function (Blueprint $table) {
+        Schema::create('hortalizas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('plan_id')->unsigned();
-            $table->foreign('plan_id')->references('id')->on('plan_alimenticio')->onDelete('cascade');
             $table->string('nombre');
-            $table->string('racion');
-            $table->string('medidas');
-            $table->string('hora');
-            $table->string('dia');
+
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ class CreateListaAlimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lista_alimento');
+        Schema::dropIfExists('hortalizas');
     }
 }
