@@ -14,22 +14,21 @@
                 	<div class="col-md-12">
               			<div class="card-body">
           						<h5> Seleccione la carrera:</h5> 
-            							<div class="card col-md-12">
-              							<div class="card-body">
-              								@foreach($carreras as $carrera)
-                              @if ($carrera->estatus == 1)
-                							<a href="/verResultados/{{$carrera->id}}">
-                                <h5 class="card-title">           									
-                       						<label class="form-check-label" for="inlineRadio1" required="required">
+            						<div class="card col-md-12">
+              						<div class="card-body">
+              							@foreach($carreras as $carrera)
+                            @if ($carrera->estatus == 1)
+                						<a href="/verResultados/{{$carrera->id}}">
+                              <h5 class="card-title">           									
+                       					<label class="form-check-label" for="inlineRadio1" required="required">
                               		  {{$carrera->fecha_carr}} - {{$carrera->nom_carrera}} - {{$carrera->modalidad}}
-			                            </label>                            
-                                </h5>
-                              </a>
-                              @endif
-					                   @endforeach                            
-					                  </div>
+			                          </label>                            
+                              </h5>
+                            </a>
+                            @endif
+					                  @endforeach                            
 					                </div>
-					                <br>
+                        </div><br>
 					                <div class="row">
 					                    <div class="col-md-12"align="center">
 					                      <div class="col-md-6" >
@@ -40,8 +39,8 @@
 					            </div>
   						      </div>                    
 				          </div>
-                </form>                  
-        			</div>
+                </div>
+              </form>
             </div>
     			</div>
         </div>

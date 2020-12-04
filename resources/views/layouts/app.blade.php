@@ -240,10 +240,16 @@
         </div>
       </nav>
     </header>
-
     <!-- END header -->
     <div>
       @yield('content')
+    </div>
+    <!-- chat whatsapp-->
+    <div class="btn-whatsapp">
+      <a href="https://api.whatsapp.com/send?phone=584123617542&text=Hola!&nbsp;me&nbsp;pueden&nbsp;asesorar?&lang=es" target="_blank">
+        <img src="{{ asset('img/whatsappIcon.png')}}" alt="whatsapp">
+        
+      </a>
     </div>
     <footer class="site-footer" role="contentinfo">
       <div class="container">

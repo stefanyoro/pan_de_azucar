@@ -1250,6 +1250,18 @@ header .navbar .cta-btn a:hover {
   visibility: hidden;
 }
 
+.btn-whatsapp {
+  position: fixed;
+  right:10px;
+  bottom:10px;
+  width:80px;
+  z-index:100;
+}
+.btn-whatsapp img{
+  width:100%;
+  height: auto;
+}
+
 #loader {
   position: fixed;
   width: 96px;
@@ -1356,4 +1368,5 @@ header .navbar .cta-btn a:hover {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
+
 }
