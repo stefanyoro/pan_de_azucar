@@ -12,6 +12,14 @@
 <section class="section body">
 	<div class="container" align="center">
     	<div class="col-md-12">
+        @if(session()->has('data'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('data')['mensaje']}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>    
+        @endif
       		<div class="card" style="border-color:#B03A2E; background: transparent;">
         		<div class="card-header" style="background-color: #B03A2E; height: 40px;">
             		<p  style="color:white; text-align:left;"> Listado de planes</p> 
@@ -35,6 +43,7 @@
 		                            	@foreach ($planes as $clave => $plan)
 		                            		@foreach ($usuarios as $usuario)
 		                            			@if($plan->corredor_id == $usuario->id)
+                                      @if($plan->status == 1)
 				                              	<tr>
 				                                	<td>{{ $clave + 1}}</td>
 							                        <td>{{ $usuario->name}}</td>
@@ -187,6 +196,7 @@
                                     </div>
                           </td>
 						                        </tr>
+                                    @endif
 						                        @endif
 						                	@endforeach    
 		                           		@endforeach

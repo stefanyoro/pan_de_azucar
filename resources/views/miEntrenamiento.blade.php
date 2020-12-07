@@ -55,6 +55,7 @@
 		                            	@foreach ($planes as $clave => $plan)
 		                            		
 		                            			@if($plan->corredor_id == Auth::user()->id)
+		                            			@if($plan->status == 1)
 				                              	<tr>
 				                                	<td>{{ $clave + 1}}</td>
 							                        <td>{{ $plan->nombre}}</td>
@@ -68,6 +69,7 @@
                              
                           </td>
 						                        </tr>
+						                        @endif
 						                        @endif
 						                	
 		                           		@endforeach

@@ -110,7 +110,7 @@ class PlanAlimenticioController extends Controller
             $planA->status = 0;
         $planA->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('data',['mensaje'=> '¡Plan de alimentación eliminado con éxito!']);
 
     }
 

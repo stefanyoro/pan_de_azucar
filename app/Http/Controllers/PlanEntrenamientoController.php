@@ -73,7 +73,7 @@ class PlanEntrenamientoController extends Controller
             $planE->status = 0;
         $planE->save();
 
-        return redirect()->back();
+        return redirect()->back()->with('data',['mensaje'=> '¡Plan de entrenamiento eliminado con éxito!']);
 
     }
 
