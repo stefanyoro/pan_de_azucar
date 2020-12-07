@@ -16,7 +16,7 @@
       
       <div class="card" style="border-color:#B03A2E; background: transparent;">
         <div class="card-header" style="background-color: #B03A2E;">
-          <a style="color: white;">Inscripciòn Corredor</a>
+          <a style="color: white;">Inscripción Corredor</a>
         </div>
   
         <div class="row">

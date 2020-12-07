@@ -16,7 +16,7 @@
 
 			<div class="card" style="border-color:#B03A2E; background: transparent;">
 				<div class="card-header" style="background-color: #B03A2E;">
-					<a style="color: white;">Inscripciòn Corredor</a>
+					<a style="color: white;">Inscripción Corredor</a>
 				</div>
 				<div class="row">
 					<div class="">
@@ -56,7 +56,7 @@
 		<div class="col-md-9">
 			<div class="card" style="border-color:#B03A2E; background: transparent;">
 				<div class="card-header" style="background-color: #B03A2E;">
-					<a style="color: white;">Informaciòn de Carrera
+					<a style="color: white;">Información de Carrera
 					</a>
 				</div>
 
@@ -119,7 +119,7 @@
 						</div>
 				</div>
 				<div class="card-header" style="background-color: #B03A2E;">
-					<a style="color: white;">Inscripcion de pago</a>
+					<a style="color: white;">Proceso de pago</a>
 				</div>
 			
 				
@@ -185,7 +185,7 @@
 						</div>
 
 						<div class="col-md-4">
-							<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Metodo de pago:</p>
+							<p style="text-align: left;"><i class="fa fa-circle-o" aria-hidden="true"></i> Método de pago:</p>
 							<select class="form-control" name="metodoPago">
 								<option>Pago Movil</option>
 								<option>Transferencia</option>
@@ -217,7 +217,7 @@
 							<input type="date" class="form-control" name="fecha" required="required" value="">
 						</div>
 						<div class="col-md-4">
-							<p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Descripciòn:</p>
+							<p style="text-align: left;"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Descripción:</p>
 							<input type="text" class="form-control" name="descripcion" required="required" value="">
 						</div>
 

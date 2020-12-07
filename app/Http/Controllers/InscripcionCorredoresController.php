@@ -53,7 +53,7 @@ class InscripcionCorredorescontroller extends Controller
 
 
         $inscribir->save();
-        return redirect()->back()->with('data',['mensaje'=>'Esperando Confirmaciòn de pago']);
+        return redirect()->back()->with('data',['mensaje'=>'Esperando confirmación de pago']);
     }
     
     public function listadocorredores()
@@ -163,6 +163,6 @@ class InscripcionCorredorescontroller extends Controller
            // $inscribir->estatus = 0;
             $inscribir->save();
 
-        return redirect()->back()->with('data',['mensaje'=>'Observacion enviada']); 
+        return redirect()->back()->with('data',['mensaje'=>'Observación enviada']); 
     }
 }
