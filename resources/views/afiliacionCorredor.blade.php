@@ -20,14 +20,14 @@
     	
     <div class="container" align="left">
     	<div class="col-md-8">
-    		 @if ($errors->any())
-                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>¡El correo o número de documento ya existen!</strong> 
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                  </div>
-                @endif
+    		 @if(session()->has('data'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{session('data')['mensaje']}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>    
+        @endif
 	    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 	    		<div class="card-header" style="background-color: #B03A2E;">
 			    	

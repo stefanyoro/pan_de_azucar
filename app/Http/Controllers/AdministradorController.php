@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class AdministradorController extends Controller
 {
@@ -26,30 +28,42 @@ class AdministradorController extends Controller
     public function RegistrarUsuario(Request $request)
     {
          //dd($request);
+
+        $foto = $request->file("foto");
+        $extension = $foto->getClientOriginalExtension();
+        Storage::disk('public')->put($foto->getFilename().".".$extension, File::get($foto));
+
          $user = new User;
-             $user->name= $request->nombre;
-             $user->email= $request->correo;
-             $user->password = bcrypt($request->password);
-             $user->password2 = bcrypt($request->password2);
-             $user->rol = $request->rol;
-             $user->img = $request->img;
-         $user->save();
+         if(User::where('email',$request->correo)->exists()){
+                return redirect()->back()->with('data',['mensaje'=> '¡El correo o número de documento ya fueron registrados!']);
+             }else{
+                 $user->name= $request->nombre;
+                 $user->email= $request->correo;
+                 $user->password = bcrypt($request->password);
+                 $user->password2 = bcrypt($request->password2);
+                 $user->rol = $request->rol;
+                 $user->img = $foto->getFilename().".".$extension;
+                $user->save();
+            }
         
          $persona = new Persona;
-            $persona->user_id = $user->id;
-            $persona->nacionalidad = $request->nacionalidad;
-            $persona->tipo_doc = $request->tipo_doc;
-            $persona->numero_doc = $request->numero_doc;
-            $persona->sexo = $request->sexo;
-            $persona->nombre = $request->nombre;
-            $persona->apellido = $request->apellido;
-            $persona->fecha_nac = $request->fecha_nac;
-            $persona->estado = $request->estado;
-            $persona->ciudad = $request->ciudad;
-            $persona->telf_local = $request->telf_local;
-            $persona->telf_celular = $request->telf_celular;
-            $persona->tipo_sangre = $request->tipo_sangre; 
-           
+            if(Persona::where('numero_doc',$request->numero_doc)->exists()){
+                return redirect()->back()->with('data',['mensaje'=> '¡El correo o número de documento ya fueron registrados!']);
+             }else{
+                $persona->user_id = $user->id;
+                $persona->nacionalidad = $request->nacionalidad;
+                $persona->tipo_doc = $request->tipo_doc;
+                $persona->numero_doc = $request->numero_doc;
+                $persona->sexo = $request->sexo;
+                $persona->nombre = $request->nombre;
+                $persona->apellido = $request->apellido;
+                $persona->fecha_nac = $request->fecha_nac;
+                $persona->estado = $request->estado;
+                $persona->ciudad = $request->ciudad;
+                $persona->telf_local = $request->telf_local;
+                $persona->telf_celular = $request->telf_celular;
+                $persona->tipo_sangre = $request->tipo_sangre; 
+            }
          $persona->save();
         
         if($request->rol == '1'){

@@ -21,20 +21,23 @@
     <div class="container" align="center">
     	<div class="col-md-9">
     		@if(session()->has('data'))
-    <div class="alert alert-success" role="alert">
-    		{{session('data')['mensaje']}}
-    </div>		
-    @endif
+	          <div class="alert alert-success alert-dismissible fade show" role="alert">
+	            {{session('data')['mensaje']}}
+	            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	              <span aria-hidden="true">&times;</span>
+	            </button>
+	          </div>    
+	        @endif
 	    	<div class="card" style="border-color:#B03A2E; background: transparent;">
 	    		<div class="card-header" style="background-color: #B03A2E;">
 			    	<a style="color: white;">Registrar nuevo usuario</a>
 			  	</div>
 		  		<div class="card-body">
 		    		<div class="">
-				    	<form action="RegistrarUsuario" method="post">@csrf
+				    	<form action="RegistrarUsuario" method="post" enctype="multipart/form-data">@csrf
 				                <div class="row">
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">Nacionalidad:</p> 
+				                    	<p style="text-align: left;"><i class="fa fa-address-card-o" aria-hidden="true"></i> Nacionalidad:</p> 
 				                    	<div class="form-group">
 				    						<select required class="form-control" id="nacionalidad" name="nacionalidad" data-pattern-error="Selecciona una opción.">
 											    <option selected>Seleccione..</option>
@@ -44,8 +47,7 @@
 			  							</div>
 				                    </div>  
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                            	Tipo de documento:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-id-card-o" aria-hidden="true"></i> Tipo de documento:</p>
 				                       <div class="form-group">
 				    						<select class="form-control" id="tipo_doc" name="tipo_doc" required="required" data-pattern-error="Selecciona una opción.">
 											    <option selected>Seleccione..</option>
@@ -55,39 +57,32 @@
 			  							</div>
 				                    </div>
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Número de documento:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-id-card-o" aria-hidden="true"></i> N° de documento:</p>
 				                      <input type="text" class="form-control" id="numero_doc" name="numero_doc" minlength="6" maxlength="8" pattern="[0-9]{6,8}" required="required" title="Sólo números de 6 a 8 dígitos." placeholder="Nº documento">
 				                    </div>
 				                </div>
 				               
 				                <div class="row">
 				                	<div class="col-md-4"> 
-				                		<p style="text-align: left;">
-				                    	
-				                    	Nombre:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-venus-mars" aria-hidden="true"></i> Sexo:</p>
+				                    	<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="sexo" id="F" value="F">
+										  		<label class="form-check-label" for="F">Femenino</label>
+										</div>
+										<div class="form-check form-check-inline">
+											<input class="form-check-input" type="radio" name="sexo" id="M" value="M">
+										  		<label class="form-check-label" for="M">Masculino</label>
+										</div>
+				                    </div> 
+				                	<div class="col-md-4"> 
+				                		<p style="text-align: left;"><i class="fa fa-font" aria-hidden="true"></i> Nombre:</p>
 				                    	<input type="text" class="form-control" id="nombre" name="nombre" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El nombre sólo puede tener caracteres alfabéticos." minlength="3" maxlength="30" required="required" placeholder="Nombre" data-pattern-error="El nombre sólo puede tener caracteres alfabéticos.">
 				                    </div> 
 				                    <div class="col-md-4">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Apellido:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-font" aria-hidden="true"></i> Apellido:</p>
 				                        <input type="text" class="form-control" id="apellido" name="apellido" pattern="[A-Za-zñÑáéíóúüÁÉÍÓÚÜ]{3,30}" title="El apellido sólo puede tener caracteres alfabéticos." minlength="5" maxlength="30" required="required" placeholder="Apellido" data-pattern-error="El apellido sólo puede tener caracteres alfabéticos."> 
 				                    </div>
-				                    <div class="col-md-4"> 
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Sexo:</p>
-				                      <div class="form-group">
-				    						<select class="form-control" id="sexo" name="sexo" required="required">
-											    <option selected>Seleccione..</option>
-											    <option value="M">M</option>
-											    <option value="F">F</option>
-											</select>
-			  							</div>
-				                    </div> 
-				                    
+				                      
 				                </div>
 				               
 				                <div class="row" style="margin-top: 15px;">
@@ -119,7 +114,7 @@
 				        		    </div>
 				                </div>
 				                
-				                <p style="text-align: left;">Dirección:</p>
+				                <p style="text-align: left;"><i class="fa fa-compass" aria-hidden="true"></i> Dirección:</p>
 				                 <div class="row">
 				                	<div class="col-md-6"> 
 				                    	<select class="form-control" id="estado" name="estado"></select>
@@ -142,12 +137,19 @@
 				                      <input type="email" class="form-control" id="correo" name="correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" data-pattern-error="La dirección de correo es inválida" placeholder="Correo" required="required">
 				                    </div>   
 				                </div><br>
-
+				                <div class="row">
+				                	<div class="col-md-12">
+				                		<p style="text-align: left;"><i class="fa fa-picture-o" aria-hidden="true"></i> Foto de perfil:</p>
+				                        <div class="custom-file">
+			                          		<input type="file" class="form-control" name="foto">
+			                            
+			                        	</div>
+				                	</div>
+				                	
+				                </div><br>
 				               	<div class="row">
 				                    <div class="col-md-6">
-				                    	<p style="text-align: left;">
-				                    	
-				                    	Grado de Instrucción:</p>
+				                    	<p style="text-align: left;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Grado de Instrucción:</p>
 				        				<div class="form-group">
 				    						<select class="form-control" id="grado_Instrucc" name="grado_Instrucc">
 											    <option selected>Seleccione..</option>
@@ -161,20 +163,18 @@
 				        		    </div>
 				        		    <div class="col-md-6"> 
 				                      <div class="form-group">
-				                      	<p style="text-align: left;">
-				                    	
-				                    	Especialidad:</p>
+				                      	<p style="text-align: left;"><i class="fa fa-graduation-cap" aria-hidden="true"></i> Especialidad:</p>
 				    					<input type="text" class="form-control" id="especialidad" name="especialidad" required="required" placeholder="Especialidad">								
 			  							</div>
 				                    </div> 
 				                </div><br>
 				                <div class="row">
 				                    <div class="col-md-6"> 
-				                    	<p style="text-align: left;">Contraseña:</p> 
+				                    	<p style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i> Contraseña:</p> 
 				                          <input type="password" name="password" class="form-control" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" minlength="8" maxlength="16" title="Debe contener al menos un número, una letra mayúscula, una letra minúscula y ser de 8 a 16 caracteres" required="required" data-pattern-error="Debe contener al menos un número, una letra mayúscula, una letra minúscula y ser de 8 a 16 caracteres" placeholder="Contraseña">
 				                    </div> 
 				                    <div class="col-md-6"> 
-				                    	<p style="text-align: left;">Confirmar contraseña:</p> 
+				                    	<p style="text-align: left;"><i class="fa fa-lock" aria-hidden="true"></i> Confirmar contraseña:</p> 
 				                          <input type="password" name="password2" class="form-control" id="password2" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}" minlength="8" maxlength="16" title="Debe contener al menos un número, una letra mayúscula, una letra minúscula y ser de 8 a 16 caracteres" required="required" data-pattern-error="Debe contener al menos un número, una letra mayúscula, una letra minúscula y ser de 8 a 16 caracteres" placeholder="Confirmar contraseña">
 				                    </div>
 

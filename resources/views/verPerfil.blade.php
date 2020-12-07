@@ -97,6 +97,7 @@
 											<b>Sexo:</b> {{Auth::user()->persona->sexo}}<br>
 											<b>Fecha de nacimiento:</b> {{Auth::user()->persona->fecha_nac}}<br>
 											<b>Tipo de Sangre:</b> {{Auth::user()->persona->tipo_sangre}}<br> <br>
+										@if(Auth::user()->rol == '4')
 										<div class="">
 											<div class="row">
 												<div class="col-md-2"></div>
@@ -110,6 +111,7 @@
 											</div>
 											
 										</div>
+										@endif
 					    			</div>
 					    		</div>
 					    	</div>
