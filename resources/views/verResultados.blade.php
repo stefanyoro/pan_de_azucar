@@ -109,12 +109,44 @@
                 <h5 class="card-title">
                   <div class="row">
                     <div class="col-md-12"> Sección de Comentarios:</div>
+
                   </div>
                 </h5>
               </div>
             </div>
             <br>
-            <p> aquí abajo </p>
+            <form method="POST"action="{{route('comentarios.store')}}">@csrf
+              <div class="form-row">
+                <div class="col-md-10">
+                  <input  class="form-control" type="text" class="control-form" name="contenido">
+                </div>
+
+                <div class="col-md-2">
+                  <button  class="btn btn-success"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                  <input type="text" name="carrera_id" value="{{$carrera->id}}" hidden="">
+                </div>
+              </div>
+            </form>
+            <br>
+            @foreach(\App\Comentario::all()->where('carrera_id',$carrera->id) as $comentario)
+            <div class="alert alert-dark" role="alert">
+               <div class="form-row">
+                <div class="col-md-10">
+                  <b>{{$comentario->user->name}}</b> {{$comentario->contenido}} @if(Auth::user()->id == $comentario->user->id)
+                </div>
+
+                <div class="col-md-2">
+                  <form method="delete" action="/eliminarComentario/{{$comentario->id}}">@csrf
+                <button  class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button>
+                </form>
+                </div>
+               
+            </div>
+               
+               
+               @endif
+            </div>
+            @endforeach         
           </div>
         </div>
       </div>

@@ -70,6 +70,9 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::post('observacion', 'InscripcionCorredoresController@observacion');
 	Route::get('numero/{id}', 'InscripcionCorredorescontroller@numero')->name('numero');
 
+// Comentarios
+	Route::resource('comentarios', 'ComentarioController');
+
 // Plan de entrenamientos
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
@@ -118,3 +121,7 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/eliminarComentario/{id}', 'ComentarioController@destroy')->name('eliminarComentario');
+
+
