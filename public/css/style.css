@@ -1254,7 +1254,7 @@ header .navbar .cta-btn a:hover {
   position: fixed;
   right:10px;
   bottom:10px;
-  width:80px;
+  width:50px;
   z-index:100;
 }
 .btn-whatsapp img{

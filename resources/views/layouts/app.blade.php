@@ -247,7 +247,7 @@
     <!-- chat whatsapp-->
     <div class="btn-whatsapp">
       <a href="https://api.whatsapp.com/send?phone=584123617542&text=Hola!+me+pueden+asesorar?&lang=es" target="_blank">
-        <img src="{{ asset('img/whatsappIcon.png')}}" alt="whatsapp">  
+        <img src="{{ asset('img/whatsappIcono.png')}}" alt="whatsapp"> 
       </a>
     </div>
     <!-- footer-->
