@@ -67,10 +67,8 @@ class CorredorController extends Controller
          
          $corredor = new Corredor;
             $corredor->user_id = $user->id;
-            $corredor->edad = $request->edad;
             $corredor->peso = $request->peso;
             $corredor->estatura = $request->estatura;
-            $corredor->grupo_ciclismo = $request->grupo_ciclismo;
            $corredor->save();
          
 

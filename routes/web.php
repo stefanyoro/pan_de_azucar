@@ -93,6 +93,11 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 
 	Route::get('/home', 'HomeController@index')->name('home');
 
+//Plan Alimenticio
+	Route::get('planAlimenticio', 'PlanAlimenticioController@Plan_Alimentacion');
+	Route::post('registro_planAlimenticio', 'PlanAlimenticioController@RegistrarPlanAlimenticio');
+	Route::get('listado_planAlimenticio', 'PlanAlimenticioController@ListadoPlanes');
+
 //PDF'S
 	Route::get('CarnetPDF', 'PdfController@carnet')->name('CarnetPDF');
 	Route::get('planBasicoPDF', 'PdfController@planBasico')->name('planBasicoPDF');
