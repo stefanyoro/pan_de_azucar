@@ -266,8 +266,8 @@
             <h3>Bike Team</h3>
             <p class="mb-5">Grupo de ciclistas entusiastas fundado en el año 2015.</p>
             <ul class="list-unstyled footer-link d-flex footer-social">
-              <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
-              <li><a href="https://www.instagram.com/pandeazucarbiketeam/" class="p-2"><span class="fa fa-instagram"></span></a></li>
+              <li><a href="#" class="p-2" target="_blank"><span class="fa fa-facebook"></span></a></li>
+              <li><a href="https://www.instagram.com/pandeazucarbiketeam/" class="p-2" target="_blank"><span class="fa fa-instagram"></span></a></li>
             </ul>
 
           </div>
