@@ -27,7 +27,9 @@
 		                            <th>N◦</th>
 		                            <th>Corredor</th>
 		                            <th>Correo</th>
-		                            <th>        </th>
+                                <th>Nombre del Plan</th>
+                                <th>Fecha</th>
+		                            <th>Acciones</th>
 		                          </tr>
 		                        </thead>
 		                            <tbody>
@@ -38,6 +40,8 @@
 				                                	<td>{{ $clave + 1}}</td>
 							                        <td>{{ $usuario->name}}</td>
 							                        <td>{{ $usuario->email}}</td>
+                                      <td>{{ $plan->nombre_plan}}</td>
+                                      <td>{{ $plan->fecha}}</td>
 							                        <td >
                             <!-- visualizar -->
                             <div class="btn-group" role="group" aria-label="Basic example">
@@ -242,7 +246,35 @@
                                     </div>
                                   </div>
                                 </div>
-                                
+                            
+                            <!--Eliminar-->
+                              <button type="button" class="btn btn-outline-danger btn-sm"data-toggle="modal" data-target="#eliminar_{{$plan->id}}">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                              </button>
+                                  <!-- Modal -->
+                                    <div class="modal fade" id="eliminar_{{$plan->id}}" tabindex="-1" role="dialog" aria-labelledby="eliminarModal_{{$plan->id}}" aria-hidden="true">
+                                      <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title" id="eliminarModal_{{$plan->id}}">Eliminar...</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <span aria-hidden="true">&times;</span>
+                                            </button>
+                                          </div>
+                                          <!-- acción del botón  -->
+                                            <form action="eliminarPlanA" method="post" enctype="multipart/form-data">@csrf
+                                              <input type="hidden" name="id" value="{{$plan->id}}">
+                                              <div class="modal-body">
+                                                <h4> ¿Usted está seguro que desea eliminar el plan "<b>{{$plan->nombre_plan}}</b>" ?</h4>
+                                              </div>
+                                              <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success" >Si</button>
+                                                <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+                                              </div>
+                                            </form> 
+                                        </div>
+                                      </div>
+                                    </div>
                           </td>
 						                        </tr>
 						                        @endif

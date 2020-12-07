@@ -16,7 +16,7 @@ class CreateAceitesTable extends Migration
         Schema::create('aceites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

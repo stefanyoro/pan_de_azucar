@@ -96,7 +96,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servicios</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="services.html"><i class="fa fa-apple" aria-hidden="true"></i> Mis planes alimenticios</a>
+                  <a class="dropdown-item" href="planNutricional"><i class="fa fa-apple" aria-hidden="true"></i> Mis planes alimenticios</a>
                   <a class="dropdown-item" href="miEntrenamiento"><i class="fa fa-bicycle" aria-hidden="true"></i> Mis planes de entrenamiento</a>
                 </div>
               </li>
@@ -132,7 +132,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="services.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Alimentos</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="nuevoEjercicio">Agregar nuevo</a>
+                  <a class="dropdown-item" href="nuevoAlimento">Agregar alimento</a>
+                  <a class="dropdown-item" href="listaAlimentos">Listado de alimentos</a>
                 </div>
               </li>
               @endif

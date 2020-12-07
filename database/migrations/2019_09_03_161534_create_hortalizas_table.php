@@ -16,7 +16,7 @@ class CreateHortalizasTable extends Migration
         Schema::create('hortalizas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

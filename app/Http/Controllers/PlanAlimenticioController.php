@@ -104,4 +104,183 @@ class PlanAlimenticioController extends Controller
         return view('listadoPlanesAlimenticios')->with(['usuarios'=> $usuarios, 'planes'=> $planes, 'leches'=>$leches, 'carnes'=>$carnes, 'legumbres'=>$legumbres, 'hortalizas'=>$hortalizas, 'cereales'=>$cereales, 'aceites'=>$aceites, 'frutas'=>$frutas]); 
     }
 
+    public function eliminarPlanA(Request $request)
+    { 
+        $planA = PlanAlimenticio::find($request->id);
+            $planA->status = 0;
+        $planA->save();
+
+        return redirect()->back();
+
+    }
+
+    public function nuevoAlimento()
+    {
+        
+        return view('nuevoAlimento'); 
+    }
+
+    public function RegistrarAlimento(Request $request)
+    {   
+        if($request->alimento == 1){
+            $alimento = new Leche;
+                $alimento->nombre = $request->nombre;
+            $alimento->save();
+        }else
+            if($request->alimento == 2){
+                $alimento = new Carnes;
+                    $alimento->nombre = $request->nombre;
+                $alimento->save();
+            }else
+                if($request->alimento == 3){
+                    $alimento = new Legumbres;
+                        $alimento->nombre = $request->nombre;
+                    $alimento->save();
+                }else
+                    if($request->alimento == 4){
+                        $alimento = new Hortalizas;
+                            $alimento->nombre = $request->nombre;
+                        $alimento->save();
+                    }else
+                        if($request->alimento == 5){
+                            $alimento = new Frutas;
+                                $alimento->nombre = $request->nombre;
+                            $alimento->save();
+                        }else
+                            if($request->alimento == 6){
+                                $alimento = new Cereales;
+                                    $alimento->nombre = $request->nombre;
+                                $alimento->save();
+                            }else
+                                if($request->alimento == 7){
+                                    $alimento = new Aceites;
+                                        $alimento->nombre = $request->nombre;
+                                    $alimento->save();
+                                }
+
+                            return redirect()->back()->with('data',['mensaje'=> '¡Nuevo alimento agregado!']);
+        
+    }
+
+    public function listaAlimentos()
+    {
+        
+        $leches = Leche::all();
+        $carnes = Carnes::all();
+        $legumbres = Legumbres::all();
+        $hortalizas = Hortalizas::all();
+        $cereales = Cereales::all();
+        $aceites = Aceites::all();
+        $frutas = Frutas::all();
+
+        return view('listaAlimentos')->with(['leches'=>$leches, 'carnes'=>$carnes, 'legumbres'=>$legumbres, 'hortalizas'=>$hortalizas, 'cereales'=>$cereales, 'aceites'=>$aceites, 'frutas'=>$frutas]); 
+    }
+
+    public function modificarAlimento(Request $request)
+    {
+        if($request->alimento == 1){
+            $alimento = Leche::find($request->id);
+                $alimento->nombre = $request->nombre;
+            $alimento->save();
+        }else
+            if($request->alimento == 2){
+                $alimento = Carnes::find($request->id);
+                    $alimento->nombre = $request->nombre;
+                $alimento->save();
+            }else
+                if($request->alimento == 3){
+                    $alimento = Legumbres::find($request->id);
+                        $alimento->nombre = $request->nombre;
+                    $alimento->save();
+                }else
+                    if($request->alimento == 4){
+                        $alimento = Hortalizas::find($request->id);
+                            $alimento->nombre = $request->nombre;
+                        $alimento->save();
+                    }else
+                        if($request->alimento == 5){
+                            $alimento = Frutas::find($request->id);
+                                $alimento->nombre = $request->nombre;
+                            $alimento->save();
+                        }else
+                            if($request->alimento == 6){
+                                $alimento = Cereales::find($request->id);
+                                    $alimento->nombre = $request->nombre;
+                                $alimento->save();
+                            }else
+                                if($request->alimento == 7){
+                                    $alimento = Aceites::find($request->id);
+                                        $alimento->nombre = $request->nombre;
+                                    $alimento->save();
+                                }
+
+        return redirect()->back()->with('data',['mensaje'=> '¡Alimento modificado satisfactoriamente!']);
+    }
+
+    public function eliminarAlimento(Request $request)
+    {   
+        if($request->alimento == 1){
+            $alimento = Leche::find($request->id);
+                $alimento->status = 0;
+            $alimento->save();
+        }else
+            if($request->alimento == 2){
+                $alimento = Carnes::find($request->id);
+                    $alimento->status = 0;
+                $alimento->save();
+            }else
+                if($request->alimento == 3){
+                    $alimento = Legumbres::find($request->id);
+                        $alimento->status = 0;
+                    $alimento->save();
+                }else
+                    if($request->alimento == 4){
+                        $alimento = Hortalizas::find($request->id);
+                            $alimento->status = 0;
+                        $alimento->save();
+                    }else
+                        if($request->alimento == 5){
+                            $alimento = Frutas::find($request->id);
+                                $alimento->status = 0;
+                            $alimento->save();
+                        }else
+                            if($request->alimento == 6){
+                                $alimento = Cereales::find($request->id);
+                                    $alimento->status = 0;
+                                $alimento->save();
+                            }else
+                                if($request->alimento == 7){
+                                    $alimento = Aceites::find($request->id);
+                                        $alimento->status = 0;
+                                    $alimento->save();
+                                }
+
+        return redirect()->back();
+
+    }
+
+    public function miNutricion()
+    {
+        $usuarios = User::all();
+        $planes = PlanAlimenticio::all();
+        
+        return view('miNutricion')->with(['usuarios'=> $usuarios, 'planes'=> $planes]); 
+    }
+
+    public function nutricionPDF($id){
+
+        $usuarios = User::all();
+        $planes = PlanAlimenticio::where('id',$id)->get();
+        $leches = Leche::all();
+        $carnes = Carnes::all();
+        $legumbres = Legumbres::all();
+        $hortalizas = Hortalizas::all();
+        $cereales = Cereales::all();
+        $aceites = Aceites::all();
+        $frutas = Frutas::all();
+
+        $pdf = \PDF::loadView('NutricionPDF',['usuarios' => $usuarios, 'planes' =>$planes, 'leches' =>$leches, 'carnes'=>$carnes, 'legumbres'=>$legumbres, 'hortalizas'=>$hortalizas, 'cereales'=>$cereales, 'aceites'=>$aceites, 'frutas'=>$frutas]);
+
+        return $pdf->setPaper('a4')->stream('NutricionPDF.pdf');
+    }
 }

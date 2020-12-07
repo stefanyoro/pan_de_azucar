@@ -16,7 +16,7 @@ class CreateLegumbresTable extends Migration
         Schema::create('legumbres', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
-
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

@@ -34,7 +34,7 @@
             <div class="campo2">Pan de Azúcar Bike Team <br> Dirección:
               Urbanización pan de azúcar montaña alta, carrizal. <br>Telefono:+58 4123084838
             </div><br><br>
-          </div><br>
+    </div><br>
     @foreach ($planes as $clave => $plan)
         @foreach ($usuarios as $usuario)
             @if($plan->corredor_id == $usuario->id)
@@ -50,85 +50,58 @@
 
                 <b>MTB</b>
                 <hr></hr><br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <b>Tiempo:</b> {{$plan->mtb->tiempo}}
-                    </div>
-                    <div class="col-md-6">
-                        <b>Intensidad:</b> {{$plan->mtb->intensidad}}
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <b>Cadencia:</b> {{$plan->mtb->cadencia}}
-                    </div>
-                    <div class="col-md-6">
-                        <b>Días:</b> {{$plan->mtb->dias}}
-                    </div>
-                </div><br><br>
+                
+                        <b>Tiempo:</b> {{$plan->mtb->tiempo}}<br>
+                    
+                        <b>Intensidad:</b> {{$plan->mtb->intensidad}}<br>
+                    
+                        <b>Cadencia:</b> {{$plan->mtb->cadencia}}<br>
+                    
+                        <b>Días:</b> {{$plan->mtb->dias}}<br>
+                    <br><br>
                 <b>RUTA:</b>
                 <hr></hr><br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <b>Tiempo:</b> {{$plan->ruta->tiempo}}
-                    </div>
-                    <div class="col-md-6">
-                        <b>Intensidad:</b> {{$plan->ruta->intensidad}}
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-md-6">
-                        <b>Cadencia:</b> {{$plan->ruta->frecuencia}}
-                    </div>
-                    <div class="col-md-6">
-                        <b>Días:</b> {{$plan->ruta->dias}}
-                    </div>
-                </div><br>
+                
+                        <b>Tiempo:</b> {{$plan->ruta->tiempo}}<br>
+                    
+                        <b>Intensidad:</b> {{$plan->ruta->intensidad}}<br>
+                    
+                        <b>Cadencia:</b> {{$plan->ruta->frecuencia}}<br>
+                    
+                        <b>Días:</b> {{$plan->ruta->dias}}<br>
+                    <br><br>
                  <b>GIMNASIO:</b>
                  <hr></hr><br>
-                 <div class="row">
-                                            <div class="col-md-6">
-                                                @if ($plan->gimnasio->zona == '1')
-                                                <b>Zona:</b> Abdomen
-                                                @endif
-                                                @if ($plan->gimnasio->zona == '2')
-                                                <b>Zona:</b> Brazos
-                                                @endif
-                                                @if ($plan->gimnasio->zona == '3')
-                                                <b>Zona:</b> Espalda
-                                                @endif
-                                                @if ($plan->gimnasio->zona == '4')
-                                                <b>Zona:</b> Hombros
-                                                @endif
-                                                @if ($plan->gimnasio->zona == '5')
-                                                <b>Zona:</b> Pecho
-                                                @endif
-                                                @if ($plan->gimnasio->zona == '6')
-                                                <b>Zona:</b> Piernas
-                                                @endif
-                                            </div>
-                                            <div class="col-md-6">
+                 
+                        @if ($plan->gimnasio->zona == '1')
+                        <b>Zona:</b> Abdomen <br>
+                        @endif
+                        @if ($plan->gimnasio->zona == '2')
+                        <b>Zona:</b> Brazos <br>
+                        @endif
+                        @if ($plan->gimnasio->zona == '3')
+                        <b>Zona:</b> Espalda <br>
+                        @endif
+                        @if ($plan->gimnasio->zona == '4')
+                        <b>Zona:</b> Hombros <br>
+                        @endif
+                        @if ($plan->gimnasio->zona == '5')
+                        <b>Zona:</b> Pecho <br>
+                        @endif
+                        @if ($plan->gimnasio->zona == '6')
+                        <b>Zona:</b> Piernas <br>
+                        @endif
+                                            
                                            
-                                                <b>Nombre:</b> {{$plan->gimnasio->ejercicios->nombre}}
-                                          </div>
-                                        </div><br>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <b>Series:</b> {{$plan->gimnasio->series}} 4
-                                            </div>
-                                            <div class="col-md-4">
-                                                <b>Repeticiones:</b> {{$plan->gimnasio->repeticiones}} 12
-                                            </div>
-                                            <div class="col-md-4">
-                                                <b>Peso:</b> {{$plan->gimnasio->peso}} 40 kg
-                                            </div>
-                                        </div><br>
-                                        <div class="row">
-                                          <div class="col-md-6">
-                                              <b>Días:</b> {{$plan->gimnasio->dias}}                                            
-                                          </div>
-                                          
-                                        </div>
+                        <b>Nombre:</b> {{$plan->gimnasio->ejercicios->nombre}}<br>
+                         
+                        <b>Series:</b> {{$plan->gimnasio->series}} 4<br>
+                    
+                        <b>Repeticiones:</b> {{$plan->gimnasio->repeticiones}} 12<br>
+                    
+                        <b>Peso:</b> {{$plan->gimnasio->peso}} 40 kg<br>
+                    
+                        <b>Días:</b> {{$plan->gimnasio->dias}}  <br>                                          
              @endif
         @endforeach    
     @endforeach

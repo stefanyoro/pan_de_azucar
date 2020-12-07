@@ -29,6 +29,7 @@ class CreatePlanEntrenamientoTable extends Migration
 
             $table->bigInteger('gimnasio_id')->unsigned();
             $table->foreign('gimnasio_id')->references('id')->on('gimnasio')->onDelete('cascade');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

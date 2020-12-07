@@ -16,6 +16,7 @@ class CreateLecheTable extends Migration
         Schema::create('leche', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre');
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

@@ -73,6 +73,7 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 // Plan de entrenamientos
 	Route::get('planEntrenamiento', 'PlanEntrenamientoController@vistaRegistroEntrenamiento')->name('planEntrenamiento');
 	Route::post('RegistrarPlanE','PlanEntrenamientoController@RegistrarPlanE')->name('RegistrarPlanE');
+	Route::post('eliminarPlanE','PlanEntrenamientoController@eliminarPlanE')->name('eliminarPlanE');
 	Route::get('nuevoEjercicio', 'PlanEntrenamientoController@nuevoEjercicio')->name('nuevoEjercicio');
 	Route::post('RegistrarEjercicio', 'PlanEntrenamientoController@RegistrarEjercicio')->name('RegistrarEjercicio');
 	Route::get('listaEjercicios', 'PlanEntrenamientoController@listaEjercicio')->name('listaEjercicios');
@@ -80,8 +81,7 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::post('eliminarEjercicio', 'PlanEntrenamientoController@eliminarEjercicio')->name('eliminarEjercicio');
 	Route::get('miEntrenamiento', 'PlanEntrenamientoController@miEntrenamiento')->name('miEntrenamiento');
 	Route::get('listadoPlanesEntrenamiento', 'PlanEntrenamientoController@listadoPlanesEntrenamiento')->name('listadoPlanesEntrenamiento');
-	Route::get('EntrenamientoPDF', 'PlanEntrenamientoController@entrenamientoPDF')->name('EntrenamientoPDF');
-
+	Route::get('EntrenamientoPDF/{id}', 'PlanEntrenamientoController@entrenamientoPDF')->name('EntrenamientoPDF');
 
 // Resultados de carreras
 	Route::get('resultadosCarreras', 'ResultadosController@registroResultados')->name('resultadosCarreras');
@@ -97,10 +97,20 @@ Route::get('/', 'indexController@indexConsulta')->name('indexConsulta');
 	Route::get('planAlimenticio', 'PlanAlimenticioController@Plan_Alimentacion');
 	Route::post('registro_planAlimenticio', 'PlanAlimenticioController@RegistrarPlanAlimenticio');
 	Route::get('listado_planAlimenticio', 'PlanAlimenticioController@ListadoPlanes');
-
+	Route::post('eliminarPlanA', 'PlanAlimenticioController@eliminarPlanA');
+	Route::get('planNutricional', 'PlanAlimenticioController@miNutricion');
+	Route::get('nutricionPDF/{id}', 'PlanAlimenticioController@nutricionPDF')->name('nutricionPDF');
+	
+// Alimentos - Plan alimenticio
+	Route::get('nuevoAlimento', 'PlanAlimenticioController@nuevoAlimento');
+	Route::post('registrarAlimento', 'PlanAlimenticioController@RegistrarAlimento');
+	Route::get('listaAlimentos', 'PlanAlimenticioController@listaAlimentos');
+	Route::post('modificarAlimento', 'PlanAlimenticioController@modificarAlimento');
+	Route::post('eliminarAlimento', 'PlanAlimenticioController@eliminarAlimento');
 //PDF'S
 	Route::get('CarnetPDF', 'PdfController@carnet')->name('CarnetPDF');
 	Route::get('planBasicoPDF', 'PdfController@planBasico')->name('planBasicoPDF');
+
 //Banco Receptor
 	Route::resource('banco', 'BancoController');
 

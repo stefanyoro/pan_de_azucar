@@ -48,13 +48,13 @@
 		                            <th>N◦</th>
 		                            <th>Nombre del Plan</th>
 		                            <th>Fecha de Creación</th>
-		                            <th>        </th>
+		                            <th>PDF</th>
 		                          </tr>
 		                        </thead>
 		                            <tbody>
 		                            	@foreach ($planes as $clave => $plan)
-		                            		@foreach ($usuarios as $usuario)
-		                            			@if($plan->corredor_id == $usuario->id)
+		                            		
+		                            			@if($plan->corredor_id == Auth::user()->id)
 				                              	<tr>
 				                                	<td>{{ $clave + 1}}</td>
 							                        <td>{{ $plan->nombre}}</td>
@@ -62,14 +62,14 @@
 							                        <td >
                             <!-- visualizar -->
                             <div class="btn-group" role="group" aria-label="Basic example">
-                              <button type="button" class="btn btn-outline-info btn-sm"><a href="{{ route('EntrenamientoPDF') }}" target="_black" style="color: white;">
+                              <button type="button" class="btn btn-outline-info btn-sm"><a href="{{ url('EntrenamientoPDF/'.$plan->id) }}" target="_black" style="color: black;">
                                   <i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
                               </button>
                              
                           </td>
 						                        </tr>
 						                        @endif
-						                	@endforeach    
+						                	
 		                           		@endforeach
 		                            </tbody>
 		                    </table>

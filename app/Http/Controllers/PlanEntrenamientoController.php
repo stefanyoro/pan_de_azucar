@@ -67,6 +67,16 @@ class PlanEntrenamientoController extends Controller
 
     }
 
+    public function eliminarPlanE(Request $request)
+    { 
+        $planE = PlanEntrenamiento::find($request->id);
+            $planE->status = 0;
+        $planE->save();
+
+        return redirect()->back();
+
+    }
+
     public function nuevoEjercicio()
     {
         
@@ -101,7 +111,7 @@ class PlanEntrenamientoController extends Controller
         return view('listaEjercicios')->with(['ejercicios'=> $ejercicios]); 
     }
 
-     public function modificarEjercicio(Request $request)
+    public function modificarEjercicio(Request $request)
     {
         $ejercicios = Ejercicios::find($request->id);
         //$carrera->adm_id = $request->id; extraer este valor como se hace ??
@@ -127,7 +137,7 @@ class PlanEntrenamientoController extends Controller
 
     }
 
-     public function miEntrenamiento()
+    public function miEntrenamiento()
     {
         $mtb = Mtb::all();
         $ruta = Ruta::all();
@@ -138,7 +148,8 @@ class PlanEntrenamientoController extends Controller
         
         return view('miEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]); 
     }
-     public function listadoPlanesEntrenamiento()
+
+    public function listadoPlanesEntrenamiento()
     {
         $mtb = Mtb::all();
         $ruta = Ruta::all();
@@ -150,13 +161,13 @@ class PlanEntrenamientoController extends Controller
         return view('listadoPlanesEntrenamiento')->with(['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]); 
     }
 
-    public function entrenamientoPDF(){
+    public function entrenamientoPDF($id){
 
         $mtb = Mtb::all();
         $ruta = Ruta::all();
         $gimnasio = Gimnasio::all();
         $usuarios = User::all();
-        $planes = PlanEntrenamiento::all();
+        $planes = PlanEntrenamiento::where('id',$id)->get();
         $ejercicios = Ejercicios::all();
 
         $pdf = \PDF::loadView('EntrenamientoPDF',['mtb'=> $mtb, 'ruta'=> $ruta, 'gimnasio'=> $gimnasio, 'usuarios'=> $usuarios, 'planes'=> $planes, 'ejercicios'=> $ejercicios]);

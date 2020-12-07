@@ -47,7 +47,7 @@ class CreatePlanAlimenticioTable extends Migration
             $table->bigInteger('porcion_aceite')->nullable();
             $table->string('equivalente_aceite')->nullable();
             $table->string('dias_aceite')->nullable();
-            
+            $table->boolean('status')->default(1);
 
             $table->timestamps();
         });
